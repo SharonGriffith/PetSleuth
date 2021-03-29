@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
 
-        // to prove this is only being done once but the data is persisted in the view model
+        // to prove that this is only being done once yet the data shows up across fragments
         viewModel.loadMockData()
 
         binding.petSleuthViewModel = viewModel
