@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
+import com.sharonahamon.petsleuth.models.ContactPerson
 import timber.log.Timber
 
 class LoginFragment : Fragment() {
@@ -36,10 +38,36 @@ class LoginFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.loginButtonSignin.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
-        binding.loginButtonRegister.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
+        binding.loginButtonSignin.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            doLogin(view)
+        }
+
+        binding.loginButtonRegister.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            doRegister(view)
+        }
 
         return binding.root
+    }
+
+    private fun doRegister(view: View) {
+        // right now the buttons both do the same thing, so just call common code
+        // but in the future they will do different things
+        doLogin(view)
+    }
+
+    private fun doLogin(view: View) {
+        saveDataFromUserInputToViewModel()
+        view.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+    }
+
+    private fun saveDataFromUserInputToViewModel() {
+        var email = binding.loginUsernameText.text.toString()
+        Timber.i("email from user input=" + email)
+
+        viewModel._contactPerson =
+            MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
     }
 
     override fun onDestroyView() {
