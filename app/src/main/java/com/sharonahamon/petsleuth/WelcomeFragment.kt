@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
+import com.sharonahamon.petsleuth.models.Pet
+import com.sharonahamon.petsleuth.models.PetSummary
 import timber.log.Timber
 
 class WelcomeFragment : Fragment() {
@@ -36,9 +39,56 @@ class WelcomeFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.welcomeButtonNext.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionsFragment))
+        // Set the onClickListener for the submitButton
+        binding.welcomeButtonNext.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            saveDataFromUserInputToViewModel()
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
+        }
 
         return binding.root
+    }
+
+    private fun saveDataFromUserInputToViewModel() {
+        var status = "Lost"
+        val checkedId = binding.welcomeRadioPurposeContainer.checkedRadioButtonId
+
+        // Do nothing if nothing is checked (id == -1)
+        if (-1 != checkedId) {
+            when (checkedId) {
+                R.id.welcome_radio_purpose_found -> status = "Found"
+                R.id.welcome_radio_purpose_lost -> status = "Lost"
+            }
+        }
+
+        var isMine = true
+        if (status == "Found") {
+            isMine = false
+        }
+
+        var nextPetId = viewModel.petList.size + 1
+
+        // create the PetSummary object for the first time
+        Timber.i("created the PetSummary object")
+
+        var petSummary = PetSummary(
+            MutableLiveData(nextPetId),
+            null,
+            null,
+            isMine = MutableLiveData(isMine),
+            isReunited = MutableLiveData(false),
+            status = MutableLiveData(status)
+        )
+
+        // create the Pet object for the first time
+        Timber.i("created the Pet object")
+
+        var pet = Pet(MutableLiveData(nextPetId), MutableLiveData(petSummary), null, null)
+
+        // save the current (incomplete) Pet in viewModel so the other fragments can add to it
+        Timber.i("saved the Pet object")
+
+        viewModel.pet = MutableLiveData(pet)
     }
 
     override fun onDestroyView() {

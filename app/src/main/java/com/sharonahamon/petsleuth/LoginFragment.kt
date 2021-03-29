@@ -66,8 +66,7 @@ class LoginFragment : Fragment() {
         var email = binding.loginUsernameText.text.toString()
         Timber.i("email from user input=" + email)
 
-        viewModel._contactPerson =
-            MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
+        viewModel.contactPerson = MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
     }
 
     override fun onDestroyView() {

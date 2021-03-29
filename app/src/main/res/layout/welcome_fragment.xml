@@ -51,20 +51,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/welcome_description">
 
                 <RadioButton
+                    android:id="@+id/welcome_radio_purpose_lost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:checked="true"
+                    android:text="@string/welcome_radio_purpose_lost_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <RadioButton
                     android:id="@+id/welcome_radio_purpose_found"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimaryText"
                     android:text="@string/welcome_radio_purpose_found_label"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/text_size_normal" />
-
-                <RadioButton
-                    android:id="@+id/welcome_radio_purpose_lost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimaryText"
-                    android:text="@string/welcome_radio_purpose_lost_label"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal" />
 

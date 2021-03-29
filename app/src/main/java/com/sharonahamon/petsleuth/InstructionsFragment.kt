@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
+import com.sharonahamon.petsleuth.models.*
 import timber.log.Timber
 
 class InstructionsFragment : Fragment() {
@@ -37,10 +40,77 @@ class InstructionsFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.instructionsButtonSave.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_detailFragment))
-        binding.instructionsButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
+        binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            saveDataFromUserInputToViewModel()
+            view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
+        }
 
         return binding.root
+    }
+
+    private fun saveDataFromUserInputToViewModel() {
+        getSpeciesDataFromUserInput(viewModel.pet)
+        getDescriptionDataFromUserInput(viewModel.pet)
+        getLocationDataFromUserInput(viewModel.pet)
+
+        // add the current pet to the list in viewModel
+        Timber.i("saved the Pet object in the list")
+        viewModel.petList.add(viewModel.pet)
+    }
+
+    private fun getDescriptionDataFromUserInput(pet: LiveData<Pet>) {
+        var description = binding.instructionsAnswerDescription.text.toString()
+
+        // create the PetDetail object for the first time
+        Timber.i("created the PetDetail object")
+
+        var petDetail = PetDetail(
+            pet.value?.petId,
+            MutableLiveData(description),
+            null,
+            MutableLiveData(false),
+            viewModel.contactPerson as @kotlinx.android.parcel.RawValue MutableLiveData<ContactPerson>
+        )
+
+        Timber.i("updated (but not saved) the PetDetail object")
+        pet.value?.petDetail = MutableLiveData(petDetail)
+    }
+
+    private fun getLocationDataFromUserInput(pet: LiveData<Pet>) {
+        var city = binding.instructionsAnswerLocationCity.text.toString()
+        var state = binding.instructionsAnswerLocationState.text.toString()
+        var zip = binding.instructionsAnswerLocationZip.text.toString()
+
+        // create the PetLastSeenLocation object for the first time
+        Timber.i("created the PetLastSeenLocation object")
+        var petLastSeenLocation = PetLastSeenLocation(
+            pet.value?.petId,
+            MutableLiveData("today"),
+            null,
+            MutableLiveData(city),
+            MutableLiveData(state),
+            MutableLiveData(zip)
+        )
+
+        Timber.i("updated (but not saved) the PetLastSeenLocation object")
+        pet.value?.petLastSeenLocation = MutableLiveData(petLastSeenLocation)
+    }
+
+    private fun getSpeciesDataFromUserInput(pet: LiveData<Pet>) {
+        var species = ""
+        val checkedId = binding.instructionsRadioSpeciesContainer.checkedRadioButtonId
+
+        // Do nothing if nothing is checked (id == -1)
+        if (-1 != checkedId) {
+            when (checkedId) {
+                R.id.instructions_radio_species_dog -> species = "Dog"
+                R.id.instructions_radio_species_cat -> species = "Cat"
+            }
+        }
+
+        Timber.i("updated (but not saved) the PetSummary object")
+        pet.value?.petSummary?.value?.species = MutableLiveData(species)
     }
 
     override fun onDestroyView() {

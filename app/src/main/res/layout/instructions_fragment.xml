@@ -174,18 +174,10 @@
                     app:layout_constraintEnd_toStartOf="@+id/instructions_button_list"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <Button
-                    android:id="@+id/instructions_button_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:text="@string/instructions_button_list_label"
-                    app:layout_constraintEnd_toStartOf="@+id/instructions_button_save"
-                    app:layout_constraintStart_toStartOf="parent" />
-
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
 </layout>
