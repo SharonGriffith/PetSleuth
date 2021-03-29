@@ -26,10 +26,15 @@ class LoginFragment : Fragment() {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
-        viewModel = ViewModelProvider(this).get(PetSleuthViewModel::class.java)
+        // tie the viewModel to the parent activity so that it does not get
+        // destroyed when a fragment is popped off the back stack
+        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
+
+        // to prove this is only being done once but the data is persisted in the view model
+        viewModel.loadMockData()
 
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this

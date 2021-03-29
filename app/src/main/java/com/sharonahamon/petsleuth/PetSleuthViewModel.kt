@@ -40,7 +40,6 @@ class PetSleuthViewModel : ViewModel() {
 
     init {
         Timber.i("ViewModel created")
-        loadMockData()
     }
 
     override fun onCleared() {

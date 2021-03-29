@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
-import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
 import timber.log.Timber
+
 
 class DetailFragment : Fragment() {
 
@@ -27,7 +27,9 @@ class DetailFragment : Fragment() {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
-        viewModel = ViewModelProvider(this).get(PetSleuthViewModel::class.java)
+        // tie the viewModel to the parent activity so that it does not get
+        // destroyed when a fragment is popped off the back stack
+        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
         binding =
