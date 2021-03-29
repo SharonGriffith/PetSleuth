@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.sharonahamon.petsleuth.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment">
+        <action
+            android:id="@+id/action_detailFragment_to_instructionsFragment"
+            app:destination="@id/instructionsFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_goodbyeFragment"
+            app:destination="@id/goodbyeFragment"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionsFragment"
+        android:name="com.sharonahamon.petsleuth.InstructionsFragment"
+        android:label="instructions_fragment"
+        tools:layout="@layout/instructions_fragment">
+        <action
+            android:id="@+id/action_instructionsFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_instructionsFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sharonahamon.petsleuth.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.sharonahamon.petsleuth.WelcomeFragment"
+        android:label="welcome_fragment"
+        tools:layout="@layout/welcome_fragment">
+        <action
+            android:id="@+id/action_welcomeFragment_to_instructionsFragment"
+            app:destination="@id/instructionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listItemFragment"
+        android:name="com.sharonahamon.petsleuth.ListItemFragment"
+        android:label="list_item_fragment"
+        tools:layout="@layout/list_item_fragment">
+        <action
+            android:id="@+id/action_listItemFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_listItemFragment_to_goodbyeFragment"
+            app:destination="@id/goodbyeFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goodbyeFragment"
+        android:name="com.sharonahamon.petsleuth.GoodbyeFragment"
+        android:label="goodbye_fragment"
+        tools:layout="@layout/goodbye_fragment" />
+</navigation>
