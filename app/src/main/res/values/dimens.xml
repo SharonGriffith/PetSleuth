@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin8">8dp</dimen>
+    <dimen name="layout_margin24">24dp</dimen>
+    <dimen name="layout_margin48">48dp</dimen>
+    <dimen name="layout_margin54">54dp</dimen>
+    <dimen name="layout_margin96">96dp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_header">24sp</dimen>
+    <dimen name="input_field_width">200dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="layout_margin4">4dp</dimen>
+</resources>

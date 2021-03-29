@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".WelcomeFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/welcome_body_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin24"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_toolbar">
+
+            <TextView
+                android:id="@+id/welcome_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:text="@string/welcome_intro_label"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/welcome_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin54"
+                android:text="@string/welcome_description_label"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/welcome_radio_purpose_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin8"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_description">
+
+                <RadioButton
+                    android:id="@+id/welcome_radio_purpose_found"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/welcome_radio_purpose_found_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <RadioButton
+                    android:id="@+id/welcome_radio_purpose_lost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/welcome_radio_purpose_lost_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <!--
+                <RadioButton
+                    android:id="@+id/welcome_radio_purpose_found_reunited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/welcome_radio_purpose_found_reunited_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <RadioButton
+                    android:id="@+id/welcome_radio_purpose_lost_reunited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/welcome_radio_purpose_lost_reunited_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />-->
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/welcome_buttons_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_radio_purpose_container">
+
+                <Button
+                    android:id="@+id/welcome_button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_button_next_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="parent" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

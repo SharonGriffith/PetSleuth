@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_margin24"
+        tools:context=".GoodbyeFragment">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/goodbye_message"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/text_size_header" />
+
+    </FrameLayout>
+</layout>

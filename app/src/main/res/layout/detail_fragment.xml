@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detail_body_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin24">
+
+            <LinearLayout
+                android:id="@+id/detail_image_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detail_body_container">
+
+                <ImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_horizontal|left|center_vertical"
+                    android:contentDescription="@string/detail_image_text"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintTop_toTopOf="@+id/detail_body_container"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/detail_description_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="start"
+                    android:lines="1"
+                    android:maxLines="4"
+                    android:text="@string/detail_description_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_date_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_image_container">
+
+                <TextView
+                    android:id="@+id/detail_date_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_date_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_date_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:text="@string/detail_date_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_status_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_date_container">
+
+                <TextView
+                    android:id="@+id/detail_status_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_status_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_status_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:text="@string/detail_status_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_species_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_status_container">
+
+                <TextView
+                    android:id="@+id/detail_species_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_species_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_species_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:text="@string/detail_species_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_location_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_species_container">
+
+                <TextView
+                    android:id="@+id/detail_location_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_location_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_location_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:lines="1"
+                    android:maxLines="4"
+                    android:text="@string/detail_location_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_contact_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_location_container">
+
+                <TextView
+                    android:id="@+id/detail_contact_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_contact_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_contact_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:text="@string/detail_contact_value"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_button_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_contact_container">
+
+                <Button
+                    android:id="@+id/detail_button_add_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/detail_button_add_new_label" />
+
+                <Button
+                    android:id="@+id/detail_button_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/detail_button_list_label" />
+
+                <Button
+                    android:id="@+id/detail_button_done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/detail_button_done_label" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

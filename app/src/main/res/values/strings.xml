@@ -1,3 +1,62 @@
 <resources>
-    <string name="app_name">PetSleuth</string>
+    <string name="app_name">Pet Sleuth</string>
+
+    <!-- strings related to login -->
+    <string name="login_email_prompt">Email</string>
+    <string name="login_password_prompt">Password</string>
+    <string name="login_button_signin_label">Sign in</string>
+    <string name="login_button_register_label">Register</string>
+
+    <!-- strings related to welcome -->
+    <string name="welcome_intro_label">Pet Sleuth (Pet\'s Loose)</string>
+    <string name="welcome_description_label">\nThe purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  Subsequent screens will allow you to view the list of pets, or get more detailed information about a specific pet.\n\nWhich situation below applies to you?</string>
+    <string name="welcome_radio_purpose_found_label">I found someone else\'s pet.</string>
+    <string name="welcome_radio_purpose_lost_label">I lost a pet.</string>
+    <string name="welcome_radio_purpose_found_reunited_label">The pet I found has been reunited with its owner.</string>
+    <string name="welcome_radio_purpose_lost_reunited_label">The pet I lost has returned to me.</string>
+    <string name="welcome_button_next_label">Next</string>
+
+    <!-- strings related to instructions -->
+    <string name="instructions_question_species_label">What species is the pet?</string>
+    <string name="instructions_radio_species_dog_label">Dog</string>
+    <string name="instructions_radio_species_cat_label">Cat</string>
+    <string name="instructions_question_description_label">What does the pet look like?</string>
+    <string name="instructions_text_description_prompt">Description</string>
+    <string name="location_question_last_label">Where was the pet last seen?</string>
+    <string name="location_question_city_label">City</string>
+    <string name="location_question_state_label">State</string>
+    <string name="location_question_zip_label">Zip</string>
+    <string name="instructions_button_save_label">Save</string>
+    <string name="instructions_button_list_label">List</string>
+    <string name="instructions_button_done_label">Logout</string>
+
+    <!-- strings related to detail -->
+    <string name="detail_species_label">Species</string>
+    <string name="detail_species_value">Cat</string>
+    <string name="detail_description_label">Description</string>
+    <string name="detail_description_value">Long-haired, mostly grey, with white patch on throat.</string>
+    <string name="detail_image_text">image of a pet</string>
+    <string name="detail_date_label">Date Reported</string>
+    <string name="detail_date_value">3/23/21</string>
+    <string name="detail_location_label">Last Seen</string>
+    <string name="detail_location_value">Thornton, CO 80602</string>
+    <string name="detail_status_label">Status</string>
+    <string name="detail_status_value">Lost</string>
+    <string name="detail_contact_label">Contact</string>
+    <string name="detail_contact_value">sharon.a.hamon@gmail.com</string>
+    <string name="detail_button_add_new_label">Add Another</string>
+    <string name="detail_button_list_label">List</string>
+    <string name="detail_button_done_label">Logout</string>
+
+    <!-- strings related to list -->
+    <string name="list_item_instructions">Click on an image to go into the detail for that item.</string>
+    <string name="list_item_image_text">pet image</string>
+    <string name="list_item_date_value">3/23/21</string>
+    <string name="list_item_species_value">Cat</string>
+    <string name="list_item_status_value">Lost</string>
+    <string name="list_item_city_state_zip_value">Thornton, CO 80602</string>
+    <string name="list_item_button_done_label">Logout</string>
+
+    <!-- strings related to goodbye -->
+    <string name="goodbye_message">Thanks for visiting, please come again!</string>
 </resources>

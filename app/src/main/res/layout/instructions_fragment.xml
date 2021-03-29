@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".InstructionsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin24">
+
+            <TextView
+                android:id="@+id/instructions_question_species"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:text="@string/instructions_question_species_label"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/instructions_radio_species_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/layout_margin8"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructions_question_species"
+                tools:layout_editor_absoluteX="8dp">
+
+                <RadioButton
+                    android:id="@+id/instructions_radio_species_dog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/instructions_radio_species_dog_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <RadioButton
+                    android:id="@+id/instructions_radio_species_cat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin24"
+                    android:buttonTint="@color/colorPrimaryText"
+                    android:text="@string/instructions_radio_species_cat_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/instructions_question_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:text="@string/instructions_question_description_label"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructions_radio_species_container" />
+
+            <EditText
+                android:id="@+id/instructions_text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin8"
+                android:autofillHints="@string/instructions_text_description_prompt"
+                android:hint="@string/instructions_text_description_prompt"
+                android:inputType="text"
+                android:selectAllOnFocus="true"
+                android:textColorHint="@color/colorHintText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructions_question_description" />
+
+            <TextView
+                android:id="@+id/location_question_last"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:text="@string/location_question_last_label"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructions_text_description" />
+
+            <LinearLayout
+                android:id="@+id/location_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin8"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/location_question_last">
+
+                <EditText
+                    android:id="@+id/location_question_city_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_margin8"
+                    android:autofillHints="@string/location_question_city_label"
+                    android:hint="@string/location_question_city_label"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:textColorHint="@color/colorHintText" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_margin24"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/location_question_state_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/layout_margin8"
+                        android:autofillHints="@string/location_question_state_label"
+                        android:hint="@string/location_question_state_label"
+                        android:inputType="text"
+                        android:selectAllOnFocus="true"
+                        android:textColorHint="@color/colorHintText" />
+
+                    <EditText
+                        android:id="@+id/location_question_zip_text"
+                        android:layout_width="@dimen/input_field_width"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/layout_margin8"
+                        android:layout_marginTop="@dimen/layout_margin8"
+                        android:autofillHints="@string/location_question_zip_label"
+                        android:hint="@string/location_question_zip_label"
+                        android:inputType="text"
+                        android:selectAllOnFocus="true"
+                        android:textColorHint="@color/colorHintText" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/instructions_buttons_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location_fragment">
+
+                <Button
+                    android:id="@+id/instructions_button_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/instructions_button_save_label"
+                    app:layout_constraintEnd_toStartOf="@+id/instructions_button_list"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/instructions_button_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/instructions_button_list_label"
+                    app:layout_constraintEnd_toStartOf="@+id/instructions_button_save"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
