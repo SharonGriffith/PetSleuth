@@ -34,6 +34,20 @@ class ListItemFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.list_item_fragment, container, false)
 
+        viewModel.appUser = AppUser("sharon.a.hamon@gmail.com")
+        viewModel.contactPerson =
+            ContactPerson("sharon.a.hamon@gmail.com", "Sharon", "Hamon", 3036677720)
+        viewModel.petDetail =
+            PetDetail(1, "blue point siamese tortie", "Casper", true, viewModel.appUser, null)
+        viewModel.petSummary = PetSummary(
+            1,
+            "Cat",
+            PetLastSeenLocation(1, "3/28/21", "Main Street", "Thornton", "CO", "80602"),
+            isMine = true,
+            isReunited = false,
+            status = "Lost"
+        )
+
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
