@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.pet.petSummary.lastSeenLocation.lastSeenDate.toString()}"
+                    android:text="@{petSleuthViewModel.pet.petLastSeenLocation.lastSeenDate.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -176,7 +176,7 @@
                     android:gravity="end"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.pet.petSummary.lastSeenLocation.city.toString() + ' ' + petSleuthViewModel.pet.petSummary.lastSeenLocation.state.toString() + ' ' + petSleuthViewModel.pet.petSummary.lastSeenLocation.zip.toString()}"
+                    android:text="@{petSleuthViewModel.pet.petLastSeenLocation.city.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.state.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.zip.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />

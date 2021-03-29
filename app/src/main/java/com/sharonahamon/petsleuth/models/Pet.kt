@@ -37,7 +37,6 @@ data class PetLastSeenLocation(
 data class PetSummary(
     var petId: @RawValue MutableLiveData<Int>,
     var species: @RawValue MutableLiveData<String>?,
-    var lastSeenLocation: @RawValue MutableLiveData<PetLastSeenLocation>?,
     var isMine: @RawValue MutableLiveData<Boolean>,
     var isReunited: @RawValue MutableLiveData<Boolean>,
     var status: @RawValue MutableLiveData<String>

@@ -38,7 +38,7 @@ class PetSleuthViewModel : ViewModel() {
         )
 
         var newPetSummary = PetSummary(
-            MutableLiveData(1), MutableLiveData("Cat"), MutableLiveData(newLastSeenLocation),
+            MutableLiveData(1), MutableLiveData("Cat"),
             MutableLiveData(false), MutableLiveData(false), MutableLiveData("Lost")
         )
 

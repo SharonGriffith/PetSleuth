@@ -74,10 +74,9 @@ class WelcomeFragment : Fragment() {
         var petSummary = PetSummary(
             MutableLiveData(nextPetId),
             null,
-            null,
-            isMine = MutableLiveData(isMine),
-            isReunited = MutableLiveData(false),
-            status = MutableLiveData(status)
+            MutableLiveData(isMine),
+            MutableLiveData(false),
+            MutableLiveData(status)
         )
 
         // create the Pet object for the first time

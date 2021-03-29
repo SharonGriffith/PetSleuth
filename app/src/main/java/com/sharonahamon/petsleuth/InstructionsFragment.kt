@@ -70,7 +70,7 @@ class InstructionsFragment : Fragment() {
             MutableLiveData(description),
             null,
             MutableLiveData(false),
-            viewModel.contactPerson as @kotlinx.android.parcel.RawValue MutableLiveData<ContactPerson>
+            viewModel.contactPerson
         )
 
         Timber.i("updated (but not saved) the PetDetail object")
