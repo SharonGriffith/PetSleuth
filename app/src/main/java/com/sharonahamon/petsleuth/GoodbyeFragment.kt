@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.sharonahamon.petsleuth.databinding.*
+import com.sharonahamon.petsleuth.databinding.GoodbyeFragmentBinding
 import timber.log.Timber
 
 class GoodbyeFragment : Fragment() {

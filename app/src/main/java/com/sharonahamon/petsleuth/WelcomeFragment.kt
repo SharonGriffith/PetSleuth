@@ -1,17 +1,15 @@
 package com.sharonahamon.petsleuth
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.AttributeSet
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
 import timber.log.Timber
 
