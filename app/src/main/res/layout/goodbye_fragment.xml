@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="@{petSleuthViewModel.appUser.email.toString()}"
+            android:text="@{petSleuthViewModel.contactPerson.email.toString()}"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/text_size_header" />
 

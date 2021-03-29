@@ -8,7 +8,7 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class ContactPerson(
     var email: @RawValue MutableLiveData<String>, // serves as unique ID
-    var firstName: @RawValue MutableLiveData<String>,
-    var lastName: @RawValue MutableLiveData<String>,
-    var phone: @RawValue MutableLiveData<Long>
+    var firstName: @RawValue MutableLiveData<String>?,
+    var lastName: @RawValue MutableLiveData<String>?,
+    var phone: @RawValue MutableLiveData<Long>?
 ) : Parcelable
