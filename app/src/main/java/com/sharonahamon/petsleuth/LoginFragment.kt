@@ -33,9 +33,6 @@ class LoginFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
 
-        // to prove that this is only being done once yet the data shows up across fragments
-        viewModel.loadMockData()
-
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
