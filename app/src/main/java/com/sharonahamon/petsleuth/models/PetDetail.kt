@@ -10,5 +10,5 @@ data class PetDetail(
     var petName: String,
     var hasCollar: Boolean,
     var contactPerson: AppUser,
-    var images: List<String> = mutableListOf()
+    var images: List<String>? = mutableListOf()
 ) : Parcelable

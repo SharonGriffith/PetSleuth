@@ -8,5 +8,5 @@ data class ContactPerson(
     var email: String, // serves as unique ID
     var firstName: String,
     var lastName: String,
-    var phone: Int
+    var phone: Long
 ) : Parcelable

@@ -1,31 +1,20 @@
 package com.sharonahamon.petsleuth
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sharonahamon.petsleuth.models.*
+import com.sharonahamon.petsleuth.models.AppUser
+import com.sharonahamon.petsleuth.models.ContactPerson
+import com.sharonahamon.petsleuth.models.PetDetail
+import com.sharonahamon.petsleuth.models.PetSummary
 import timber.log.Timber
 
 class PetSleuthViewModel : ViewModel() {
-    private lateinit var _appUser: MutableLiveData<AppUser>
-    val appUser: LiveData<AppUser>
-        get() = _appUser
+    lateinit var appUser: AppUser
 
-    private lateinit var _contactPerson: MutableLiveData<ContactPerson>
-    val contactPerson: LiveData<ContactPerson>
-        get() = _contactPerson
+    lateinit var contactPerson: ContactPerson
 
-    private lateinit var _petLastSeenLocation: MutableLiveData<PetLastSeenLocation>
-    val petLastSeenLocation: LiveData<PetLastSeenLocation>
-        get() = _petLastSeenLocation
+    lateinit var petDetail: PetDetail
 
-    private lateinit var _petDetail: MutableLiveData<PetDetail>
-    val petDetail: LiveData<PetDetail>
-        get() = _petDetail
-
-    private lateinit var _petSummary: MutableLiveData<PetSummary>
-    val petSummary: LiveData<PetSummary>
-        get() = _petSummary
+    lateinit var petSummary: PetSummary
 
     init {
         Timber.i("ViewModel created")

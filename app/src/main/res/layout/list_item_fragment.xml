@@ -71,7 +71,7 @@
                             android:layout_marginStart="@dimen/layout_margin24"
                             android:layout_marginEnd="@dimen/layout_margin24"
                             android:gravity="start"
-                            android:text="@string/list_item_date_value"
+                            android:text="@{petSleuthViewModel.petSummary.lastSeenLocation.lastSeenDate}"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 
@@ -86,7 +86,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/layout_margin24"
                                 android:gravity="start"
-                                android:text="@string/list_item_status_value"
+                                android:text="@{petSleuthViewModel.petSummary.status}"
                                 android:textColor="@color/colorPrimaryText"
                                 android:textSize="@dimen/text_size_normal" />
 
@@ -97,7 +97,7 @@
                                 android:layout_gravity="start"
                                 android:layout_marginLeft="@dimen/layout_margin4"
                                 android:gravity="start"
-                                android:text="@string/list_item_species_value"
+                                android:text="@{petSleuthViewModel.petSummary.species}"
                                 android:textColor="@color/colorPrimaryText"
                                 android:textSize="@dimen/text_size_normal" />
 
@@ -109,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/layout_margin24"
                             android:gravity="start"
-                            android:text="@string/list_item_city_state_zip_value"
+                            android:text="@{petSleuthViewModel.petSummary.lastSeenLocation.city + ' ' + petSleuthViewModel.petSummary.lastSeenLocation.state + ' ' + petSleuthViewModel.petSummary.lastSeenLocation.zip}"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 

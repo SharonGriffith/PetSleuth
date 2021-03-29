@@ -1,20 +1,17 @@
 package com.sharonahamon.petsleuth
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.AttributeSet
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
-import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
-import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
-import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
+import com.sharonahamon.petsleuth.models.*
 import timber.log.Timber
 
 class DetailFragment : Fragment() {
@@ -35,6 +32,20 @@ class DetailFragment : Fragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
+
+        viewModel.appUser = AppUser("sharon.a.hamon@gmail.com")
+        viewModel.contactPerson =
+            ContactPerson("sharon.a.hamon@gmail.com", "Sharon", "Hamon", 3036677720)
+        viewModel.petDetail =
+            PetDetail(1, "blue point siamese tortie", "Casper", true, viewModel.appUser, null)
+        viewModel.petSummary = PetSummary(
+            1,
+            "Cat",
+            PetLastSeenLocation(1, "3/28/21", "Main Street", "Thornton", "CO", "80602"),
+            isMine = true,
+            isReunited = false,
+            status = "Lost"
+        )
 
         binding.petSleuthViewModel = viewModel
 
