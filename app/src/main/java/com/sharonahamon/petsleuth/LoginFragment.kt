@@ -32,11 +32,10 @@ class LoginFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.loginButtonSignin.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
         binding.loginButtonRegister.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_welcomeFragment))
-
-        binding.lifecycleOwner = this
 
         return binding.root
     }

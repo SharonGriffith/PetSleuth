@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
+import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
 import timber.log.Timber
 
 class DetailFragment : Fragment() {
@@ -33,11 +34,11 @@ class DetailFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.detailButtonAddNew.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_instructionsFragment))
         binding.detailButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_listItemFragment))
-
-        binding.lifecycleOwner = this
+        binding.detailButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_goodbyeFragment))
 
         return binding.root
     }

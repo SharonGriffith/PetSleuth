@@ -32,10 +32,9 @@ class WelcomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.welcomeButtonNext.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionsFragment))
-
-        binding.lifecycleOwner = this
 
         return binding.root
     }

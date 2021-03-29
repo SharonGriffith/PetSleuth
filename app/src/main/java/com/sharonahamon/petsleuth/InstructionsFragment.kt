@@ -33,11 +33,10 @@ class InstructionsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.instructions_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.instructionsButtonSave.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_detailFragment))
         binding.instructionsButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
-
-        binding.lifecycleOwner = this
 
         return binding.root
     }

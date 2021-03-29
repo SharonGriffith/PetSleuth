@@ -32,7 +32,6 @@ class GoodbyeFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.goodbye_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
-
         binding.lifecycleOwner = this
 
         return binding.root

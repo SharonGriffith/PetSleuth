@@ -10,9 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.sharonahamon.petsleuth.R.layout.list_item_fragment
 import com.sharonahamon.petsleuth.databinding.ListItemFragmentBinding
-import com.sharonahamon.petsleuth.models.*
+import kotlinx.android.synthetic.main.list_item_fragment.view.*
 import timber.log.Timber
 
 class ListItemFragment : Fragment() {
@@ -31,15 +30,13 @@ class ListItemFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        binding =
-            DataBindingUtil.inflate(inflater, list_item_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.list_item_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.listItemImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_detailFragment))
         binding.listItemButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
-
-        binding.lifecycleOwner = this
 
         return binding.root
     }
