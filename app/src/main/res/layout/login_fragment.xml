@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".LoginFragment">
 
-
+        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/login_body_container"
             android:layout_width="match_parent"
@@ -94,6 +94,7 @@
 
             </TableLayout>
 
+            <!-- linear layouts used to create containers to group elements together -->
             <LinearLayout
                 android:id="@+id/instructions_buttons_container"
                 android:layout_width="wrap_content"
@@ -126,4 +127,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
 </layout>

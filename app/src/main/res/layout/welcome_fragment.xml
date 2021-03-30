@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".WelcomeFragment">
 
-
+        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/welcome_body_container"
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal" />
 
-                <!--
+                <!-- future feature
                 <RadioButton
                     android:id="@+id/welcome_radio_purpose_found_reunited"
                     android:layout_width="match_parent"
@@ -90,27 +90,20 @@
 
             </RadioGroup>
 
-            <LinearLayout
-                android:id="@+id/welcome_buttons_container"
+            <Button
+                android:id="@+id/welcome_button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:text="@string/welcome_button_next_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_radio_purpose_container">
-
-                <Button
-                    android:id="@+id/welcome_button_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/welcome_button_next_label"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="parent" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/welcome_radio_purpose_container" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
 </layout>

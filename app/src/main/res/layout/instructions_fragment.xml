@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".InstructionsFragment">
 
+        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,6 +104,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/instructions_answer_description" />
 
+            <!-- linear layouts used to create containers to group elements together -->
             <LinearLayout
                 android:id="@+id/instructions_answer_location_container"
                 android:layout_width="match_parent"
@@ -122,6 +124,7 @@
                     android:selectAllOnFocus="true"
                     android:textColorHint="@color/colorHintText" />
 
+                <!-- linear layouts used to create containers to group elements together -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -155,26 +158,17 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/instructions_buttons_container"
+            <Button
+                android:id="@+id/instructions_button_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="true"
                 android:orientation="horizontal"
+                android:text="@string/instructions_button_save_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructions_answer_location_container">
-
-                <Button
-                    android:id="@+id/instructions_button_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:text="@string/instructions_button_save_label"
-                    app:layout_constraintEnd_toStartOf="@+id/instructions_button_list"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/instructions_answer_location_container" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

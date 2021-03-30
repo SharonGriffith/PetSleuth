@@ -13,8 +13,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
-import com.sharonahamon.petsleuth.models.*
+import com.sharonahamon.petsleuth.models.Pet
+import com.sharonahamon.petsleuth.models.PetDetail
+import com.sharonahamon.petsleuth.models.PetLastSeenLocation
 import timber.log.Timber
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class InstructionsFragment : Fragment() {
 
@@ -25,7 +29,7 @@ class InstructionsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -60,12 +64,12 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun getDescriptionDataFromUserInput(pet: LiveData<Pet>) {
-        var description = binding.instructionsAnswerDescription.text.toString()
+        val description = binding.instructionsAnswerDescription.text.toString()
 
         // create the PetDetail object for the first time
         Timber.i("created the PetDetail object")
 
-        var petDetail = PetDetail(
+        val petDetail = PetDetail(
             pet.value?.petId,
             MutableLiveData(description),
             null,
@@ -78,15 +82,18 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun getLocationDataFromUserInput(pet: LiveData<Pet>) {
-        var city = binding.instructionsAnswerLocationCity.text.toString()
-        var state = binding.instructionsAnswerLocationState.text.toString()
-        var zip = binding.instructionsAnswerLocationZip.text.toString()
+        val city = binding.instructionsAnswerLocationCity.text.toString()
+        val state = binding.instructionsAnswerLocationState.text.toString()
+        val zip = binding.instructionsAnswerLocationZip.text.toString()
+
+        val currentDateTime = LocalDateTime.now()
+        val today = currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy"))
 
         // create the PetLastSeenLocation object for the first time
         Timber.i("created the PetLastSeenLocation object")
-        var petLastSeenLocation = PetLastSeenLocation(
+        val petLastSeenLocation = PetLastSeenLocation(
             pet.value?.petId,
-            MutableLiveData("today"),
+            MutableLiveData(today),
             null,
             MutableLiveData(city),
             MutableLiveData(state),

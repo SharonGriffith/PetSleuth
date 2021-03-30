@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".ListItemFragment">
 
+        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/list_item_body_container"
             android:layout_width="match_parent"
@@ -33,6 +34,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- linear layouts used to create containers to group elements together -->
             <LinearLayout
                 android:id="@+id/list_item_container"
                 android:layout_width="match_parent"
@@ -41,6 +43,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_item_instructions">
 
+                <!-- linear layouts used to create containers to group elements together -->
                 <LinearLayout
                     android:id="@+id/list_item_image_container"
                     android:layout_width="match_parent"
@@ -59,6 +62,7 @@
                         android:src="@mipmap/ic_launcher"
                         tools:src="@tools:sample/avatars" />
 
+                    <!-- linear layouts used to create containers to group elements together -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -75,6 +79,7 @@
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 
+                        <!-- linear layouts used to create containers to group elements together -->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -133,4 +138,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
 </layout>
