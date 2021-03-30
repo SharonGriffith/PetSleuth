@@ -25,7 +25,7 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -62,16 +62,14 @@ class WelcomeFragment : Fragment() {
         }
 
         var isMine = true
-        if (status == "Found") {
-            isMine = false
-        }
+        if (status == "Found") isMine = false
 
-        var nextPetId = viewModel.petList.size + 1
+        val nextPetId = viewModel.petList.size + 1
 
         // create the PetSummary object for the first time
         Timber.i("created the PetSummary object")
 
-        var petSummary = PetSummary(
+        val petSummary = PetSummary(
             MutableLiveData(nextPetId),
             null,
             MutableLiveData(isMine),
@@ -82,7 +80,7 @@ class WelcomeFragment : Fragment() {
         // create the Pet object for the first time
         Timber.i("created the Pet object")
 
-        var pet = Pet(MutableLiveData(nextPetId), MutableLiveData(petSummary), null, null)
+        val pet = Pet(MutableLiveData(nextPetId), MutableLiveData(petSummary), null, null)
 
         // save the current (incomplete) Pet in viewModel so the other fragments can add to it
         Timber.i("saved the Pet object")

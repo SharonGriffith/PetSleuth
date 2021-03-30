@@ -23,7 +23,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one

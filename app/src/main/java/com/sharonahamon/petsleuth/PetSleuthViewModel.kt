@@ -9,7 +9,7 @@ import timber.log.Timber
 class PetSleuthViewModel : ViewModel() {
     var contactPerson = MutableLiveData<ContactPerson>()
 
-    var _pet = MutableLiveData<Pet>()
+    private var _pet = MutableLiveData<Pet>()
     var pet: LiveData<Pet>
         get() = _pet
         set(value) {
@@ -21,14 +21,14 @@ class PetSleuthViewModel : ViewModel() {
     init {
         Timber.i("ViewModel created")
 
-        var newContactPerson = ContactPerson(
+        val newContactPerson = ContactPerson(
             MutableLiveData("sharon.a.hamon@gmail.com"),
             MutableLiveData("Sharon"),
             MutableLiveData("Hamon"),
             MutableLiveData(3036677720)
         )
 
-        var newLastSeenLocation = PetLastSeenLocation(
+        val newLastSeenLocation = PetLastSeenLocation(
             MutableLiveData(1),
             MutableLiveData("3/29/21"),
             MutableLiveData("Main Street"),
@@ -37,12 +37,12 @@ class PetSleuthViewModel : ViewModel() {
             MutableLiveData("80602")
         )
 
-        var newPetSummary = PetSummary(
+        val newPetSummary = PetSummary(
             MutableLiveData(1), MutableLiveData("Cat"),
             MutableLiveData(false), MutableLiveData(false), MutableLiveData("Lost")
         )
 
-        var newPetDetail = PetDetail(
+        val newPetDetail = PetDetail(
             MutableLiveData(1),
             MutableLiveData("orange tabby"),
             MutableLiveData("Mini"),
@@ -51,7 +51,7 @@ class PetSleuthViewModel : ViewModel() {
             null
         )
 
-        var newPet = Pet(
+        val newPet = Pet(
             MutableLiveData(1),
             MutableLiveData(newPetSummary),
             MutableLiveData(newPetDetail),

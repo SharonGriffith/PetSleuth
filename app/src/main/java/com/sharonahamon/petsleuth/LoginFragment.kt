@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -63,10 +63,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun saveDataFromUserInputToViewModel() {
-        var email = binding.loginUsernameText.text.toString()
-        Timber.i("email from user input=" + email)
+        val email = binding.loginUsernameText.text.toString()
 
-        viewModel.contactPerson = MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
+        viewModel.contactPerson =
+            MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
     }
 
     override fun onDestroyView() {
