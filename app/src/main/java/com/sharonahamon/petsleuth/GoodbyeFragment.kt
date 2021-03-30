@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.sharonahamon.petsleuth.databinding.GoodbyeFragmentBinding
 import timber.log.Timber
@@ -35,6 +36,21 @@ class GoodbyeFragment : Fragment() {
 
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
+
+        // clear the active user out of the view model
+        viewModel.contactPerson.value?.email = MutableLiveData("")
+
+        // clear the active pet out of the view model
+        viewModel.pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
+        viewModel.pet.value?.petSummary?.value?.species = MutableLiveData("")
+        viewModel.pet.value?.petSummary?.value?.status ?: MutableLiveData("")
+
+        viewModel.pet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
+        viewModel.pet.value?.petDetail?.value?.description ?: MutableLiveData("")
+
+        viewModel.pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
+        viewModel.pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
+        viewModel.pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
 
         return binding.root
     }
