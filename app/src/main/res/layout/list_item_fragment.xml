@@ -15,44 +15,58 @@
         android:layout_height="match_parent"
         tools:context=".ListItemFragment">
 
-        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
+        <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/list_item_body_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/layout_margin24">
 
+            <!-- title -->
+            <TextView
+                android:id="@+id/list_item_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/list_item_title"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/list_item_body_container" />
+
+            <!-- instructions -->
             <TextView
                 android:id="@+id/list_item_instructions"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/list_item_instructions"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/list_item_intro"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/list_item_intro" />
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- vertical scrolling card list -->
             <LinearLayout
-                android:id="@+id/list_item_container"
+                android:id="@+id/list_item_scrolling_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/list_item_instructions">
 
-                <!-- linear layouts used to create containers to group elements together -->
+                <!-- single card -->
                 <LinearLayout
-                    android:id="@+id/list_item_image_container"
+                    android:id="@+id/list_item_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/layout_margin48"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <ImageView
                         android:id="@+id/list_item_image"
@@ -62,8 +76,9 @@
                         android:src="@mipmap/ic_launcher"
                         tools:src="@tools:sample/avatars" />
 
-                    <!-- linear layouts used to create containers to group elements together -->
+                    <!-- card text -->
                     <LinearLayout
+                        android:id="@+id/list_item_text_container"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -79,7 +94,7 @@
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 
-                        <!-- linear layouts used to create containers to group elements together -->
+                        <!-- horizontal label/value  -->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -124,16 +139,38 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/list_item_button_done"
+            <!-- horizontal buttons under the scrolling card list -->
+            <LinearLayout
+                android:id="@+id/list_item_button_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="true"
-                android:text="@string/list_item_button_done_label"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_item_container" />
+                app:layout_constraintTop_toBottomOf="@+id/list_item_scrolling_container">
+
+                <Button
+                    android:id="@+id/list_item_button_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:text="@string/list_item_button_add_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/list_item_button_done"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/list_item_button_done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:text="@string/list_item_button_done_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

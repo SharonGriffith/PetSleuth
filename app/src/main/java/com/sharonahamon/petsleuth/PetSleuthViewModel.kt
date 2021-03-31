@@ -7,7 +7,12 @@ import com.sharonahamon.petsleuth.models.*
 import timber.log.Timber
 
 class PetSleuthViewModel : ViewModel() {
-    var contactPerson = MutableLiveData<ContactPerson>()
+    private var _contactPerson = MutableLiveData<ContactPerson>()
+    var contactPerson: LiveData<ContactPerson>
+        get() = _contactPerson
+        set(value) {
+            _contactPerson = value as MutableLiveData<ContactPerson>
+        }
 
     private var _pet = MutableLiveData<Pet>()
     var pet: LiveData<Pet>
@@ -21,38 +26,44 @@ class PetSleuthViewModel : ViewModel() {
     init {
         Timber.i("ViewModel created")
 
-        val newContactPerson = ContactPerson(
-            MutableLiveData("sharon.a.hamon@gmail.com"),
-            MutableLiveData("Sharon"),
-            MutableLiveData("Hamon"),
-            MutableLiveData(3036677720)
-        )
+        var petId = 1
 
-        val newLastSeenLocation = PetLastSeenLocation(
-            MutableLiveData(1),
-            MutableLiveData("3/29/21"),
-            MutableLiveData("Main Street"),
-            MutableLiveData("Thornton"),
-            MutableLiveData("CO"),
-            MutableLiveData("80602")
-        )
-
-        val newPetSummary = PetSummary(
-            MutableLiveData(1), MutableLiveData("Cat"),
-            MutableLiveData(false), MutableLiveData(false), MutableLiveData("Lost")
-        )
-
-        val newPetDetail = PetDetail(
-            MutableLiveData(1),
-            MutableLiveData("orange tabby"),
-            MutableLiveData("Mini"),
-            MutableLiveData(true),
-            MutableLiveData(newContactPerson),
+        var newContactPerson = ContactPerson(
+            MutableLiveData("moe.howard@user.com"),
+            MutableLiveData("Moe"),
+            MutableLiveData("Howard"),
             null
         )
 
-        val newPet = Pet(
-            MutableLiveData(1),
+        var newLastSeenLocation = PetLastSeenLocation(
+            MutableLiveData(petId),
+            MutableLiveData("01/01/21"),
+            null,
+            MutableLiveData("Lee's Summit"),
+            MutableLiveData("MO"),
+            MutableLiveData("12345")
+        )
+
+        var newPetSummary = PetSummary(
+            MutableLiveData(petId),
+            MutableLiveData("Cat"),
+            null,
+            null,
+            MutableLiveData("Lost")
+        )
+
+        var newPetDetail = PetDetail(
+            MutableLiveData(petId),
+            MutableLiveData("Orange Tabby"),
+            null,
+            null,
+            MutableLiveData(newContactPerson),
+            null,
+            MutableLiveData("Female")
+        )
+
+        var newPet = Pet(
+            MutableLiveData(petId),
             MutableLiveData(newPetSummary),
             MutableLiveData(newPetDetail),
             MutableLiveData(newLastSeenLocation)
@@ -61,6 +72,51 @@ class PetSleuthViewModel : ViewModel() {
         pet = MutableLiveData<Pet>(newPet)
 
         petList.add(pet)
+
+        petId = 2
+
+        newContactPerson = ContactPerson(
+            MutableLiveData("larry.fine@user.com"),
+            MutableLiveData("Larry"),
+            MutableLiveData("Fine"),
+            null
+        )
+
+        newLastSeenLocation = PetLastSeenLocation(
+            MutableLiveData(petId),
+            MutableLiveData("3/1/21"),
+            null,
+            MutableLiveData("Thornton"),
+            MutableLiveData("CO"),
+            MutableLiveData("80602")
+        )
+
+        newPetSummary = PetSummary(
+            MutableLiveData(petId),
+            MutableLiveData("Dog"),
+            null,
+            null,
+            MutableLiveData("Found")
+        )
+
+        newPetDetail = PetDetail(
+            MutableLiveData(petId),
+            MutableLiveData("German Shepard"),
+            null,
+            null,
+            MutableLiveData(newContactPerson),
+            null,
+            MutableLiveData("Female")
+        )
+
+        newPet = Pet(
+            MutableLiveData(petId),
+            MutableLiveData(newPetSummary),
+            MutableLiveData(newPetDetail),
+            MutableLiveData(newLastSeenLocation)
+        )
+
+        pet = MutableLiveData<Pet>(newPet)
     }
 
     override fun onCleared() {

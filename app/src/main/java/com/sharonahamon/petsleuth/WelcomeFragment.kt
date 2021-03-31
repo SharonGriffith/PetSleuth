@@ -39,53 +39,18 @@ class WelcomeFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        // Set the onClickListener for the submitButton
+        // Set the onClickListener for the buttons
         binding.welcomeButtonNext.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            saveDataFromUserInputToViewModel()
             view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
         }
 
-        return binding.root
-    }
-
-    private fun saveDataFromUserInputToViewModel() {
-        var status = "Lost"
-        val checkedId = binding.welcomeRadioPurposeContainer.checkedRadioButtonId
-
-        // Do nothing if nothing is checked (id == -1)
-        if (-1 != checkedId) {
-            when (checkedId) {
-                R.id.welcome_radio_purpose_found -> status = "Found"
-                R.id.welcome_radio_purpose_lost -> status = "Lost"
-            }
+        binding.welcomeButtonList.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_listItemFragment)
         }
 
-        var isMine = true
-        if (status == "Found") isMine = false
-
-        val nextPetId = viewModel.petList.size + 1
-
-        // create the PetSummary object for the first time
-        Timber.i("created the PetSummary object")
-
-        val petSummary = PetSummary(
-            MutableLiveData(nextPetId),
-            null,
-            MutableLiveData(isMine),
-            MutableLiveData(false),
-            MutableLiveData(status)
-        )
-
-        // create the Pet object for the first time
-        Timber.i("created the Pet object")
-
-        val pet = Pet(MutableLiveData(nextPetId), MutableLiveData(petSummary), null, null)
-
-        // save the current (incomplete) Pet in viewModel so the other fragments can add to it
-        Timber.i("saved the Pet object")
-
-        viewModel.pet = MutableLiveData(pet)
+        return binding.root
     }
 
     override fun onDestroyView() {

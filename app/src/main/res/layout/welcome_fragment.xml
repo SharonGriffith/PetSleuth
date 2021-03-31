@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".WelcomeFragment">
 
-        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
+        <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/welcome_body_container"
             android:layout_width="match_parent"
@@ -23,84 +23,70 @@
             android:layout_margin="@dimen/layout_margin24"
             app:layout_constraintTop_toBottomOf="@+id/welcome_toolbar">
 
+            <!-- title -->
             <TextView
                 android:id="@+id/welcome_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin24"
-                android:text="@string/welcome_intro_label"
+                android:gravity="start"
+                android:text="@string/welcome_title"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_header"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/welcome_body_container" />
 
+            <!-- instructions -->
             <TextView
                 android:id="@+id/welcome_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin54"
-                android:text="@string/welcome_description_label"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/welcome_intro"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_normal"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_intro" />
 
-            <RadioGroup
-                android:id="@+id/welcome_radio_purpose_container"
+            <!-- horizontal buttons -->
+            <LinearLayout
+                android:id="@+id/welcome_button_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin8"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_description">
-
-                <RadioButton
-                    android:id="@+id/welcome_radio_purpose_lost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimaryText"
-                    android:checked="true"
-                    android:text="@string/welcome_radio_purpose_lost_label"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/text_size_normal" />
-
-                <RadioButton
-                    android:id="@+id/welcome_radio_purpose_found"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimaryText"
-                    android:text="@string/welcome_radio_purpose_found_label"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/text_size_normal" />
-
-                <!-- future feature
-                <RadioButton
-                    android:id="@+id/welcome_radio_purpose_found_reunited"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimaryText"
-                    android:text="@string/welcome_radio_purpose_found_reunited_label"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/text_size_normal" />
-
-                <RadioButton
-                    android:id="@+id/welcome_radio_purpose_lost_reunited"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimaryText"
-                    android:text="@string/welcome_radio_purpose_lost_reunited_label"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/text_size_normal" />-->
-
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/welcome_button_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:text="@string/welcome_button_next_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_radio_purpose_container" />
+                app:layout_constraintTop_toBottomOf="@+id/welcome_description">
+
+                <Button
+                    android:id="@+id/welcome_button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:text="@string/welcome_button_next_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/welcome_button_container" />
+
+                <Button
+                    android:id="@+id/welcome_button_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:text="@string/welcome_button_list_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/instructions_radio_purpose_container" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

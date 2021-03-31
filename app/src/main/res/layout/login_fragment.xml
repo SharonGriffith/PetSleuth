@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".LoginFragment">
 
-        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
+        <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/login_body_container"
             android:layout_width="match_parent"
@@ -23,6 +23,7 @@
             android:layout_margin="@dimen/layout_margin24"
             app:layout_constraintTop_toBottomOf="@+id/app_toolbar">
 
+            <!-- table layout used to make neat columns of labels and input fields -->
             <TableLayout
                 android:id="@+id/login_username_password_container"
                 android:layout_width="wrap_content"
@@ -32,6 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/login_body_container">
 
+                <!-- email -->
                 <TableRow
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/layout_margin8"
@@ -62,6 +64,7 @@
 
                 </TableRow>
 
+                <!-- password -->
                 <TableRow
                     android:layout_marginLeft="@dimen/layout_margin8"
                     android:layout_marginTop="@dimen/layout_margin24"
@@ -94,7 +97,7 @@
 
             </TableLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal buttons -->
             <LinearLayout
                 android:id="@+id/instructions_buttons_container"
                 android:layout_width="wrap_content"

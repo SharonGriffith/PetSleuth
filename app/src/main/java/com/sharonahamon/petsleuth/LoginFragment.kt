@@ -67,6 +67,8 @@ class LoginFragment : Fragment() {
 
         viewModel.contactPerson =
             MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
+
+        Timber.i("saved the ContactPerson object")
     }
 
     override fun onDestroyView() {

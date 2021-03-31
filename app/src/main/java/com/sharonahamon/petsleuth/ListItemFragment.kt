@@ -37,6 +37,7 @@ class ListItemFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.listItemImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_detailFragment))
+        binding.listItemButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
         binding.listItemButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
 
         return binding.root

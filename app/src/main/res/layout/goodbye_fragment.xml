@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,17 +13,46 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/layout_margin24"
         tools:context=".GoodbyeFragment">
 
-
-        <TextView
+        <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/goodbye_body_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/goodbye_message"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/text_size_header" />
+            android:layout_margin="@dimen/layout_margin24">
+
+            <!-- title -->
+
+            <!-- instructions -->
+            <TextView
+                android:id="@+id/goodbye_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/goodbye_title"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/goodbye_body_container" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/goodbye_intro"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goodbye_intro" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
 </layout>

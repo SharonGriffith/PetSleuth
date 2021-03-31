@@ -15,14 +15,14 @@
         android:layout_height="match_parent"
         tools:context=".DetailFragment">
 
-        <!-- constraint layout needed to make elements on the screen adapt to viewport size and orientation -->
+        <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/detail_body_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/layout_margin24">
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal image and description -->
             <LinearLayout
                 android:id="@+id/detail_image_container"
                 android:layout_width="0dp"
@@ -51,13 +51,13 @@
                     android:gravity="start"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.pet.petDetail.description.toString()}"
+                    android:text="@{petSleuthViewModel.pet.petDetail.sex.toString() + ' ' + petSleuthViewModel.pet.petDetail.breed.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal date label/value -->
             <LinearLayout
                 android:id="@+id/detail_date_container"
                 android:layout_width="0dp"
@@ -90,7 +90,7 @@
 
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal status label/value -->
             <LinearLayout
                 android:id="@+id/detail_status_container"
                 android:layout_width="0dp"
@@ -122,7 +122,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal species label/value -->
             <LinearLayout
                 android:id="@+id/detail_species_container"
                 android:layout_width="0dp"
@@ -154,7 +154,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal location label/value -->
             <LinearLayout
                 android:id="@+id/detail_location_container"
                 android:layout_width="0dp"
@@ -188,7 +188,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal contact label/value -->
             <LinearLayout
                 android:id="@+id/detail_contact_container"
                 android:layout_width="0dp"
@@ -222,7 +222,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
-            <!-- linear layouts used to create containers to group elements together -->
+            <!-- horizontal buttons -->
             <LinearLayout
                 android:id="@+id/detail_button_container"
                 android:layout_width="0dp"

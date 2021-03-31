@@ -46,8 +46,9 @@ class GoodbyeFragment : Fragment() {
         viewModel.pet.value?.petSummary?.value?.status ?: MutableLiveData("")
 
         viewModel.pet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
-        viewModel.pet.value?.petDetail?.value?.description ?: MutableLiveData("")
+        viewModel.pet.value?.petDetail?.value?.breed ?: MutableLiveData("")
 
+        viewModel.pet.value?.petLastSeenLocation?.value?.petId ?: MutableLiveData(-1)
         viewModel.pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
         viewModel.pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
         viewModel.pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
