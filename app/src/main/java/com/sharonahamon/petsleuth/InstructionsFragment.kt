@@ -43,31 +43,84 @@ class InstructionsFragment : Fragment() {
 
         binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            saveDataFromUserInputToViewModel()
+            saveDataFromUserInputToViewModel(
+                getCityDataFromUserInput(),
+                getStateDataFromUserInput(),
+                getZipDataFromUserInput(),
+                getStatusDataFromUserInput(),
+                getSpeciesDataFromUserInput(),
+                getSexDataFromUserInput(),
+                getBreedDataFromUserInput()
+            )
             view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
         }
 
         return binding.root
     }
 
-    private fun saveDataFromUserInputToViewModel() {
-        savePet(createPet())
+    private fun saveDataFromUserInputToViewModel(
+        city: String,
+        state: String,
+        zip: String,
+        status: String,
+        species: String,
+        sex: String,
+        breed: String
+    ) {
+        savePet(
+            createPet(
+                city,
+                state,
+                zip,
+                species,
+                status,
+                breed,
+                sex
+            )
+        )
 
         // add the current pet to the list in viewModel
         Timber.i("saved the Pet object in the list")
         viewModel.petList.add(viewModel.pet)
     }
 
-    private fun createPet(): Pet {
+    private fun createPet(
+        city: String,
+        state: String,
+        zip: String,
+        species: String,
+        status: String,
+        breed: String,
+        sex: String
+    ): Pet {
         val nextPetId = viewModel.petList.size + 1
         Timber.i("the next pet ID to be used is %s", nextPetId)
 
         // create the Pet object for the first time
         val pet = Pet(
             MutableLiveData(nextPetId),
-            MutableLiveData(createPetSummary(nextPetId)),
-            MutableLiveData(createPetDetail(nextPetId)),
-            MutableLiveData(createPetLastSeenLocation(nextPetId))
+            MutableLiveData(
+                createPetSummary(
+                    nextPetId,
+                    species,
+                    status
+                )
+            ),
+            MutableLiveData(
+                createPetDetail(
+                    nextPetId,
+                    breed,
+                    sex
+                )
+            ),
+            MutableLiveData(
+                createPetLastSeenLocation(
+                    nextPetId,
+                    city,
+                    state,
+                    zip
+                )
+            )
         )
         Timber.i("created the Pet object")
 
@@ -79,20 +132,20 @@ class InstructionsFragment : Fragment() {
         Timber.i("saved the Pet object")
     }
 
-    private fun createPetSummary(petId: Int): PetSummary? {
+    private fun createPetSummary(petId: Int, species: String, status: String): PetSummary {
         val petSummary = PetSummary(
             MutableLiveData(petId),
-            MutableLiveData(getSpeciesDataFromUserInput()),
+            MutableLiveData(species),
             null,
             null,
-            MutableLiveData(getStatusDataFromUserInput())
+            MutableLiveData(status)
         )
 
         Timber.i("created the PetSummary object")
         return petSummary
     }
 
-    private fun getStatusDataFromUserInput(): String? {
+    private fun getStatusDataFromUserInput(): String {
         var status = "Lost"
         val checkedId = binding.instructionsRadioPurposeContainer.checkedRadioButtonId
 
@@ -122,32 +175,36 @@ class InstructionsFragment : Fragment() {
         return sex
     }
 
-    private fun createPetDetail(petId: Int): PetDetail {
+    private fun createPetDetail(
+        petId: Int,
+        breed: String,
+        sex: String
+    ): PetDetail {
         val petDetail = PetDetail(
             MutableLiveData(petId),
-            MutableLiveData(getBreedDataFromUserInput()),
+            MutableLiveData(breed),
             null,
             MutableLiveData(false),
-            viewModel.contactPerson as @kotlinx.android.parcel.RawValue MutableLiveData<ContactPerson>,
             null,
-            MutableLiveData(getSexDataFromUserInput())
+            null,
+            MutableLiveData(sex)
         )
 
         Timber.i("created the PetDetail object")
         return petDetail
     }
 
-    private fun getBreedDataFromUserInput(): String? {
+    private fun getBreedDataFromUserInput(): String {
         val breed = binding.instructionsAnswerBreed.text.toString()
         return breed
     }
 
-    private fun createPetLastSeenLocation(nextPetId: Int): PetLastSeenLocation {
-        val city = getCityDataFromUserInput()
-        val state = getStateDataFromUserInput()
-        val zip = getZipDataFromUserInput()
-
-
+    private fun createPetLastSeenLocation(
+        nextPetId: Int,
+        city: String,
+        state: String,
+        zip: String
+    ): PetLastSeenLocation {
         // create the PetLastSeenLocation object for the first time
         val petLastSeenLocation = PetLastSeenLocation(
             MutableLiveData(nextPetId),
@@ -162,7 +219,7 @@ class InstructionsFragment : Fragment() {
         return petLastSeenLocation
     }
 
-    private fun getToday(): String? {
+    private fun getToday(): String {
         val currentDateTime = LocalDateTime.now()
         val today = currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy"))
 
@@ -170,21 +227,21 @@ class InstructionsFragment : Fragment() {
         return today
     }
 
-    private fun getZipDataFromUserInput(): String? {
+    private fun getZipDataFromUserInput(): String {
         val zip = binding.instructionsAnswerLocationZip.text.toString()
 
         Timber.i("zip= %s", zip)
         return zip
     }
 
-    private fun getStateDataFromUserInput(): String? {
+    private fun getStateDataFromUserInput(): String {
         val state = binding.instructionsAnswerLocationState.text.toString()
 
         Timber.i("state= %s", state)
         return state
     }
 
-    private fun getCityDataFromUserInput(): String? {
+    private fun getCityDataFromUserInput(): String {
         val city = binding.instructionsAnswerLocationCity.text.toString()
 
         Timber.i("city= %s", city)
