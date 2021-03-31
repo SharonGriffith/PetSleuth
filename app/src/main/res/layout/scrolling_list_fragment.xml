@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/list_item_instructions">
+            app:layout_constraintTop_toBottomOf="@+id/list_instructions">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment"

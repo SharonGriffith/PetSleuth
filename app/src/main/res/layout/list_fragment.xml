@@ -17,14 +17,14 @@
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/list_item_body_container"
+            android:id="@+id/list_body_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/layout_margin24">
 
             <!-- title -->
             <TextView
-                android:id="@+id/list_item_intro"
+                android:id="@+id/list_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -33,11 +33,11 @@
                 android:textSize="@dimen/text_size_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/list_item_body_container" />
+                app:layout_constraintTop_toTopOf="@+id/list_body_container" />
 
             <!-- instructions -->
             <TextView
-                android:id="@+id/list_item_instructions"
+                android:id="@+id/list_instructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin24"
@@ -48,21 +48,21 @@
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_item_intro" />
+                app:layout_constraintTop_toBottomOf="@+id/list_intro" />
 
             <!-- vertical scrolling card list -->
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment2"
+                android:id="@+id/list_scrolling_container"
                 android:name="com.sharonahamon.petsleuth.ScrollingListFragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_item_instructions" />
+                app:layout_constraintTop_toBottomOf="@+id/list_instructions" />
 
             <!-- horizontal buttons under the scrolling card list -->
             <LinearLayout
-                android:id="@+id/list_item_button_container"
+                android:id="@+id/list_button_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -70,20 +70,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_item_scrolling_container">
+                app:layout_constraintTop_toBottomOf="@+id/list_scrolling_container">
 
                 <Button
-                    android:id="@+id/list_item_button_add"
+                    android:id="@+id/list_button_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:text="@string/list_item_button_add_label"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/list_item_button_done"
+                    app:layout_constraintEnd_toStartOf="@+id/list_button_done"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/list_item_button_done"
+                    android:id="@+id/list_button_done"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:enabled="true"

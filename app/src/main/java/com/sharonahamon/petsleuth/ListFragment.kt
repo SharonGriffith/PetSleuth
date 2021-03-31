@@ -36,8 +36,8 @@ class ListFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.listItemButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
-        binding.listItemButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
+        binding.listButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
+        binding.listButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
 
         return binding.root
     }
