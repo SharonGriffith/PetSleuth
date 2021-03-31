@@ -8,14 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
-import com.sharonahamon.petsleuth.models.*
 import timber.log.Timber
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class InstructionsFragment : Fragment() {
 
@@ -43,7 +39,7 @@ class InstructionsFragment : Fragment() {
 
         binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            saveDataFromUserInputToViewModel(
+            viewModel.saveDataFromUserInputToViewModel(
                 getCityDataFromUserInput(),
                 getStateDataFromUserInput(),
                 getZipDataFromUserInput(),
@@ -52,97 +48,11 @@ class InstructionsFragment : Fragment() {
                 getSexDataFromUserInput(),
                 getBreedDataFromUserInput()
             )
+
             view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
         }
 
         return binding.root
-    }
-
-    private fun saveDataFromUserInputToViewModel(
-        city: String,
-        state: String,
-        zip: String,
-        status: String,
-        species: String,
-        sex: String,
-        breed: String
-    ) {
-        savePet(
-            createPet(
-                city,
-                state,
-                zip,
-                species,
-                status,
-                breed,
-                sex
-            )
-        )
-
-        // add the current pet to the list in viewModel
-        Timber.i("saved the Pet object in the list")
-        viewModel.petList.add(viewModel.pet)
-    }
-
-    private fun createPet(
-        city: String,
-        state: String,
-        zip: String,
-        species: String,
-        status: String,
-        breed: String,
-        sex: String
-    ): Pet {
-        val nextPetId = viewModel.petList.size + 1
-        Timber.i("the next pet ID to be used is %s", nextPetId)
-
-        // create the Pet object for the first time
-        val pet = Pet(
-            MutableLiveData(nextPetId),
-            MutableLiveData(
-                createPetSummary(
-                    nextPetId,
-                    species,
-                    status
-                )
-            ),
-            MutableLiveData(
-                createPetDetail(
-                    nextPetId,
-                    breed,
-                    sex
-                )
-            ),
-            MutableLiveData(
-                createPetLastSeenLocation(
-                    nextPetId,
-                    city,
-                    state,
-                    zip
-                )
-            )
-        )
-        Timber.i("created the Pet object")
-
-        return pet
-    }
-
-    private fun savePet(pet: Pet) {
-        viewModel.pet = MutableLiveData(pet)
-        Timber.i("saved the Pet object")
-    }
-
-    private fun createPetSummary(petId: Int, species: String, status: String): PetSummary {
-        val petSummary = PetSummary(
-            MutableLiveData(petId),
-            MutableLiveData(species),
-            null,
-            null,
-            MutableLiveData(status)
-        )
-
-        Timber.i("created the PetSummary object")
-        return petSummary
     }
 
     private fun getStatusDataFromUserInput(): String {
@@ -157,6 +67,7 @@ class InstructionsFragment : Fragment() {
             }
         }
 
+        Timber.i("status=%s", status)
         return status
     }
 
@@ -172,79 +83,35 @@ class InstructionsFragment : Fragment() {
             }
         }
 
+        Timber.i("sex=%s", sex)
         return sex
-    }
-
-    private fun createPetDetail(
-        petId: Int,
-        breed: String,
-        sex: String
-    ): PetDetail {
-        val petDetail = PetDetail(
-            MutableLiveData(petId),
-            MutableLiveData(breed),
-            null,
-            MutableLiveData(false),
-            null,
-            null,
-            MutableLiveData(sex)
-        )
-
-        Timber.i("created the PetDetail object")
-        return petDetail
     }
 
     private fun getBreedDataFromUserInput(): String {
         val breed = binding.instructionsAnswerBreed.text.toString()
+
+        Timber.i("breed=%s", breed)
         return breed
-    }
-
-    private fun createPetLastSeenLocation(
-        nextPetId: Int,
-        city: String,
-        state: String,
-        zip: String
-    ): PetLastSeenLocation {
-        // create the PetLastSeenLocation object for the first time
-        val petLastSeenLocation = PetLastSeenLocation(
-            MutableLiveData(nextPetId),
-            MutableLiveData(getToday()),
-            null,
-            MutableLiveData(city),
-            MutableLiveData(state),
-            MutableLiveData(zip)
-        )
-
-        Timber.i("created the PetLastSeenLocation object")
-        return petLastSeenLocation
-    }
-
-    private fun getToday(): String {
-        val currentDateTime = LocalDateTime.now()
-        val today = currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy"))
-
-        Timber.i("today= %s", today)
-        return today
     }
 
     private fun getZipDataFromUserInput(): String {
         val zip = binding.instructionsAnswerLocationZip.text.toString()
 
-        Timber.i("zip= %s", zip)
+        Timber.i("zip=%s", zip)
         return zip
     }
 
     private fun getStateDataFromUserInput(): String {
         val state = binding.instructionsAnswerLocationState.text.toString()
 
-        Timber.i("state= %s", state)
+        Timber.i("state=%s", state)
         return state
     }
 
     private fun getCityDataFromUserInput(): String {
         val city = binding.instructionsAnswerLocationCity.text.toString()
 
-        Timber.i("city= %s", city)
+        Timber.i("city=%s", city)
         return city
     }
 
@@ -260,7 +127,7 @@ class InstructionsFragment : Fragment() {
             }
         }
 
-        Timber.i("species= %s", species)
+        Timber.i("species=%s", species)
         return species
     }
 
