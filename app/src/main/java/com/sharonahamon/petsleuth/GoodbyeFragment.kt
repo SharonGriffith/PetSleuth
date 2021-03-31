@@ -37,21 +37,7 @@ class GoodbyeFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        // clear the active user out of the view model
-        viewModel.contactPerson.value?.email = MutableLiveData("")
-
-        // clear the active pet out of the view model
-        viewModel.pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
-        viewModel.pet.value?.petSummary?.value?.species = MutableLiveData("")
-        viewModel.pet.value?.petSummary?.value?.status ?: MutableLiveData("")
-
-        viewModel.pet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
-        viewModel.pet.value?.petDetail?.value?.breed ?: MutableLiveData("")
-
-        viewModel.pet.value?.petLastSeenLocation?.value?.petId ?: MutableLiveData(-1)
-        viewModel.pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
-        viewModel.pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
-        viewModel.pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
+        viewModel.logout()
 
         return binding.root
     }

@@ -195,4 +195,22 @@ class PetSleuthViewModel : ViewModel() {
         super.onCleared()
         Timber.i("ViewModel destroyed")
     }
+
+    fun logout() {
+        // clear the active user out of the view model
+        contactPerson.value?.email = MutableLiveData("")
+
+        // clear the active pet out of the view model
+        pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
+        pet.value?.petSummary?.value?.species = MutableLiveData("")
+        pet.value?.petSummary?.value?.status ?: MutableLiveData("")
+
+        pet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
+        pet.value?.petDetail?.value?.breed ?: MutableLiveData("")
+
+        pet.value?.petLastSeenLocation?.value?.petId ?: MutableLiveData(-1)
+        pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
+        pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
+        pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
+    }
 }
