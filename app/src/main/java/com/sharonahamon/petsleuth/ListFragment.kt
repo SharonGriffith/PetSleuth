@@ -10,14 +10,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.sharonahamon.petsleuth.databinding.ListItemFragmentBinding
+import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 import timber.log.Timber
 
-class ListItemFragment : Fragment() {
+class ListFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
 
-    private lateinit var binding: ListItemFragmentBinding
+    private lateinit var binding: ListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +31,11 @@ class ListItemFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.list_item_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.listItemImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_detailFragment))
         binding.listItemButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
         binding.listItemButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
 
