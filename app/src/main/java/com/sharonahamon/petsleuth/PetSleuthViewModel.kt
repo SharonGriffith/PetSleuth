@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sharonahamon.petsleuth.models.*
 import timber.log.Timber
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class PetSleuthViewModel : ViewModel() {
     private var _contactPerson = MutableLiveData<ContactPerson>()
@@ -26,97 +28,167 @@ class PetSleuthViewModel : ViewModel() {
     init {
         Timber.i("ViewModel created")
 
-        var petId = 1
-
-        var newContactPerson = ContactPerson(
-            MutableLiveData("moe.howard@user.com"),
-            MutableLiveData("Moe"),
-            MutableLiveData("Howard"),
-            null
+        saveDataFromUserInputToViewModel(
+            "Lee's Summit",
+            "MO",
+            "12345",
+            "Lost",
+            "Cat",
+            "Female",
+            "Orange Tabby"
         )
 
-        var newLastSeenLocation = PetLastSeenLocation(
+        saveDataFromUserInputToViewModel(
+            "Thornton",
+            "CO",
+            "80602",
+            "Found",
+            "Dog",
+            "Female",
+            "German Shepherd"
+        )
+
+        Timber.i("list size=" + petList.size)
+    }
+
+    fun saveDataFromUserInputToViewModel(
+        city: String,
+        state: String,
+        zip: String,
+        status: String,
+        species: String,
+        sex: String,
+        breed: String
+    ) {
+        var newPet = createPet(
+            city,
+            state,
+            zip,
+            species,
+            status,
+            breed,
+            sex,
+            getToday()
+        )
+
+        // TODO: link to ContactPerson
+
+        savePet(newPet)
+
+        // add the current pet to the list in viewModel
+        Timber.i("saved the Pet object in the list")
+        petList.add(MutableLiveData(newPet))
+    }
+
+    private fun createPet(
+        city: String,
+        state: String,
+        zip: String,
+        species: String,
+        status: String,
+        breed: String,
+        sex: String,
+        date: String
+    ): Pet {
+        val nextPetId = petList.size + 1
+        Timber.i("the next pet ID to be used is %s", nextPetId)
+
+        // create the Pet object for the first time
+        val pet = Pet(
+            MutableLiveData(nextPetId),
+            MutableLiveData(
+                createPetSummary(
+                    nextPetId,
+                    species,
+                    status
+                )
+            ),
+            MutableLiveData(
+                createPetDetail(
+                    nextPetId,
+                    breed,
+                    sex
+                )
+            ),
+            MutableLiveData(
+                createPetLastSeenLocation(
+                    nextPetId,
+                    city,
+                    state,
+                    zip,
+                    date
+                )
+            )
+        )
+        Timber.i("created the Pet object")
+
+        return pet
+    }
+
+    private fun savePet(pet: Pet) {
+        this.pet = MutableLiveData(pet)
+        Timber.i("saved the Pet object")
+    }
+
+    private fun createPetSummary(petId: Int, species: String, status: String): PetSummary {
+        val petSummary = PetSummary(
             MutableLiveData(petId),
-            MutableLiveData("01/01/21"),
+            MutableLiveData(species),
             null,
-            MutableLiveData("Lee's Summit"),
-            MutableLiveData("MO"),
-            MutableLiveData("12345")
+            null,
+            MutableLiveData(status)
         )
 
-        var newPetSummary = PetSummary(
+        Timber.i("created the PetSummary object")
+        return petSummary
+    }
+
+    private fun createPetDetail(
+        petId: Int,
+        breed: String,
+        sex: String
+    ): PetDetail {
+        val petDetail = PetDetail(
             MutableLiveData(petId),
-            MutableLiveData("Cat"),
+            MutableLiveData(breed),
+            null,
+            MutableLiveData(false),
             null,
             null,
-            MutableLiveData("Lost")
+            MutableLiveData(sex)
         )
 
-        var newPetDetail = PetDetail(
-            MutableLiveData(petId),
-            MutableLiveData("Orange Tabby"),
+        Timber.i("created the PetDetail object")
+        return petDetail
+    }
+
+    private fun createPetLastSeenLocation(
+        nextPetId: Int,
+        city: String,
+        state: String,
+        zip: String,
+        date: String
+    ): PetLastSeenLocation {
+        // create the PetLastSeenLocation object for the first time
+        val petLastSeenLocation = PetLastSeenLocation(
+            MutableLiveData(nextPetId),
+            MutableLiveData(date),
             null,
-            null,
-            MutableLiveData(newContactPerson),
-            null,
-            MutableLiveData("Female")
+            MutableLiveData(city),
+            MutableLiveData(state),
+            MutableLiveData(zip)
         )
 
-        var newPet = Pet(
-            MutableLiveData(petId),
-            MutableLiveData(newPetSummary),
-            MutableLiveData(newPetDetail),
-            MutableLiveData(newLastSeenLocation)
-        )
+        Timber.i("created the PetLastSeenLocation object")
+        return petLastSeenLocation
+    }
 
-        pet = MutableLiveData<Pet>(newPet)
+    private fun getToday(): String {
+        val currentDateTime = LocalDateTime.now()
+        val today = currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy"))
 
-        petList.add(pet)
-
-        petId = 2
-
-        newContactPerson = ContactPerson(
-            MutableLiveData("larry.fine@user.com"),
-            MutableLiveData("Larry"),
-            MutableLiveData("Fine"),
-            null
-        )
-
-        newLastSeenLocation = PetLastSeenLocation(
-            MutableLiveData(petId),
-            MutableLiveData("3/1/21"),
-            null,
-            MutableLiveData("Thornton"),
-            MutableLiveData("CO"),
-            MutableLiveData("80602")
-        )
-
-        newPetSummary = PetSummary(
-            MutableLiveData(petId),
-            MutableLiveData("Dog"),
-            null,
-            null,
-            MutableLiveData("Found")
-        )
-
-        newPetDetail = PetDetail(
-            MutableLiveData(petId),
-            MutableLiveData("German Shepard"),
-            null,
-            null,
-            MutableLiveData(newContactPerson),
-            null,
-            MutableLiveData("Female")
-        )
-
-        newPet = Pet(
-            MutableLiveData(petId),
-            MutableLiveData(newPetSummary),
-            MutableLiveData(newPetDetail),
-            MutableLiveData(newLastSeenLocation)
-        )
-
-        pet = MutableLiveData<Pet>(newPet)
+        Timber.i("today= %s", today)
+        return today
     }
 
     override fun onCleared() {
