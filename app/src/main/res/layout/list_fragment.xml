@@ -36,8 +36,6 @@
                 app:layout_constraintTop_toTopOf="@+id/list_item_body_container" />
 
             <!-- instructions -->
-
-            <!-- vertical scrolling card list -->
             <TextView
                 android:id="@+id/list_item_instructions"
                 android:layout_width="match_parent"
@@ -52,19 +50,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_item_intro" />
 
-            <LinearLayout
-                android:id="@+id/list_item_scrolling_container"
-                android:layout_width="match_parent"
+            <!-- vertical scrolling card list -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment2"
+                android:name="com.sharonahamon.petsleuth.ScrollingListFragment"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/list_item_instructions">
-
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragment"
-                    android:name="com.sharonahamon.petsleuth.PetCardFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_item_instructions" />
 
             <!-- horizontal buttons under the scrolling card list -->
             <LinearLayout
