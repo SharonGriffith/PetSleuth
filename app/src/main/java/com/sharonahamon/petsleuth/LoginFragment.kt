@@ -59,16 +59,24 @@ class LoginFragment : Fragment() {
 
     private fun doLogin(view: View) {
         saveDataFromUserInputToViewModel()
-        view.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+        //view.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(getEmailFromUserInput())
+        view.findNavController().navigate(action)
     }
 
     private fun saveDataFromUserInputToViewModel() {
-        val email = binding.loginUsernameText.text.toString()
+        val email = getEmailFromUserInput()
 
         viewModel.contactPerson =
             MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
 
         Timber.i("saved the ContactPerson object")
+    }
+
+    private fun getEmailFromUserInput(): String {
+        var email = binding.loginUsernameText.text.toString()
+        Timber.i("email=%s", email)
+        return email
     }
 
     override fun onDestroyView() {

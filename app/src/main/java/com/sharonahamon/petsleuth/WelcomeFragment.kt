@@ -6,17 +6,18 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
-import com.sharonahamon.petsleuth.models.Pet
-import com.sharonahamon.petsleuth.models.PetSummary
 import timber.log.Timber
 
 class WelcomeFragment : Fragment() {
+
+    val args: WelcomeFragmentArgs by navArgs()
 
     private lateinit var viewModel: PetSleuthViewModel
 
@@ -46,6 +47,21 @@ class WelcomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timber.i("called OnViewCreated")
+
+        val email = args.email
+        Timber.i("email=%s", email)
+
+        val greeting: TextView = binding.welcomeGreeting
+        if (!email.isNullOrBlank()) {
+            greeting.text = "Hello, " + email + "!"
+        } else {
+            greeting.text = "Hello!"
+        }
     }
 
     override fun onDestroyView() {

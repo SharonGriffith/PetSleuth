@@ -25,7 +25,7 @@
 
             <!-- title -->
             <TextView
-                android:id="@+id/welcome_intro"
+                android:id="@+id/welcome_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -38,7 +38,33 @@
 
             <!-- instructions -->
             <TextView
-                android:id="@+id/welcome_description"
+                android:id="@+id/welcome_tagline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/welcome_tagline"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_title" />
+
+            <TextView
+                android:id="@+id/welcome_greeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:gravity="start"
+                android:text="@string/welcome_greeting"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_tagline" />
+
+            <TextView
+                android:id="@+id/welcome_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin24"
@@ -48,7 +74,7 @@
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_intro" />
+                app:layout_constraintTop_toBottomOf="@+id/welcome_greeting" />
 
             <Button
                 android:id="@+id/welcome_button_next"
@@ -60,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_description" />
+                app:layout_constraintTop_toBottomOf="@+id/welcome_intro" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
