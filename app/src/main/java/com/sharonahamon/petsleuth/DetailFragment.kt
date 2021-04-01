@@ -40,10 +40,10 @@ class DetailFragment : Fragment() {
 
         binding.detailButtonAddNew.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_instructionsFragment))
         binding.detailButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_listItemFragment))
-        binding.detailButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_goodbyeFragment))
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

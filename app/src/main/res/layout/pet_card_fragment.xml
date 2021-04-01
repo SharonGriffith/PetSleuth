@@ -37,7 +37,7 @@
                     android:id="@+id/list_item_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/list_item_image_text"
+                    android:contentDescription="@string/list_image_text"
                     android:src="@mipmap/ic_launcher"
                     tools:src="@tools:sample/avatars" />
 

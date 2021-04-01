@@ -29,13 +29,14 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("ViewModel created")
 
         saveDataFromUserInputToViewModel(
-            "Lee's Summit",
-            "MO",
-            "12345",
+            "Oklahoma City",
+            "OK",
+            "72129",
             "Lost",
             "Cat",
             "Female",
-            "Orange Tabby"
+            "Orange Tabby",
+            "12/18/92"
         )
 
         saveDataFromUserInputToViewModel(
@@ -45,7 +46,8 @@ class PetSleuthViewModel : ViewModel() {
             "Found",
             "Dog",
             "Female",
-            "German Shepherd"
+            "German Shepherd",
+            "01/01/21"
         )
 
         Timber.i("list size=" + petList.size)
@@ -58,7 +60,8 @@ class PetSleuthViewModel : ViewModel() {
         status: String,
         species: String,
         sex: String,
-        breed: String
+        breed: String,
+        date: String
     ) {
         var newPet = createPet(
             city,
@@ -68,7 +71,7 @@ class PetSleuthViewModel : ViewModel() {
             status,
             breed,
             sex,
-            getToday()
+            date
         )
 
         // TODO: link to ContactPerson
@@ -183,7 +186,7 @@ class PetSleuthViewModel : ViewModel() {
         return petLastSeenLocation
     }
 
-    private fun getToday(): String {
+    fun getToday(): String {
         val currentDateTime = LocalDateTime.now()
         val today = currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy"))
 
@@ -212,5 +215,7 @@ class PetSleuthViewModel : ViewModel() {
         pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
         pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
         pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
+
+        Timber.i("called ViewModel logout()")
     }
 }

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 import timber.log.Timber
 
@@ -37,9 +38,32 @@ class ListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.listButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
-        binding.listButtonDone.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_goodbyeFragment))
 
         return binding.root
+    }
+
+    private fun logout() {
+        viewModel.logout()
+        view?.findNavController()?.navigate(R.id.action_listItemFragment_to_loginFragment)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // custom toolbar that only appears for this fragment
+        binding.listToolbar.inflateMenu(R.menu.list_menu)
+
+        binding.listToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_logout -> {
+                    logout()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        Timber.i("called OnViewCreated")
     }
 
     override fun onDestroyView() {

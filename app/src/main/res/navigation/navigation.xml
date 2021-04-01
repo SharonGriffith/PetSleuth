@@ -15,10 +15,6 @@
             app:destination="@id/instructionsFragment"
             app:popUpTo="@id/welcomeFragment" />
         <action
-            android:id="@+id/action_detailFragment_to_goodbyeFragment"
-            app:destination="@id/goodbyeFragment"
-            app:popUpTo="@id/loginFragment" />
-        <action
             android:id="@+id/action_detailFragment_to_listItemFragment"
             app:destination="@id/listItemFragment" />
     </fragment>
@@ -63,16 +59,10 @@
             app:destination="@id/detailFragment"
             app:popUpTo="@id/welcomeFragment" />
         <action
-            android:id="@+id/action_listItemFragment_to_goodbyeFragment"
-            app:destination="@id/goodbyeFragment"
-            app:popUpTo="@id/loginFragment" />
-        <action
             android:id="@+id/action_listItemFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment" />
+        <action
+            android:id="@+id/action_listItemFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/goodbyeFragment"
-        android:name="com.sharonahamon.petsleuth.GoodbyeFragment"
-        android:label="goodbye_fragment"
-        tools:layout="@layout/goodbye_fragment" />
 </navigation>

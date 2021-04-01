@@ -22,6 +22,19 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/layout_margin24">
 
+            <!-- title -->
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/detail_title"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detail_body_container" />
+
             <!-- horizontal image and description -->
             <LinearLayout
                 android:id="@+id/detail_image_container"
@@ -31,7 +44,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/detail_body_container">
+                app:layout_constraintTop_toBottomOf="@+id/detail_title">
 
                 <ImageView
                     android:id="@+id/detail_image"
@@ -249,12 +262,6 @@
                     android:enabled="true"
                     android:text="@string/detail_button_list_label" />
 
-                <Button
-                    android:id="@+id/detail_button_done"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:text="@string/detail_button_done_label" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

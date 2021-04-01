@@ -8,8 +8,8 @@
     <string name="login_button_register_label">Register</string>
 
     <!-- strings related to welcome -->
-    <string name="welcome_title">Pet Sleuth ( a.k.a. Pet\'s Loose )</string>
-    <string name="welcome_intro">The purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  Subsequent screens will allow you to view the list of pets, or get more detailed information about a specific pet.</string>
+    <string name="welcome_title">Welcome to Pet Sleuth</string>
+    <string name="welcome_intro">\"When your Pet\'s Loose, turn to Pet Sleuth.\"\n\nThe purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  Subsequent screens will allow you to view the list of pets, or get more detailed information about a specific pet.</string>
     <string name="welcome_button_next_label">Report a Lost or Found Pet</string>
     <string name="welcome_button_list_label">See All Pets</string>
 
@@ -48,13 +48,12 @@
     <string name="detail_button_done_label">Logout</string>
 
     <!-- strings related to list -->
-    <string name="list_item_title">Lost and Found Pets</string>
-    <string name="list_item_intro">Click on an image to go into the detail for that pet.</string>
-    <string name="list_item_image_text">pet image</string>
-    <string name="list_item_button_add_label">Add New Pet</string>
-    <string name="list_item_button_done_label">Logout</string>
+    <string name="list_title">Pet List</string>
+    <string name="list_intro">Click on an image to go into the detail for that pet.</string>
+    <string name="list_image_text">pet image</string>
+    <string name="list_button_add_label">Add New Pet</string>
 
-    <!-- strings related to goodbye -->
-    <string name="goodbye_title">Goodbye</string>
-    <string name="goodbye_intro">Thanks for visiting, please come again!</string>
+    <!-- strings related to menu -->
+    <string name="menu_list_logout">Logout</string>
+    <string name="detail_title">Pet Detail</string>
 </resources>

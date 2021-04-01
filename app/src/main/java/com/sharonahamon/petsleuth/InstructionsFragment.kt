@@ -46,7 +46,8 @@ class InstructionsFragment : Fragment() {
                 getStatusDataFromUserInput(),
                 getSpeciesDataFromUserInput(),
                 getSexDataFromUserInput(),
-                getBreedDataFromUserInput()
+                getBreedDataFromUserInput(),
+                viewModel.getToday()
             )
 
             view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
