@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin24"
-                android:text="@string/location_question_last_label"
+                android:text="@string/instructions_location_question_last_label"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -219,8 +219,8 @@
                     android:id="@+id/instructions_answer_location_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/location_question_city_label"
-                    android:hint="@string/location_question_city_label"
+                    android:autofillHints="@string/instructions_location_question_city_label"
+                    android:hint="@string/instructions_location_question_city_label"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
                     android:textColorHint="@color/colorHintText" />
@@ -235,8 +235,8 @@
                         android:id="@+id/instructions_answer_location_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:autofillHints="@string/location_question_state_label"
-                        android:hint="@string/location_question_state_label"
+                        android:autofillHints="@string/instructions_location_question_state_label"
+                        android:hint="@string/instructions_location_question_state_label"
                         android:inputType="text"
                         android:selectAllOnFocus="true"
                         android:textColorHint="@color/colorHintText" />
@@ -245,8 +245,8 @@
                         android:id="@+id/instructions_answer_location_zip"
                         android:layout_width="@dimen/input_field_width"
                         android:layout_height="wrap_content"
-                        android:autofillHints="@string/location_question_zip_label"
-                        android:hint="@string/location_question_zip_label"
+                        android:autofillHints="@string/instructions_location_question_zip_label"
+                        android:hint="@string/instructions_location_question_zip_label"
                         android:inputType="text"
                         android:selectAllOnFocus="true"
                         android:textColorHint="@color/colorHintText" />
@@ -255,18 +255,41 @@
 
             </LinearLayout>
 
-            <!-- buttons -->
-            <Button
-                android:id="@+id/instructions_button_save"
-                android:layout_width="wrap_content"
+            <!-- horizontal buttons -->
+            <LinearLayout
+                android:id="@+id/instructions_button_container"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="true"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:text="@string/instructions_button_save_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructions_answer_location_container" />
+                app:layout_constraintTop_toBottomOf="@+id/instructions_answer_location_container">
+
+                <Button
+                    android:id="@+id/instructions_button_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:orientation="horizontal"
+                    android:text="@string/instructions_button_save_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/instructions_button_list"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/instructions_button_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:text="@string/instructions_button_list_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

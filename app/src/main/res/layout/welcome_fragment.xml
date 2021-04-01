@@ -50,43 +50,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome_intro" />
 
-            <!-- horizontal buttons -->
-            <LinearLayout
-                android:id="@+id/welcome_button_container"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/welcome_button_next"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:orientation="horizontal"
+                android:text="@string/welcome_button_next_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_description">
-
-                <Button
-                    android:id="@+id/welcome_button_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:text="@string/welcome_button_next_label"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/welcome_button_container" />
-
-                <Button
-                    android:id="@+id/welcome_button_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:text="@string/welcome_button_list_label"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/instructions_radio_purpose_container" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/welcome_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -42,9 +42,9 @@ class ListFragment : Fragment() {
         return binding.root
     }
 
-    private fun logout() {
+    private fun logout(view: View) {
         viewModel.logout()
-        view?.findNavController()?.navigate(R.id.action_listItemFragment_to_loginFragment)
+        view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +56,7 @@ class ListFragment : Fragment() {
         binding.listToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_logout -> {
-                    logout()
+                    logout(view)
                     true
                 }
                 else -> false

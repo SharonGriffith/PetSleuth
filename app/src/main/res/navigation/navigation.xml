@@ -27,6 +27,10 @@
             android:id="@+id/action_instructionsFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_instructionsFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment"
+            app:popUpTo="@id/instructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -45,9 +49,6 @@
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_listItemFragment"
-            app:destination="@id/listItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/listItemFragment"

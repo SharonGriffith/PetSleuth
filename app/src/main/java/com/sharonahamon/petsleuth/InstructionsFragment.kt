@@ -39,21 +39,30 @@ class InstructionsFragment : Fragment() {
 
         binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            viewModel.saveDataFromUserInputToViewModel(
-                getCityDataFromUserInput(),
-                getStateDataFromUserInput(),
-                getZipDataFromUserInput(),
-                getStatusDataFromUserInput(),
-                getSpeciesDataFromUserInput(),
-                getSexDataFromUserInput(),
-                getBreedDataFromUserInput(),
-                viewModel.getToday()
-            )
+            savePet(view)
+        }
 
-            view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
+        binding.instructionsButtonList.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            view.findNavController().navigate(R.id.action_instructionsFragment_to_listItemFragment)
         }
 
         return binding.root
+    }
+
+    private fun savePet(view: View) {
+        viewModel.saveDataFromUserInputToViewModel(
+            getCityDataFromUserInput(),
+            getStateDataFromUserInput(),
+            getZipDataFromUserInput(),
+            getStatusDataFromUserInput(),
+            getSpeciesDataFromUserInput(),
+            getSexDataFromUserInput(),
+            getBreedDataFromUserInput(),
+            viewModel.getToday()
+        )
+
+        view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
     }
 
     private fun getStatusDataFromUserInput(): String {

@@ -9,9 +9,8 @@
 
     <!-- strings related to welcome -->
     <string name="welcome_title">Welcome to Pet Sleuth</string>
-    <string name="welcome_intro">\"When your Pet\'s Loose, turn to Pet Sleuth.\"\n\nThe purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  Subsequent screens will allow you to view the list of pets, or get more detailed information about a specific pet.</string>
-    <string name="welcome_button_next_label">Report a Lost or Found Pet</string>
-    <string name="welcome_button_list_label">See All Pets</string>
+    <string name="welcome_intro">\"When your pet\'s loose, turn to Pet Sleuth.\"\n\nThe purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  Subsequent screens will allow you to view the list of pets, or get more detailed information about a specific pet.</string>
+    <string name="welcome_button_next_label">Get Started</string>
 
     <!-- strings related to instructions -->
     <string name="instructions_title">Instructions</string>
@@ -27,15 +26,15 @@
     <string name="instructions_radio_sex_male">Male</string>
     <string name="instructions_radio_sex_female">Female</string>
     <string name="instructions_text_breed_prompt">Breed</string>
-    <string name="location_question_last_label">Where was the pet last seen?</string>
-    <string name="location_question_city_label">City</string>
-    <string name="location_question_state_label">State</string>
-    <string name="location_question_zip_label">Zip</string>
-    <string name="instructions_button_save_label">Save</string>
-    <string name="instructions_button_list_label">List</string>
-    <string name="instructions_button_done_label">Logout</string>
+    <string name="instructions_location_question_last_label">Where was the pet last seen?</string>
+    <string name="instructions_location_question_city_label">City</string>
+    <string name="instructions_location_question_state_label">State</string>
+    <string name="instructions_location_question_zip_label">Zip</string>
+    <string name="instructions_button_save_label">Save Pet</string>
+    <string name="instructions_button_list_label">Pet List</string>
 
     <!-- strings related to detail -->
+    <string name="detail_title">Pet Detail</string>
     <string name="detail_species_label">Species</string>
     <string name="detail_breed_label">Breed</string>
     <string name="detail_image_text">image of a pet</string>
@@ -43,8 +42,8 @@
     <string name="detail_location_label">Last Seen</string>
     <string name="detail_status_label">Status</string>
     <string name="detail_contact_label">Contact</string>
-    <string name="detail_button_add_new_label">Add Another</string>
-    <string name="detail_button_list_label">List</string>
+    <string name="detail_button_add_new_label">Add Pet</string>
+    <string name="detail_button_list_label">Pet List</string>
     <string name="detail_button_done_label">Logout</string>
 
     <!-- strings related to list -->
@@ -55,5 +54,4 @@
 
     <!-- strings related to menu -->
     <string name="menu_list_logout">Logout</string>
-    <string name="detail_title">Pet Detail</string>
 </resources>

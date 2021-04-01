@@ -45,11 +45,6 @@ class WelcomeFragment : Fragment() {
             view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
         }
 
-        binding.welcomeButtonList.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_listItemFragment)
-        }
-
         return binding.root
     }
 
