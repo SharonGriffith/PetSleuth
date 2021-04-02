@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pet_card_body_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_margin="@dimen/layout_margin24"
             android:background="@drawable/border_top_bottom_purple">
 
@@ -45,7 +45,8 @@
                 <LinearLayout
                     android:id="@+id/list_item_text_container"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/layout_margin96"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/layout_margin24"
                     android:orientation="vertical">
 
                     <TextView
