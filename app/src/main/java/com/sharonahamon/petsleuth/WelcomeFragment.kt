@@ -17,7 +17,7 @@ import timber.log.Timber
 
 class WelcomeFragment : Fragment() {
 
-    val args: WelcomeFragmentArgs by navArgs()
+    private val args: WelcomeFragmentArgs by navArgs()
 
     private lateinit var viewModel: PetSleuthViewModel
 
@@ -53,15 +53,20 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Timber.i("called OnViewCreated")
 
-        val email = args.email
-        Timber.i("email=%s", email)
+        var emailArg = args.email
+        Timber.i("email=%s", emailArg)
 
         val greeting: TextView = binding.welcomeGreeting
-        if (!email.isNullOrBlank()) {
-            greeting.text = "Hello, " + email + "!"
+        if (!emailArg.isNullOrBlank()) {
+            greeting.text = "Hello, " + emailArg + "!"
         } else {
             greeting.text = "Hello!"
         }
+
+        // save off the email in the view model so it can be used whenever the user hits the Add Pet (aka Instructions) screen
+        // since that screen can be accessed a variety of ways, don't want to keep passing the email between fragments
+        // but this action (login to welcome) is guaranteed to happen, so this is a good place to save it off
+        viewModel.loggedOnUserEmail = emailArg
     }
 
     override fun onDestroyView() {

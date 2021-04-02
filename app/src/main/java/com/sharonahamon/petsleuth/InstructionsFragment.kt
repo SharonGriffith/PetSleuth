@@ -51,7 +51,8 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun savePet(view: View) {
-        viewModel.saveDataFromUserInputToViewModel(
+        viewModel.savePetFromUserInputToViewModel(
+            viewModel.loggedOnUserEmail, // email that was saved on login
             getCityDataFromUserInput(),
             getStateDataFromUserInput(),
             getZipDataFromUserInput(),

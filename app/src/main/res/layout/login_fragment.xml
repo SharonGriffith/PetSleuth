@@ -59,7 +59,7 @@
                         android:hint="@string/login_email_prompt"
                         android:inputType="textEmailAddress"
                         android:selectAllOnFocus="true"
-                        android:text=""
+                        android:text="@{petSleuthViewModel.loggedOnContactPerson.email.toString()}"
                         android:textColorHint="@color/colorHintText" />
 
                 </TableRow>

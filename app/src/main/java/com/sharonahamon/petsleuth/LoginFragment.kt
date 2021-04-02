@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
-import com.sharonahamon.petsleuth.models.ContactPerson
 import timber.log.Timber
 
 class LoginFragment : Fragment() {
@@ -58,23 +56,17 @@ class LoginFragment : Fragment() {
     }
 
     private fun doLogin(view: View) {
-        saveDataFromUserInputToViewModel()
-        //view.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
-        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(getEmailFromUserInput())
+        val action =
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(getEmailFromUserInput())
+
+        // build a list of dummy data to simulate reading from a database
+        viewModel.buildDummyPetList()
+
         view.findNavController().navigate(action)
     }
 
-    private fun saveDataFromUserInputToViewModel() {
-        val email = getEmailFromUserInput()
-
-        viewModel.contactPerson =
-            MutableLiveData(ContactPerson(MutableLiveData(email), null, null, null))
-
-        Timber.i("saved the ContactPerson object")
-    }
-
     private fun getEmailFromUserInput(): String {
-        var email = binding.loginUsernameText.text.toString()
+        val email = binding.loginUsernameText.text.toString()
         Timber.i("email=%s", email)
         return email
     }

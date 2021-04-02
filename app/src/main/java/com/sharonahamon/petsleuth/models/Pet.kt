@@ -19,7 +19,7 @@ data class PetDetail(
     var breed: @RawValue MutableLiveData<String?>,
     var petName: @RawValue MutableLiveData<String>?,
     var hasCollar: @RawValue MutableLiveData<Boolean>?,
-    var contactPerson: @RawValue MutableLiveData<ContactPerson>?,
+    var contactPerson: @RawValue MutableLiveData<ContactPerson?>,
     var images: @RawValue MutableList<Any>? = mutableListOf(),
     var sex: @RawValue MutableLiveData<String>?
 ) : Parcelable
