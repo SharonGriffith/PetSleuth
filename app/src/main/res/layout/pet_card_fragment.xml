@@ -45,8 +45,19 @@
                 <LinearLayout
                     android:id="@+id/list_item_text_container"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/layout_margin96"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/layout_margin24"
+                        android:layout_marginEnd="@dimen/layout_margin24"
+                        android:gravity="start"
+                        android:text="Pet ID"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_normal" />
 
                     <TextView
                         android:id="@+id/list_item_date_value"
@@ -55,7 +66,7 @@
                         android:layout_marginStart="@dimen/layout_margin24"
                         android:layout_marginEnd="@dimen/layout_margin24"
                         android:gravity="start"
-                        android:text="@{petSleuthViewModel.pet.petLastSeenLocation.lastSeenDate.toString()}"
+                        android:text="Date"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="@dimen/text_size_normal" />
 
@@ -71,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/layout_margin24"
                             android:gravity="start"
-                            android:text="@{petSleuthViewModel.pet.petSummary.status.toString()}"
+                            android:text="Status"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 
@@ -82,7 +93,7 @@
                             android:layout_gravity="start"
                             android:layout_marginLeft="@dimen/layout_margin4"
                             android:gravity="start"
-                            android:text="@{petSleuthViewModel.pet.petSummary.species.toString()}"
+                            android:text="Species"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="@dimen/text_size_normal" />
 
@@ -94,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/layout_margin24"
                         android:gravity="start"
-                        android:text="@{petSleuthViewModel.pet.petLastSeenLocation.city.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.state.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.zip.toString()}"
+                        android:text="City, State Zip"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="@dimen/text_size_normal" />
 

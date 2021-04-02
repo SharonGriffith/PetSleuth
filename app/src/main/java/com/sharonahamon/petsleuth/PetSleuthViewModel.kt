@@ -19,7 +19,7 @@ class PetSleuthViewModel : ViewModel() {
             _pet = value as MutableLiveData<Pet>
         }
 
-    var petList: MutableList<LiveData<Pet>>? = mutableListOf()
+    var petList: MutableList<LiveData<Pet>> = mutableListOf()
 
     init {
         Timber.i("ViewModel created")
@@ -240,9 +240,6 @@ class PetSleuthViewModel : ViewModel() {
         pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
         pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
         pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
-
-        // clear the dummy data out of the view model
-        petList = null
 
         Timber.i("called ViewModel logout()")
     }

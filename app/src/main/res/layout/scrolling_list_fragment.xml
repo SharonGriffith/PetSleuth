@@ -10,26 +10,13 @@
             type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
     </data>
 
-    <FrameLayout
+    <!-- vertical scrolling card list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_item_scrolling_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ScrollingListFragment">
-
-        <!-- vertical scrolling card list -->
-        <LinearLayout
-            android:id="@+id/list_item_scrolling_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/list_instructions">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment"
-                android:name="com.sharonahamon.petsleuth.PetCardFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-    </FrameLayout>
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".ScrollingListFragment"
+        tools:listitem="@layout/pet_card_fragment" />
 
 </layout>

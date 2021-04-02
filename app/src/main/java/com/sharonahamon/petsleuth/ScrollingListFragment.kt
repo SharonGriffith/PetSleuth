@@ -6,23 +6,20 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.sharonahamon.petsleuth.databinding.ScrollingListFragmentBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import timber.log.Timber
 
 class ScrollingListFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
 
-    private lateinit var binding: ScrollingListFragmentBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -31,12 +28,19 @@ class ScrollingListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.scrolling_list_fragment, container, false)
+        val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
 
-        binding.petSleuthViewModel = viewModel
-        binding.lifecycleOwner = this
+        // Set the adapter
+        if (view is RecyclerView) {
+            with(view) {
+                layoutManager = LinearLayoutManager(context)
 
-        return binding.root
+                //adapter = MyDemoRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = ScrollingListViewAdapter(viewModel.petList)
+            }
+        }
+
+        return view
     }
 
     override fun onDestroyView() {
