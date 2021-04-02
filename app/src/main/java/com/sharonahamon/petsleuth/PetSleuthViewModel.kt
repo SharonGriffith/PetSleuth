@@ -43,13 +43,61 @@ class PetSleuthViewModel : ViewModel() {
         )
 
         savePetFromUserInputToViewModel(
-            "kira@email.com",
+            "casper@email.com",
+            "Thornton",
+            "CO",
+            "80602",
+            "Found",
+            "Cat",
+            "Female",
+            "Blue Point Siamese",
+            "07/09/10"
+        )
+
+        savePetFromUserInputToViewModel(
+            "zoe@email.com",
+            "Glenwood",
+            "CO",
+            "12345",
+            "Lost",
+            "Cat",
+            "Female",
+            "Long Hair Tortie",
+            "11/14/12"
+        )
+
+        savePetFromUserInputToViewModel(
+            "gracie@email.com",
+            "Thornton",
+            "CO",
+            "80234",
+            "Found",
+            "Cat",
+            "Female",
+            "Russian Blue",
+            "11/01/18"
+        )
+
+        savePetFromUserInputToViewModel(
+            "bella@email.com",
             "Thornton",
             "CO",
             "80602",
             "Found",
             "Dog",
             "Female",
+            "German Shepherd",
+            "01/01/21"
+        )
+
+        savePetFromUserInputToViewModel(
+            "nikko@email.com",
+            "Thornton",
+            "CO",
+            "80602",
+            "Found",
+            "Dog",
+            "Male",
             "German Shepherd",
             "01/01/21"
         )
