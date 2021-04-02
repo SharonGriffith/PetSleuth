@@ -60,7 +60,9 @@
                 android:id="@+id/list_scrolling_container"
                 android:name="com.sharonahamon.petsleuth.ScrollingListFragment"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="350dp"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:background="@drawable/border_top_bottom_blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_instructions" />

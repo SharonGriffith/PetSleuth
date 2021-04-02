@@ -12,9 +12,10 @@
 
     <!-- vertical scrolling card list -->
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/border_top_bottom_green"
         android:id="@+id/list_item_scrolling_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="LinearLayoutManager"
         tools:context=".ScrollingListFragment"
         tools:listitem="@layout/pet_card_fragment" />
