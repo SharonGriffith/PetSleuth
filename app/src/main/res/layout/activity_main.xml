@@ -19,7 +19,7 @@
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/app_name"
-            app:titleTextColor="@color/colorPrimaryLight" />
+            app:titleTextColor="@color/colorIcons" />
 
         <!-- app:defaultNavHost="true" to intercept the system back key -->
         <fragment

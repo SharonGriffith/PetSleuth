@@ -62,7 +62,6 @@
                 android:layout_width="0dp"
                 android:layout_height="350dp"
                 android:layout_marginTop="@dimen/layout_margin24"
-                android:background="@drawable/border_top_bottom_blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_instructions" />
@@ -74,8 +73,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/list_button_add_label"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_scrolling_container" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

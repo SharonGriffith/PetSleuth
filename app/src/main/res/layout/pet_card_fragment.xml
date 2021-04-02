@@ -20,7 +20,7 @@
             android:id="@+id/pet_card_body_container"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/border_top_bottom_purple">
+            android:background="@drawable/border_top_bottom_white">
 
             <!-- single card -->
             <LinearLayout

@@ -5,12 +5,15 @@
             <stroke
                 android:width="2dp"
                 android:color="#FFFFFF" />
-            <solid android:color="#5846CA" />
         </shape>
     </item>
-    <item android:bottom="2dp" android:top="2dp">
+    <item
+        android:bottom="2dp"
+        android:top="2dp">
         <shape android:shape="rectangle">
-            <stroke android:width="2dp" android:color="#FFFFFF" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/colorIcons" />
         </shape>
     </item>
 </layer-list>
