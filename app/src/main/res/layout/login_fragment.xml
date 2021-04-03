@@ -7,13 +7,13 @@
 
         <variable
             name="petSleuthViewModel"
-            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginFragment">
+        tools:context=".ui.login.LoginFragment">
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout

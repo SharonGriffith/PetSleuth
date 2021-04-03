@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.sharonahamon.petsleuth.DetailFragment"
+        android:name="com.sharonahamon.petsleuth.ui.detail.DetailFragment"
         android:label="detail_fragment"
         tools:layout="@layout/detail_fragment">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
-        android:name="com.sharonahamon.petsleuth.InstructionsFragment"
+        android:name="com.sharonahamon.petsleuth.ui.instructions.InstructionsFragment"
         android:label="instructions_fragment"
         tools:layout="@layout/instructions_fragment">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.sharonahamon.petsleuth.LoginFragment"
+        android:name="com.sharonahamon.petsleuth.ui.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.sharonahamon.petsleuth.WelcomeFragment"
+        android:name="com.sharonahamon.petsleuth.ui.welcome.WelcomeFragment"
         android:label="welcome_fragment"
         tools:layout="@layout/welcome_fragment">
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/listItemFragment"
-        android:name="com.sharonahamon.petsleuth.ListFragment"
+        android:name="com.sharonahamon.petsleuth.ui.list.ListFragment"
         android:label="list_item_fragment"
         tools:layout="@layout/list_fragment">
         <action

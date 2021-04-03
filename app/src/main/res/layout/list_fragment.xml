@@ -7,13 +7,13 @@
 
         <variable
             name="petSleuthViewModel"
-            type="com.sharonahamon.petsleuth.PetSleuthViewModel" />
+            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ListFragment">
+        tools:context=".ui.list.ListFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/list_toolbar"
@@ -58,7 +58,7 @@
             <!-- vertical scrolling card list -->
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/list_scrolling_container"
-                android:name="com.sharonahamon.petsleuth.ScrollingListFragment"
+                android:name="com.sharonahamon.petsleuth.ui.list.ScrollingListFragment"
                 android:layout_width="0dp"
                 android:layout_height="350dp"
                 android:layout_marginTop="@dimen/layout_margin24"

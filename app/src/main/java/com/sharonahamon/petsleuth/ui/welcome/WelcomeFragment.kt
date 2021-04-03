@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth
+package com.sharonahamon.petsleuth.ui.welcome
 
 import android.content.Context
 import android.os.Bundle
@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.sharonahamon.petsleuth.R
+import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
 import timber.log.Timber
 

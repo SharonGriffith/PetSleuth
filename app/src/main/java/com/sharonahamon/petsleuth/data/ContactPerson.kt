@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth.models
+package com.sharonahamon.petsleuth.data
 
 import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData

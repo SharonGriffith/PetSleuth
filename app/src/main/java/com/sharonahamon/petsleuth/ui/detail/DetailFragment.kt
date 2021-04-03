@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth
+package com.sharonahamon.petsleuth.ui.detail
 
 import android.content.Context
 import android.os.Bundle
@@ -6,20 +6,25 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.Navigation
+import com.sharonahamon.petsleuth.R
+import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
+import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import timber.log.Timber
 
-class ScrollingListFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
+
+    private lateinit var binding: DetailFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -28,20 +33,18 @@ class ScrollingListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
+        binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
-                //adapter = MyDemoRecyclerViewAdapter(DummyContent.ITEMS)
-                adapter = ScrollingListViewAdapter(viewModel.petList)
-            }
-        }
+        binding.detailButtonAddNew.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_instructionsFragment))
+        binding.detailButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_listItemFragment))
 
-        return view
+        return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

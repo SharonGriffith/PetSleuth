@@ -1,9 +1,9 @@
-package com.sharonahamon.petsleuth
+package com.sharonahamon.petsleuth.common
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sharonahamon.petsleuth.models.*
+import com.sharonahamon.petsleuth.data.*
 import timber.log.Timber
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth
+package com.sharonahamon.petsleuth.ui.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,15 +9,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
+import androidx.navigation.Navigation
+import com.sharonahamon.petsleuth.R
+import com.sharonahamon.petsleuth.databinding.PetCardFragmentBinding
+import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import timber.log.Timber
 
-class LoginFragment : Fragment() {
+class PetCardFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
 
-    private lateinit var binding: LoginFragmentBinding
+    private lateinit var binding: PetCardFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,44 +33,14 @@ class LoginFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.pet_card_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.loginButtonSignin.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            doLogin(view)
-        }
-
-        binding.loginButtonRegister.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            doRegister(view)
-        }
+        binding.listItemImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listFragment_to_detailFragment))
 
         return binding.root
-    }
-
-    private fun doRegister(view: View) {
-        // right now the buttons both do the same thing, so just call common code
-        // but in the future they will do different things
-        doLogin(view)
-    }
-
-    private fun doLogin(view: View) {
-        val action =
-            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(getEmailFromUserInput())
-
-        // build a list of dummy data to simulate reading from a database
-        viewModel.buildDummyPetList()
-
-        view.findNavController().navigate(action)
-    }
-
-    private fun getEmailFromUserInput(): String {
-        val email = binding.loginUsernameText.text.toString()
-        Timber.i("email=%s", email)
-        return email
     }
 
     override fun onDestroyView() {

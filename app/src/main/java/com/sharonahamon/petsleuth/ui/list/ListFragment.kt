@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth
+package com.sharonahamon.petsleuth.ui.list
 
 import android.content.Context
 import android.os.Bundle
@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
+import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import timber.log.Timber
 
 class ListFragment : Fragment() {
