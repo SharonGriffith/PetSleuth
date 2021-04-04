@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         Timber.i("called OnCreate")
         setContentView(R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
+        setSupportActionBar(findViewById(R.id.app_toolbar))
     }
 
     override fun onDestroy() {
