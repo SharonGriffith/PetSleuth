@@ -34,12 +34,13 @@ class ScrollingListFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
 
-        // Set the adapter
+        // set the adapter
+        // The base code for this class was generated within the Android Studio IDE
+        // and modified to fit the needs of this project.
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
 
-                //adapter = MyDemoRecyclerViewAdapter(DummyContent.ITEMS)
                 adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<Pet>>)
             }
         }

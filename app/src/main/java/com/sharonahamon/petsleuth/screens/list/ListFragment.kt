@@ -71,6 +71,9 @@ class ListFragment : Fragment() {
         view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
     }
 
+    /**
+     * The base code for this function was copied from the Android Developer website.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.data.Pet
 
+/**
+ * The base code for this class was generated within the Android Studio IDE
+ * and modified to fit the needs of this project.
+ */
 class ScrollingListViewAdapter(
     private val petList: MutableList<LiveData<Pet>>
 ) : RecyclerView.Adapter<ScrollingListViewAdapter.ViewHolder>() {
