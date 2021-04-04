@@ -70,7 +70,7 @@
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/welcomeFragment" />
         <action
             android:id="@+id/action_listItemFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment"
