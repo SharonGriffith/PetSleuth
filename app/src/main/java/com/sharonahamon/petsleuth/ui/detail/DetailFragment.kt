@@ -8,14 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.sharonahamon.petsleuth.R
-import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
 import timber.log.Timber
 
 class DetailFragment : Fragment() {
+    private val args: DetailFragmentArgs by navArgs()
 
     private lateinit var viewModel: PetSleuthViewModel
 
@@ -45,6 +48,19 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timber.i("called OnViewCreated")
+
+        var petId = args.petId
+        Timber.i("petId=%s", petId)
+
+        // save off the petId in the view model, to maintain state
+        viewModel.currentPetId = MutableLiveData<Int>(petId)
+
+        // retrieve the requested pet ID from the list
+        viewModel.loadPet(petId)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

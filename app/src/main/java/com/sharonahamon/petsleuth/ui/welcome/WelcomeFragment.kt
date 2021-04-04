@@ -68,7 +68,7 @@ class WelcomeFragment : Fragment() {
         // save off the email in the view model so it can be used whenever the user hits the Add Pet (aka Instructions) screen
         // since that screen can be accessed a variety of ways, don't want to keep passing the email between fragments
         // but this action (login to welcome) is guaranteed to happen, so this is a good place to save it off
-        viewModel.loggedOnUserEmail = emailArg
+        viewModel.currentUserEmail = emailArg
     }
 
     override fun onDestroyView() {

@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_detailFragment_to_listItemFragment"
             app:destination="@id/listItemFragment" />
+        <argument
+            android:name="petId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"

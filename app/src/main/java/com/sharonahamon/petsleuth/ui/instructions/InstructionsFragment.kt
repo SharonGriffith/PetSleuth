@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
-import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.databinding.InstructionsFragmentBinding
 import timber.log.Timber
 
 class InstructionsFragment : Fragment() {
@@ -53,8 +53,8 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun savePet(view: View) {
-        viewModel.savePetFromUserInputToViewModel(
-            viewModel.loggedOnUserEmail, // email that was saved on login
+        val petId = viewModel.addPet(
+            viewModel.currentUserEmail, // email that was saved on login
             getCityDataFromUserInput(),
             getStateDataFromUserInput(),
             getZipDataFromUserInput(),
@@ -65,7 +65,10 @@ class InstructionsFragment : Fragment() {
             viewModel.getToday()
         )
 
-        view.findNavController().navigate(R.id.action_instructionsFragment_to_detailFragment)
+        val action =
+            InstructionsFragmentDirections.actionInstructionsFragmentToDetailFragment(petId)
+
+        view.findNavController().navigate(action)
     }
 
     private fun getStatusDataFromUserInput(): String {

@@ -9,9 +9,18 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class PetSleuthViewModel : ViewModel() {
-    var loggedOnUserEmail = ""
+    private var _currentPetId = MutableLiveData<Int>()
+    var currentPetId: LiveData<Int>
+        get() = _currentPetId
+        set(value) {
+            _currentPetId = value as MutableLiveData<Int>
+        }
+
+    var currentUserEmail = ""
+
     var loggedOnContactPerson: ContactPerson? = null
 
+    // currently selected pet, for detail view
     private var _pet = MutableLiveData<Pet>()
     var pet: LiveData<Pet>
         get() = _pet
@@ -19,18 +28,23 @@ class PetSleuthViewModel : ViewModel() {
             _pet = value as MutableLiveData<Pet>
         }
 
-    var petList: MutableList<LiveData<Pet>> = mutableListOf()
+    private var _petList: MutableList<LiveData<Pet>> = mutableListOf()
+    var petList: List<LiveData<Pet>>
+        get() = _petList
+        set(value) {
+            _petList = (value as List<LiveData<Pet>>).toMutableList()
+        }
 
     init {
         Timber.i("ViewModel created")
 
-        Timber.i("pet list size=" + (petList?.size ?: 0))
+        Timber.i("pet list size=%s", _petList.size)
     }
 
     fun buildDummyPetList() {
         Timber.i("begin buildDummyPetList()")
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "mini@email.com",
             "Oklahoma City",
             "OK",
@@ -42,7 +56,7 @@ class PetSleuthViewModel : ViewModel() {
             "12/18/92"
         )
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "casper@email.com",
             "Thornton",
             "CO",
@@ -54,7 +68,7 @@ class PetSleuthViewModel : ViewModel() {
             "07/09/10"
         )
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "zoe@email.com",
             "Glenwood",
             "CO",
@@ -66,7 +80,7 @@ class PetSleuthViewModel : ViewModel() {
             "11/14/12"
         )
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "gracie@email.com",
             "Thornton",
             "CO",
@@ -78,7 +92,7 @@ class PetSleuthViewModel : ViewModel() {
             "11/01/18"
         )
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "bella@email.com",
             "Thornton",
             "CO",
@@ -90,7 +104,7 @@ class PetSleuthViewModel : ViewModel() {
             "01/01/21"
         )
 
-        savePetFromUserInputToViewModel(
+        addPet(
             "nikko@email.com",
             "Thornton",
             "CO",
@@ -107,7 +121,23 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("end buildDummyPetList()")
     }
 
-    fun savePetFromUserInputToViewModel(
+    fun loadPet(petId: Int) {
+        // if the currently selected pet is the same as the requested pet ID, do nothing
+        if (pet.value?.petId?.equals(petId) != true) {
+
+            // else get the requested pet ID out of the list and load it into the current pet so that it can be displayed in the detail screen
+            val petListIterator = _petList.iterator()
+            while (petListIterator.hasNext()) {
+                val thisPet = petListIterator.next()
+                if (thisPet.value?.petId?.equals(petId) == true) {
+                    pet = thisPet
+                    break
+                }
+            }
+        }
+    }
+
+    fun addPet(
         email: String,
         city: String,
         state: String,
@@ -117,8 +147,8 @@ class PetSleuthViewModel : ViewModel() {
         sex: String,
         breed: String,
         date: String
-    ) {
-        var newPet = createPet(
+    ): Int {
+        val newPet = createPet(
             email,
             city,
             state,
@@ -134,12 +164,15 @@ class PetSleuthViewModel : ViewModel() {
         savePet(newPet)
 
         // add the current pet to the list in viewModel
-        petList?.add(MutableLiveData(newPet))
+        _petList.add(MutableLiveData(newPet))
 
         Timber.i(
             "added the Pet object to the pet list, bringing the pet list size up to %s",
-            petList?.size
+            _petList.size
         )
+
+        // return the ID of the newly created pet (needed for the detail view)
+        return _petList.size
     }
 
     private fun createPet(
@@ -153,7 +186,7 @@ class PetSleuthViewModel : ViewModel() {
         sex: String,
         date: String
     ): Pet {
-        val nextPetId = (petList?.size ?: 0) + 1
+        val nextPetId = _petList.size + 1
         Timber.i("the next pet ID to be used is %s", nextPetId)
 
         // create the Pet object for the first time
@@ -273,7 +306,7 @@ class PetSleuthViewModel : ViewModel() {
 
     fun logout() {
         // clear the active user out of the view model
-        loggedOnUserEmail = ""
+        currentUserEmail = ""
         loggedOnContactPerson = null
 
         // clear the active pet out of the view model

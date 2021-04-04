@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.data.Pet
 import timber.log.Timber
 
 class ScrollingListFragment : Fragment() {
@@ -38,7 +40,7 @@ class ScrollingListFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
 
                 //adapter = MyDemoRecyclerViewAdapter(DummyContent.ITEMS)
-                adapter = ScrollingListViewAdapter(viewModel.petList)
+                adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<Pet>>)
             }
         }
 
