@@ -56,4 +56,5 @@
 
     <!-- strings related to menu -->
     <string name="menu_list_logout">Logout</string>
+    <string name="fab_label">FAB</string>
 </resources>

@@ -20,6 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/fab"
+            android:contentDescription="@string/fab_label"
+            android:layout_margin="16dp"
+        android:onClick="@{() -> petSleuthViewModel.viewDetailForSelected()}"/>
+
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/list_body_container"

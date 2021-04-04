@@ -41,6 +41,10 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("pet list size=%s", _petList.size)
     }
 
+    fun viewDetailForSelected() {
+        Timber.i("selected=" + 1)
+    }
+
     fun buildDummyPetList() {
         Timber.i("begin buildDummyPetList()")
 
