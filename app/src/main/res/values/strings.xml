@@ -16,7 +16,7 @@
     <string name="welcome_button_list_label">View Pet List</string>
 
     <!-- strings related to instructions -->
-    <string name="instructions_title">Add Pet</string>
+    <string name="instructions_title">Add New Pet</string>
     <string name="instructions_question_status">Which situation below applies to you?</string>
     <string name="instructions_radio_purpose_found_label">I found someone else\'s pet.</string>
     <string name="instructions_radio_purpose_lost_label">I lost a pet.</string>
@@ -54,8 +54,8 @@
     <string name="list_intro_format">You have added %d pet(s) to the list today.</string>
     <string name="list_image_text">pet image</string>
     <string name="list_button_add_label">Add New Pet</string>
+    <string name="list_button_fab_label">View Pet</string>
 
     <!-- strings related to menu -->
     <string name="menu_list_logout">Logout</string>
-    <string name="fab_label">FAB</string>
 </resources>

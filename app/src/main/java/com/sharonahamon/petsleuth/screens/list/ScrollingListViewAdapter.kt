@@ -22,7 +22,7 @@ class ScrollingListViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pet = petList[position]
 
-        holder.petId.text = pet.value?.petId?.value.toString()
+        holder.petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
         holder.lastSeenDate.text =
             pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
         holder.status.text = pet.value?.petSummary?.value?.status?.value.toString()

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:src="@drawable/fab"
-            android:contentDescription="@string/fab_label"
+            android:contentDescription="@string/list_button_fab_label"
             android:layout_margin="16dp"/>
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
