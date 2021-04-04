@@ -42,7 +42,7 @@ class WelcomeFragment : Fragment() {
         // Set the onClickListener for the buttons
         binding.welcomeButtonNext.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_listItemFragment)
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
         }
 
         return binding.root

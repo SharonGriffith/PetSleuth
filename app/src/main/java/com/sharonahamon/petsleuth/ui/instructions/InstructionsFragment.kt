@@ -49,6 +49,11 @@ class InstructionsFragment : Fragment() {
             savePet(view)
         }
 
+        binding.instructionsButtonList.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view: View ->
+            view.findNavController().navigate(R.id.action_instructionsFragment_to_listItemFragment)
+        }
+
         return binding.root
     }
 

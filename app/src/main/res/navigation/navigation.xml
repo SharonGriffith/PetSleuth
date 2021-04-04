@@ -53,9 +53,8 @@
         android:label="welcome_fragment"
         tools:layout="@layout/welcome_fragment">
         <action
-            android:id="@+id/action_welcomeFragment_to_listItemFragment"
-            app:destination="@id/listItemFragment"
-            app:popUpTo="@id/listItemFragment" />
+            android:id="@+id/action_welcomeFragment_to_instructionsFragment"
+            app:destination="@id/instructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/listItemFragment"
