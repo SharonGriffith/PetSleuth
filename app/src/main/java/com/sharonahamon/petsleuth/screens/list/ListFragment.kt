@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth.ui.detail
+package com.sharonahamon.petsleuth.screens.list
 
 import android.content.Context
 import android.os.Bundle
@@ -8,21 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
+import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
-import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
 import timber.log.Timber
 
-class DetailFragment : Fragment() {
-    private val args: DetailFragmentArgs by navArgs()
+class ListFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
 
-    private lateinit var binding: DetailFragmentBinding
+    private lateinit var binding: ListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,30 +34,50 @@ class DetailFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.detailButtonAddNew.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_instructionsFragment))
-        binding.detailButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_listItemFragment))
+        binding.listButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
+        binding.fab.setOnClickListener { view: View ->
+            goToPetDetail(view)
+        }
 
         return binding.root
     }
 
+    private fun goToPetDetail(view: View) {
+        // for now, this is going to the last pet in the list
+        // I assume we will learn how to select an item and do something with it
+        // I spent a lot of time researching how to do this and it seemed very complex for a first project
+        val action =
+            ListFragmentDirections.actionListFragmentToDetailFragment(viewModel.petList.size)
+        view.findNavController().navigate(action)
+    }
+
+    private fun logout(view: View) {
+        viewModel.logout()
+        view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // custom toolbar that only appears for this fragment
+        binding.listToolbar.inflateMenu(R.menu.list_menu)
+
+        binding.listToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_logout -> {
+                    logout(view)
+                    true
+                }
+                else -> false
+            }
+        }
+
         Timber.i("called OnViewCreated")
-
-        var petId = args.petId
-        Timber.i("petId=%s", petId)
-
-        // save off the petId in the view model, to maintain state
-        viewModel.currentPetId = MutableLiveData<Int>(petId)
-
-        // retrieve the requested pet ID from the list
-        viewModel.loadPet(petId)
     }
 
     override fun onDestroyView() {

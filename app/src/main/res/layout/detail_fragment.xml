@@ -13,7 +13,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detail.DetailFragment">
+        tools:context=".screens.detail.DetailFragment">
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout

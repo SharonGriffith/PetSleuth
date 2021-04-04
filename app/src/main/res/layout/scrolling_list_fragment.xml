@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ui.list.ScrollingListFragment"
+        tools:context=".screens.list.ScrollingListFragment"
         tools:listitem="@layout/pet_card_fragment" />
 
 </layout>

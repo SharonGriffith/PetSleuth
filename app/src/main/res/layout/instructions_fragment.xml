@@ -13,7 +13,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.instructions.InstructionsFragment">
+        tools:context=".screens.instructions.InstructionsFragment">
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -288,19 +288,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/instructions_button_cancel"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <Button
-                    android:id="@+id/instructions_button_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:orientation="horizontal"
-                    android:text="@string/instructions_button_list_label"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/instructions_button_save"
                     app:layout_constraintStart_toStartOf="parent" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth.ui.list
+package com.sharonahamon.petsleuth.screens.welcome
 
 import android.content.Context
 import android.os.Bundle
@@ -6,24 +6,26 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.Navigation
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
-import com.sharonahamon.petsleuth.data.Pet
+import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
 import timber.log.Timber
 
-class ScrollingListFragment : Fragment() {
+class WelcomeFragment : Fragment() {
 
     private lateinit var viewModel: PetSleuthViewModel
+
+    private lateinit var binding: WelcomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.i("called OnCreateView")
 
         // get the existing instance of the viewModel instead of creating a new one
@@ -32,19 +34,31 @@ class ScrollingListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
         Timber.i("called ViewModelProvider")
 
-        val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
+        binding.petSleuthViewModel = viewModel
+        binding.lifecycleOwner = this
 
-                //adapter = MyDemoRecyclerViewAdapter(DummyContent.ITEMS)
-                adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<Pet>>)
-            }
+        // Set the onClickListener for the buttons
+        binding.welcomeButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionsFragment))
+        binding.welcomeButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_listItemFragment))
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timber.i("called OnViewCreated")
+
+        var emailArg = viewModel.currentUserEmail
+        Timber.i("email=%s", emailArg)
+
+        val greeting: TextView = binding.welcomeGreeting
+        if (!emailArg.isNullOrBlank()) {
+            greeting.text = "Hello, " + emailArg + "!"
+        } else {
+            greeting.text = "Hello!"
         }
-
-        return view
     }
 
     override fun onDestroyView() {

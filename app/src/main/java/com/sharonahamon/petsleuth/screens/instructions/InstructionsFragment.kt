@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth.ui.instructions
+package com.sharonahamon.petsleuth.screens.instructions
 
 import android.content.Context
 import android.os.Bundle
@@ -46,8 +46,6 @@ class InstructionsFragment : Fragment() {
         { view: View ->
             savePet(view)
         }
-
-        binding.instructionsButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
 
         return binding.root
     }

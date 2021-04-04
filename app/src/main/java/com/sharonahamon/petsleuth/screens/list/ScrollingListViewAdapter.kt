@@ -1,4 +1,4 @@
-package com.sharonahamon.petsleuth.ui.list
+package com.sharonahamon.petsleuth.screens.list
 
 import android.view.LayoutInflater
 import android.view.View
