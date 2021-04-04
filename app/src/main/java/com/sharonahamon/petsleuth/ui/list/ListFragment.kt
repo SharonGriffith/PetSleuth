@@ -40,8 +40,20 @@ class ListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.listButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_listItemFragment_to_instructionsFragment))
+        binding.fab.setOnClickListener { view: View ->
+            goToPetDetail(view)
+        }
 
         return binding.root
+    }
+
+    private fun goToPetDetail(view: View) {
+        // for now, this is going to the last pet in the list
+        // I assume we will learn how to select an item and do something with it
+        // I spent a lot of time researching how to do this and it seemed very complex for a first project
+        val action =
+            ListFragmentDirections.actionListFragmentToDetailFragment(viewModel.petList.size)
+        view.findNavController().navigate(action)
     }
 
     private fun logout(view: View) {

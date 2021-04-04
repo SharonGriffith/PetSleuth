@@ -27,8 +27,7 @@
             android:layout_gravity="end|bottom"
             android:src="@drawable/fab"
             android:contentDescription="@string/fab_label"
-            android:layout_margin="16dp"
-        android:onClick="@{() -> petSleuthViewModel.viewDetailForSelected()}"/>
+            android:layout_margin="16dp"/>
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
