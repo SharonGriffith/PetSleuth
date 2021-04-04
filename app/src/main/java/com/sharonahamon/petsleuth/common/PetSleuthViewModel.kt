@@ -9,6 +9,16 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class PetSleuthViewModel : ViewModel() {
+    var userPetCounter = 0
+
+    init {
+        userPetCounter = 0
+    }
+
+    fun incrementUserPetCount() {
+        userPetCounter++
+    }
+
     private var _currentPetId = MutableLiveData<Int>()
     var currentPetId: LiveData<Int>
         get() = _currentPetId
@@ -312,6 +322,7 @@ class PetSleuthViewModel : ViewModel() {
         // clear the active user out of the view model
         currentUserEmail = ""
         loggedOnContactPerson = null
+        userPetCounter = 0
 
         // clear the active pet out of the view model
         pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)

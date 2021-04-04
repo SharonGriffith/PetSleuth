@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin24"
                 android:gravity="start"
-                android:text="@string/list_intro"
+                android:text="@{@string/list_intro_format(petSleuthViewModel.userPetCounter)}"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_normal"

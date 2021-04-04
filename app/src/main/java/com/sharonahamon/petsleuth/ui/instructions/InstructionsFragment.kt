@@ -58,6 +58,8 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun savePet(view: View) {
+        viewModel.incrementUserPetCount()
+
         val petId = viewModel.addPet(
             viewModel.currentUserEmail, // email that was saved on login
             getCityDataFromUserInput(),
