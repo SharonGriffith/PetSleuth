@@ -32,7 +32,7 @@ class PetSleuthViewModel : ViewModel() {
     var petList: List<LiveData<Pet>>
         get() = _petList
         set(value) {
-            _petList = (value as List<LiveData<Pet>>).toMutableList()
+            _petList = value.toMutableList()
         }
 
     init {
