@@ -50,11 +50,8 @@
         android:label="welcome_fragment"
         tools:layout="@layout/welcome_fragment">
         <action
-            android:id="@+id/action_welcomeFragment_to_instructionsFragment"
-            app:destination="@id/instructionsFragment" />
-        <argument
-            android:name="email"
-            app:argType="string" />
+            android:id="@+id/action_welcomeFragment_to_listItemFragment"
+            app:destination="@id/listItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/listItemFragment"

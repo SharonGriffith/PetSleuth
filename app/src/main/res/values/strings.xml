@@ -12,7 +12,7 @@
     <string name="welcome_tagline">\"When your pet\'s loose, turn to Pet Sleuth.\"</string>
     <string name="welcome_greeting">Hello</string>
     <string name="welcome_intro">The purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  \n\nYou can browse the current list of pets reported by other users, get more detailed information about a specific pet, or add a new pet to the list.</string>
-    <string name="welcome_button_next_label">Get Started</string>
+    <string name="welcome_button_next_label">View List of Pets</string>
 
     <!-- strings related to instructions -->
     <string name="instructions_title">Instructions</string>
@@ -32,8 +32,8 @@
     <string name="instructions_location_question_city_label">City</string>
     <string name="instructions_location_question_state_label">State</string>
     <string name="instructions_location_question_zip_label">Zip</string>
+    <string name="instructions_button_cancel_label">Cancel</string>
     <string name="instructions_button_save_label">Save Pet</string>
-    <string name="instructions_button_list_label">View List of Pets</string>
 
     <!-- strings related to detail -->
     <string name="detail_title">Pet Detail</string>

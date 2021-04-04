@@ -58,8 +58,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun doLogin(view: View) {
+        // save off the email in the view model
+        viewModel.currentUserEmail = getEmailFromUserInput()
+
         val action =
-            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(getEmailFromUserInput())
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
 
         // build a list of dummy data to simulate reading from a database
         viewModel.buildDummyPetList()

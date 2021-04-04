@@ -11,15 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
 import timber.log.Timber
 
 class WelcomeFragment : Fragment() {
-
-    private val args: WelcomeFragmentArgs by navArgs()
 
     private lateinit var viewModel: PetSleuthViewModel
 
@@ -45,7 +42,7 @@ class WelcomeFragment : Fragment() {
         // Set the onClickListener for the buttons
         binding.welcomeButtonNext.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_listItemFragment)
         }
 
         return binding.root
@@ -55,7 +52,7 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Timber.i("called OnViewCreated")
 
-        var emailArg = args.email
+        var emailArg = viewModel.currentUserEmail
         Timber.i("email=%s", emailArg)
 
         val greeting: TextView = binding.welcomeGreeting
@@ -64,11 +61,6 @@ class WelcomeFragment : Fragment() {
         } else {
             greeting.text = "Hello!"
         }
-
-        // save off the email in the view model so it can be used whenever the user hits the Add Pet (aka Instructions) screen
-        // since that screen can be accessed a variety of ways, don't want to keep passing the email between fragments
-        // but this action (login to welcome) is guaranteed to happen, so this is a good place to save it off
-        viewModel.currentUserEmail = emailArg
     }
 
     override fun onDestroyView() {
