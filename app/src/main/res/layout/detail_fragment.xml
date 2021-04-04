@@ -70,6 +70,39 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
+            <!-- horizontal pet ID label/value -->
+            <LinearLayout
+                android:id="@+id/detail_pet_id_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin24"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_image_container">
+
+                <TextView
+                    android:id="@+id/detail_pet_id_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_pet_id_label"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_ped_id_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin24"
+                    android:gravity="end"
+                    android:text="@{petSleuthViewModel.pet.petId.toString()}"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
+
             <!-- horizontal date label/value -->
             <LinearLayout
                 android:id="@+id/detail_date_container"
@@ -79,7 +112,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detail_image_container">
+                app:layout_constraintTop_toBottomOf="@+id/detail_pet_id_container">
 
                 <TextView
                     android:id="@+id/detail_date_label"

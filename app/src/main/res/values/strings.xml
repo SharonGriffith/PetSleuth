@@ -38,11 +38,12 @@
 
     <!-- strings related to detail -->
     <string name="detail_title">Pet Detail</string>
+    <string name="detail_pet_id_label">Pet ID</string>
     <string name="detail_species_label">Species</string>
     <string name="detail_breed_label">Breed</string>
     <string name="detail_image_text">image of a pet</string>
     <string name="detail_date_label">Date Reported</string>
-    <string name="detail_location_label">Last Seen</string>
+    <string name="detail_location_label">Last Seen At</string>
     <string name="detail_status_label">Status</string>
     <string name="detail_contact_label">Contact</string>
     <string name="detail_button_add_new_label">Add New Pet</string>
@@ -51,7 +52,7 @@
 
     <!-- strings related to list -->
     <string name="list_title">Pet List</string>
-    <string name="list_intro_format">You have added %d pet(s) to the list today.</string>
+    <string name="list_pet_id_label">View Pet ID:</string>
     <string name="list_image_text">pet image</string>
     <string name="list_button_add_label">Add New Pet</string>
     <string name="list_button_fab_label">View Pet</string>

@@ -40,7 +40,11 @@ class InstructionsFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.instructionsButtonCancel.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
+        binding.instructionsButtonCancel.setOnClickListener(
+            Navigation.createNavigateOnClickListener(
+                R.id.action_instructionsFragment_to_listItemFragment
+            )
+        )
 
         binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
@@ -51,8 +55,6 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun savePet(view: View) {
-        viewModel.incrementUserPetCount()
-
         val petId = viewModel.addPet(
             viewModel.currentUserEmail, // email that was saved on login
             getCityDataFromUserInput(),

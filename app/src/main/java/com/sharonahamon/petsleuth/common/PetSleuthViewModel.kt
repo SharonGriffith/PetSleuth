@@ -9,16 +9,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class PetSleuthViewModel : ViewModel() {
-    var userPetCounter = 0
-
-    init {
-        userPetCounter = 0
-    }
-
-    fun incrementUserPetCount() {
-        userPetCounter++
-    }
-
     private var _currentPetId = MutableLiveData<Int>()
     var currentPetId: LiveData<Int>
         get() = _currentPetId
@@ -49,10 +39,6 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("ViewModel created")
 
         Timber.i("pet list size=%s", _petList.size)
-    }
-
-    fun viewDetailForSelected() {
-        Timber.i("selected=" + 1)
     }
 
     fun buildDummyPetList() {
@@ -137,15 +123,27 @@ class PetSleuthViewModel : ViewModel() {
 
     fun loadPet(petId: Int) {
         // if the currently selected pet is the same as the requested pet ID, do nothing
-        if (pet.value?.petId?.equals(petId) != true) {
+        Timber.i("current pet ID %s", pet.value?.petId?.value.toString())
+        Timber.i("requested pet ID %s", petId.toString())
+
+        var requestedPetId = petId
+        if (petId > petList.size) {
+            requestedPetId = 1
+        }
+
+        if (pet.value?.petId?.value?.equals(requestedPetId) == false) {
+            Timber.i("starting the search")
 
             // else get the requested pet ID out of the list and load it into the current pet so that it can be displayed in the detail screen
             val petListIterator = _petList.iterator()
             while (petListIterator.hasNext()) {
                 val thisPet = petListIterator.next()
-                if (thisPet.value?.petId?.equals(petId) == true) {
+                Timber.i("looking at pet ID %s", thisPet.value?.petId)
+
+                if (thisPet.value?.petId?.value?.equals(requestedPetId) == true) {
                     pet = thisPet
-                    break
+                    Timber.i("pet ID " + pet.value?.petId?.value.toString() + " found")
+                    return
                 }
             }
         }
@@ -322,7 +320,6 @@ class PetSleuthViewModel : ViewModel() {
         // clear the active user out of the view model
         currentUserEmail = ""
         loggedOnContactPerson = null
-        userPetCounter = 0
 
         // clear the active pet out of the view model
         pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)

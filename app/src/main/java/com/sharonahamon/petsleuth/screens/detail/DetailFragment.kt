@@ -53,7 +53,7 @@ class DetailFragment : Fragment() {
         Timber.i("called OnViewCreated")
 
         var petId = args.petId
-        Timber.i("petId=%s", petId)
+        Timber.i("DetailFragment petId=%s", petId)
 
         // save off the petId in the view model, to maintain state
         viewModel.currentPetId = MutableLiveData<Int>(petId)

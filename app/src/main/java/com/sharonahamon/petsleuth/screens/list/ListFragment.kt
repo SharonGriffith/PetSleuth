@@ -1,5 +1,6 @@
 package com.sharonahamon.petsleuth.screens.list
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
@@ -48,12 +49,21 @@ class ListFragment : Fragment() {
     }
 
     private fun goToPetDetail(view: View) {
-        // for now, this is going to the last pet in the list
-        // I assume we will learn how to select an item and do something with it
+        // for now, this is going to the first pet in the list by default,
+        // else the user can type in which ID they want to jump to
+        var petId = getPetIdFromUserInput()
+
+        // I assume we will learn how to select a list item and do something with it
         // I spent a lot of time researching how to do this and it seemed very complex for a first project
         val action =
-            ListFragmentDirections.actionListFragmentToDetailFragment(viewModel.petList.size)
+            ListFragmentDirections.actionListFragmentToDetailFragment(petId)
         view.findNavController().navigate(action)
+    }
+
+    private fun getPetIdFromUserInput(): Int {
+        val petId = binding.listPetIdValue.text?.toString()?.toInt() ?: 1
+        Timber.i("ListFragment petId=%s", petId)
+        return petId
     }
 
     private fun logout(view: View) {

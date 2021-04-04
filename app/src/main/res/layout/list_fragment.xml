@@ -25,9 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:src="@drawable/fab"
+            android:layout_margin="16dp"
             android:contentDescription="@string/list_button_fab_label"
-            android:layout_margin="16dp"/>
+            android:src="@drawable/fab" />
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
 
             <!-- title -->
             <TextView
-                android:id="@+id/list_intro"
+                android:id="@+id/list_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -49,20 +49,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/list_body_container" />
 
-            <!-- instructions -->
-            <TextView
-                android:id="@+id/list_instructions"
+            <!-- horizontal label and input field -->
+            <LinearLayout
+                android:id="@+id/list_instructions_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin24"
-                android:gravity="start"
-                android:text="@{@string/list_intro_format(petSleuthViewModel.userPetCounter)}"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/text_size_normal"
+                android:layout_marginTop="@dimen/layout_margin8"
+                android:layout_marginBottom="@dimen/layout_margin8"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_intro" />
+                app:layout_constraintTop_toBottomOf="@+id/list_title">
+
+                <TextView
+                    android:id="@+id/list_pet_id_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/list_pet_id_label"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/list_pet_id_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/list_title" />
+
+                <EditText
+                    android:id="@+id/list_pet_id_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true"
+                    android:text="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/list_title" />
+
+            </LinearLayout>
 
             <!-- vertical scrolling card list -->
             <androidx.fragment.app.FragmentContainerView
@@ -73,7 +96,7 @@
                 android:layout_marginTop="@dimen/layout_margin24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_instructions" />
+                app:layout_constraintTop_toBottomOf="@+id/list_instructions_container" />
 
             <!-- buttons under the scrolling card list -->
             <Button
