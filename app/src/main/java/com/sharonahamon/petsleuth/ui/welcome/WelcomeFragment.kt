@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
@@ -40,10 +40,7 @@ class WelcomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         // Set the onClickListener for the buttons
-        binding.welcomeButtonNext.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_instructionsFragment)
-        }
+        binding.welcomeButtonNext.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionsFragment))
 
         return binding.root
     }

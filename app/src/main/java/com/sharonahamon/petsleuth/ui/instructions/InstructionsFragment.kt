@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
@@ -39,20 +40,14 @@ class InstructionsFragment : Fragment() {
         binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.instructionsButtonCancel.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            view.findNavController().navigate(R.id.action_instructionsFragment_to_listItemFragment)
-        }
+        binding.instructionsButtonCancel.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
 
         binding.instructionsButtonSave.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
             savePet(view)
         }
 
-        binding.instructionsButtonList.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
-            view.findNavController().navigate(R.id.action_instructionsFragment_to_listItemFragment)
-        }
+        binding.instructionsButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listItemFragment))
 
         return binding.root
     }
