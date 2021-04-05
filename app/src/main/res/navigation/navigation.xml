@@ -13,11 +13,11 @@
         <action
             android:id="@+id/action_detailFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/welcomeFragment" />
         <action
             android:id="@+id/action_detailFragment_to_listItemFragment"
             app:destination="@id/listItemFragment"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/welcomeFragment" />
         <argument
             android:name="petId"
             app:argType="integer" />
@@ -31,11 +31,11 @@
             android:id="@+id/action_instructionsFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/welcomeFragment" />
         <action
             android:id="@+id/action_instructionsFragment_to_listItemFragment"
             app:destination="@id/listItemFragment"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/instructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -45,7 +45,7 @@
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment" />
+            app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -70,11 +70,11 @@
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/welcomeFragment" />
+            app:popUpTo="@id/listItemFragment" />
         <action
             android:id="@+id/action_listItemFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment"
-            app:popUpTo="@id/listItemFragment" />
+            app:popUpTo="@id/welcomeFragment" />
         <action
             android:id="@+id/action_listItemFragment_to_loginFragment"
             app:destination="@id/loginFragment"
