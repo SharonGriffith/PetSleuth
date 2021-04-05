@@ -6,19 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.data.Pet
 import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
 import timber.log.Timber
 
 class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
 
-    private lateinit var viewModel: PetSleuthViewModel
+    // Use the 'by activityViewModels()' Kotlin property delegate
+    // from the fragment-ktx artifact
+    private val viewModel: PetSleuthViewModel by activityViewModels()
 
     private lateinit var binding: DetailFragmentBinding
 
@@ -27,12 +31,6 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Timber.i("called OnCreateView")
-
-        // get the existing instance of the viewModel instead of creating a new one
-        // tie the viewModel to the parent activity so that it does not get
-        // destroyed when a fragment is popped off the back stack
-        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
@@ -53,10 +51,12 @@ class DetailFragment : Fragment() {
         var petId = args.petId
         Timber.i("DetailFragment petId=%s", petId)
 
-        // save off the petId in the view model, to maintain state
-        viewModel.currentPetId = MutableLiveData<Int>(petId)
+        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> { item: Pet ->
+            // save off the petId in the view model, to maintain state
+            viewModel.currentPetId = MutableLiveData<Int>(petId)
 
-        // retrieve the requested pet ID from the list
-        viewModel.loadPet(petId)
+            // retrieve the requested pet ID from the list
+            viewModel.loadPet(petId)
+        })
     }
 }

@@ -64,7 +64,7 @@
                     android:gravity="start"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.pet.petDetail.sex.toString() + ' ' + petSleuthViewModel.pet.petDetail.breed.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petDetail.sex.toString() + ' ' + petSleuthViewModel.selectedPet.petDetail.breed.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.pet.petId.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petId.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.pet.petLastSeenLocation.lastSeenDate.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petLastSeenLocation.lastSeenDate.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.pet.petSummary.status.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petSummary.status.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.pet.petSummary.species.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petSummary.species.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -228,7 +228,7 @@
                     android:gravity="end"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.pet.petLastSeenLocation.city.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.state.toString() + ' ' + petSleuthViewModel.pet.petLastSeenLocation.zip.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petLastSeenLocation.city.toString() + ' ' + petSleuthViewModel.selectedPet.petLastSeenLocation.state.toString() + ' ' + petSleuthViewModel.selectedPet.petLastSeenLocation.zip.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -262,7 +262,7 @@
                     android:gravity="end"
                     android:lines="4"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.pet.petDetail.contactPerson.email.toString()}"
+                    android:text="@{petSleuthViewModel.selectedPet.petDetail.contactPerson.email.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />

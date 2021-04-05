@@ -24,12 +24,16 @@ class PetSleuthViewModel : ViewModel() {
         }
 
     // currently selected pet, for detail fragment
-    private var _pet = MutableLiveData<Pet>()
-    var pet: LiveData<Pet>
-        get() = _pet
+    private var _selectedPet = MutableLiveData<Pet>()
+    var selectedPet: LiveData<Pet>
+        get() = _selectedPet
         set(value) {
-            _pet = value as MutableLiveData<Pet>
+            _selectedPet = value as MutableLiveData<Pet>
         }
+
+    fun selectPet(item: Pet) {
+        _selectedPet.value = item
+    }
 
     // pet list, for list fragment
     private var _petList: MutableList<LiveData<Pet>> = mutableListOf()
@@ -132,7 +136,7 @@ class PetSleuthViewModel : ViewModel() {
 
     fun loadPet(petId: Int) {
         // update the current pet (used for the detail fragment) with a specific pet ID that the user picks
-        Timber.i("current pet ID %s", pet.value?.petId?.value.toString())
+        Timber.i("current pet ID %s", selectedPet.value?.petId?.value.toString())
         Timber.i("requested pet ID %s", petId.toString())
 
         // make a copy of the input arg, since it can't be updated and we may need to override its value
@@ -145,7 +149,7 @@ class PetSleuthViewModel : ViewModel() {
         }
 
         // if the currently selected pet is the same as the requested pet ID, do nothing
-        if (pet.value?.petId?.value?.equals(requestedPetId) == false) {
+        if (selectedPet.value?.petId?.value?.equals(requestedPetId) == false) {
             Timber.i("starting the search")
 
             // else get the requested pet ID out of the list and load it into the current pet
@@ -156,8 +160,8 @@ class PetSleuthViewModel : ViewModel() {
                 Timber.i("looking at pet ID %s", thisPet.value?.petId)
 
                 if (thisPet.value?.petId?.value?.equals(requestedPetId) == true) {
-                    pet = thisPet
-                    Timber.i("pet ID " + pet.value?.petId?.value.toString() + " found")
+                    selectedPet = thisPet
+                    Timber.i("pet ID " + selectedPet.value?.petId?.value.toString() + " found")
                     return
                 }
             }
@@ -253,7 +257,7 @@ class PetSleuthViewModel : ViewModel() {
     }
 
     private fun savePet(pet: Pet) {
-        this.pet = MutableLiveData(pet)
+        this.selectedPet = MutableLiveData(pet)
         Timber.i("saved the Pet object")
     }
 
@@ -349,17 +353,17 @@ class PetSleuthViewModel : ViewModel() {
         this.createWelcomeGreeting()
 
         // clear the active pet out of the view model
-        pet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
-        pet.value?.petSummary?.value?.species = MutableLiveData("")
-        pet.value?.petSummary?.value?.status ?: MutableLiveData("")
+        selectedPet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
+        selectedPet.value?.petSummary?.value?.species = MutableLiveData("")
+        selectedPet.value?.petSummary?.value?.status ?: MutableLiveData("")
 
-        pet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
-        pet.value?.petDetail?.value?.breed ?: MutableLiveData("")
+        selectedPet.value?.petDetail?.value?.petId ?: MutableLiveData(-1)
+        selectedPet.value?.petDetail?.value?.breed ?: MutableLiveData("")
 
-        pet.value?.petLastSeenLocation?.value?.petId ?: MutableLiveData(-1)
-        pet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
-        pet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
-        pet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
+        selectedPet.value?.petLastSeenLocation?.value?.petId ?: MutableLiveData(-1)
+        selectedPet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
+        selectedPet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
+        selectedPet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
 
         Timber.i("called ViewModel logout()")
     }

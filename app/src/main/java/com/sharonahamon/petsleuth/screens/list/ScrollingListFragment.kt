@@ -7,8 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
@@ -18,19 +19,15 @@ import timber.log.Timber
 
 class ScrollingListFragment : Fragment() {
 
-    private lateinit var viewModel: PetSleuthViewModel
+    // Use the 'by activityViewModels()' Kotlin property delegate
+    // from the fragment-ktx artifact
+    private val viewModel: PetSleuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Timber.i("called OnCreateView")
-
-        // get the existing instance of the viewModel instead of creating a new one
-        // tie the viewModel to the parent activity so that it does not get
-        // destroyed when a fragment is popped off the back stack
-        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
 
         val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
 
@@ -46,6 +43,17 @@ class ScrollingListFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> { item: Pet? ->
+            // Update the UI
+            Timber.i("update the UI")
+        })
+
+        Timber.i("called OnViewCreated")
     }
 
     override fun onDestroyView() {
