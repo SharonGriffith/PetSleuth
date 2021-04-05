@@ -1,6 +1,5 @@
 package com.sharonahamon.petsleuth.screens.list
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
@@ -13,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
-import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 import timber.log.Timber
 
 class ListFragment : Fragment() {
@@ -66,7 +65,7 @@ class ListFragment : Fragment() {
         return petId
     }
 
-    private fun logout(view: View) {
+    private fun doLogout(view: View) {
         viewModel.logout()
         view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
     }
@@ -83,7 +82,7 @@ class ListFragment : Fragment() {
         binding.listToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_logout -> {
-                    logout(view)
+                    doLogout(view)
                     true
                 }
                 else -> false

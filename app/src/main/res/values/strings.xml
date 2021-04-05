@@ -10,7 +10,6 @@
     <!-- strings related to welcome -->
     <string name="welcome_title">Welcome to Pet Sleuth</string>
     <string name="welcome_tagline">\"When your pet\'s loose, turn to Pet Sleuth.\"</string>
-    <string name="welcome_greeting">Hello</string>
     <string name="welcome_intro">The purpose of this app is to reunite missing pets with their owners.  As a user of this app, you are reporting either a lost or a found pet.  \n\nYou can browse the current list of pets reported by other users, get more detailed information about a specific pet, or add a new pet to the list.</string>
     <string name="welcome_button_add_label">Add New Pet</string>
     <string name="welcome_button_list_label">View Pet List</string>

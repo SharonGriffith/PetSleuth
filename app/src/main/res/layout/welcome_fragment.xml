@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin24"
                 android:gravity="start"
-                android:text="@string/welcome_greeting"
+                android:text="@{petSleuthViewModel.welcomeGreeting}"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"

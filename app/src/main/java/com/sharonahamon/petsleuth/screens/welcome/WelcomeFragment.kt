@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -42,20 +41,5 @@ class WelcomeFragment : Fragment() {
         binding.welcomeButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_listItemFragment))
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Timber.i("called OnViewCreated")
-
-        var emailArg = viewModel.currentUserEmail
-        Timber.i("email=%s", emailArg)
-
-        val greeting: TextView = binding.welcomeGreeting
-        if (!emailArg.isNullOrBlank()) {
-            greeting.text = "Hello, " + emailArg + "!"
-        } else {
-            greeting.text = "Hello!"
-        }
     }
 }

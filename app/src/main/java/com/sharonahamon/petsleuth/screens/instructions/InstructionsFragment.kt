@@ -54,7 +54,7 @@ class InstructionsFragment : Fragment() {
 
     private fun savePet(view: View) {
         val petId = viewModel.addPet(
-            viewModel.currentUserEmail, // email that was saved on login
+            viewModel.currentUserEmail.value.toString(), // email that was saved on login
             getCityDataFromUserInput(),
             getStateDataFromUserInput(),
             getZipDataFromUserInput(),
