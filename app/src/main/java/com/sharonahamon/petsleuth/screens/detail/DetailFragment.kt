@@ -48,15 +48,15 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Timber.i("called OnViewCreated")
 
-        var petId = args.petId
-        Timber.i("DetailFragment petId=%s", petId)
+        var requestedPetId = args.petId
+        Timber.i("DetailFragment requestedPetId=%s", requestedPetId)
 
         viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> { item: Pet ->
             // save off the petId in the view model, to maintain state
-            viewModel.currentPetId = MutableLiveData<Int>(petId)
+            viewModel.requestedPetId = MutableLiveData<Int>(requestedPetId)
 
             // retrieve the requested pet ID from the list
-            viewModel.loadPet(petId)
+            viewModel.selectPet(requestedPetId)
         })
     }
 }

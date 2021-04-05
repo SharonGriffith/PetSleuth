@@ -16,11 +16,11 @@ class PetSleuthViewModel : ViewModel() {
     var loggedOnContactPerson: ContactPerson? = null
     var welcomeGreeting = MutableLiveData("")
 
-    private var _currentPetId = MutableLiveData<Int>()
-    var currentPetId: LiveData<Int>
-        get() = _currentPetId
+    private var _requestedPetId = MutableLiveData<Int>()
+    var requestedPetId: LiveData<Int>
+        get() = _requestedPetId
         set(value) {
-            _currentPetId = value as MutableLiveData<Int>
+            _requestedPetId = value as MutableLiveData<Int>
         }
 
     // currently selected pet, for detail fragment
@@ -134,7 +134,7 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("end buildDummyPetList()")
     }
 
-    fun loadPet(petId: Int) {
+    fun selectPet(petId: Int) {
         // update the current pet (used for the detail fragment) with a specific pet ID that the user picks
         Timber.i("current pet ID %s", selectedPet.value?.petId?.value.toString())
         Timber.i("requested pet ID %s", petId.toString())
@@ -157,7 +157,7 @@ class PetSleuthViewModel : ViewModel() {
             val petListIterator = _petList.iterator()
             while (petListIterator.hasNext()) {
                 val thisPet = petListIterator.next()
-                Timber.i("looking at pet ID %s", thisPet.value?.petId)
+                Timber.i("looking at pet ID %s", thisPet.value?.petId?.value.toString())
 
                 if (thisPet.value?.petId?.value?.equals(requestedPetId) == true) {
                     selectedPet = thisPet
@@ -364,6 +364,9 @@ class PetSleuthViewModel : ViewModel() {
         selectedPet.value?.petLastSeenLocation?.value?.city ?: MutableLiveData("")
         selectedPet.value?.petLastSeenLocation?.value?.state ?: MutableLiveData("")
         selectedPet.value?.petLastSeenLocation?.value?.zip ?: MutableLiveData("")
+
+        // clear the dummy data out of the view model
+        petList = emptyList()
 
         Timber.i("called ViewModel logout()")
     }
