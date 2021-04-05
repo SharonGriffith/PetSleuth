@@ -1,8 +1,6 @@
 package com.sharonahamon.petsleuth.screens.welcome
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,60 +57,5 @@ class WelcomeFragment : Fragment() {
         } else {
             greeting.text = "Hello!"
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.i("called OnDestroyView")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Timber.i("called OnCreate")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.i("called OnDestroy")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Timber.i("called OnDetach")
-    }
-
-    override fun onInflate(context: Context, attrs: AttributeSet, savedInstanceState: Bundle?) {
-        super.onInflate(context, attrs, savedInstanceState)
-        Timber.i("called OnInflate")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.i("called OnPause")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.i("called OnResume")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Timber.i("called OnSaveInstanceState")
-    }
-
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        Timber.i("called OnAttachFragment")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.i("called OnStart")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.i("called OnStop")
     }
 }
