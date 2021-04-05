@@ -31,10 +31,6 @@ class PetSleuthViewModel : ViewModel() {
             _selectedPet = value as MutableLiveData<Pet>
         }
 
-    fun selectPet(item: Pet) {
-        _selectedPet.value = item
-    }
-
     // pet list, for list fragment
     private var _petList: MutableList<LiveData<Pet>> = mutableListOf()
     var petList: List<LiveData<Pet>>
@@ -46,12 +42,6 @@ class PetSleuthViewModel : ViewModel() {
     init {
         Timber.i("ViewModel created")
         Timber.i("pet list size=%s", _petList.size)
-    }
-
-    fun createWelcomeGreeting() {
-        welcomeGreeting = if (_currentUserEmail.value?.isBlank() == true) {
-            MutableLiveData("Hello!")
-        } else MutableLiveData("Hello, ${_currentUserEmail.value.toString()}!")
     }
 
     fun buildDummyPetList() {
@@ -134,6 +124,10 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("end buildDummyPetList()")
     }
 
+    fun selectPet(item: Pet) {
+        _selectedPet.value = item
+    }
+
     fun selectPet(petId: Int) {
         // update the current pet (used for the detail fragment) with a specific pet ID that the user picks
         Timber.i("current pet ID %s", selectedPet.value?.petId?.value.toString())
@@ -160,8 +154,9 @@ class PetSleuthViewModel : ViewModel() {
                 Timber.i("looking at pet ID %s", thisPet.value?.petId?.value.toString())
 
                 if (thisPet.value?.petId?.value?.equals(requestedPetId) == true) {
-                    selectedPet = thisPet
-                    Timber.i("pet ID " + selectedPet.value?.petId?.value.toString() + " found")
+                    //selectedPet = thisPet
+                    selectPet(thisPet.value!!)
+                    Timber.i("pet ID " + requestedPetId + " found")
                     return
                 }
             }
@@ -350,7 +345,7 @@ class PetSleuthViewModel : ViewModel() {
         _currentUserEmail = MutableLiveData("")
         loggedOnContactPerson = null
 
-        this.createWelcomeGreeting()
+        clearWelcomeGreeting()
 
         // clear the active pet out of the view model
         selectedPet.value?.petSummary?.value?.petId ?: MutableLiveData(-1)
@@ -371,7 +366,13 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("called ViewModel logout()")
     }
 
-    fun setCurrentUserEmail(emailFromUserInput: String) {
-        MutableLiveData(emailFromUserInput).also { _currentUserEmail = it }
+    private fun createWelcomeGreeting() {
+        welcomeGreeting = if (_currentUserEmail.value?.isBlank() == true) {
+            MutableLiveData("Hello!")
+        } else MutableLiveData("Hello, ${_currentUserEmail.value.toString()}!")
+    }
+
+    private fun clearWelcomeGreeting() {
+        welcomeGreeting = MutableLiveData("Hello!")
     }
 }
