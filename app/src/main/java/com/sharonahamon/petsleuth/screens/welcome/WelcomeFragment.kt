@@ -30,7 +30,6 @@ class WelcomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         // Set the onClickListener for the buttons
-        binding.welcomeButtonAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_instructionsFragment))
         binding.welcomeButtonList.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeFragment_to_listItemFragment))
 
         return binding.root

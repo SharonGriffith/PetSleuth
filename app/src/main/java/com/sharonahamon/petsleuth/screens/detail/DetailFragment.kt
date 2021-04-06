@@ -30,8 +30,6 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Timber.i("called OnCreateView")
-
         binding =
             DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
 
@@ -46,15 +44,14 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.i("called OnViewCreated")
 
         var requestedPetId = args.petId
-        Timber.i("DetailFragment requestedPetId=%s", requestedPetId)
+        Timber.i("requestedPetId=%s", requestedPetId)
 
-        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> { item: Pet ->
-            // save off the petId in the view model, to maintain state
-            viewModel.requestedPetId = MutableLiveData<Int>(requestedPetId)
+        // save off the petId in the view model, to maintain state
+        viewModel.requestedPetId = MutableLiveData<Int>(requestedPetId)
 
+        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> {
             // retrieve the requested pet ID from the list
             viewModel.selectPet(requestedPetId)
         })

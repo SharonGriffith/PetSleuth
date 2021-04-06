@@ -76,29 +76,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome_greeting" />
 
-            <!-- horizontal buttons -->
-            <LinearLayout
-                android:id="@+id/welcome_button_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_intro">
-
-                <Button
-                    android:id="@+id/welcome_button_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:text="@string/welcome_button_add_label"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/welcome_button_container" />
-
                 <Button
                     android:id="@+id/welcome_button_list"
                     android:layout_width="wrap_content"
@@ -107,11 +84,8 @@
                     android:text="@string/welcome_button_list_label"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/welcome_button_add"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/welcome_button_container" />
-
-            </LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/welcome_intro" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
