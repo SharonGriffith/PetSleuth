@@ -190,13 +190,21 @@ class PetSleuthViewModel : ViewModel() {
             status,
             breed,
             sex,
-            date
+            date,
+            null
         )
 
         // save the current pet
         selectPet(newPet)
 
         // add the current pet to the pet list
+        addPetToList(newPet)
+
+        // return the ID of the newly created pet (needed for the detail view)
+        return newPet.petId.value!!
+    }
+
+    private fun addPetToList(newPet: Pet): Int {
         _petList.add(MutableLiveData(newPet))
 
         Timber.i(
@@ -204,7 +212,6 @@ class PetSleuthViewModel : ViewModel() {
             _petList.size
         )
 
-        // return the ID of the newly created pet (needed for the detail view)
         return _petList.size
     }
 
@@ -217,14 +224,16 @@ class PetSleuthViewModel : ViewModel() {
         status: String,
         breed: String,
         sex: String,
-        date: String
+        date: String,
+        petId: Int?
     ): Pet {
-        _nextPetId = MutableLiveData(_petList.size + 1)
-        Timber.i("the next pet ID to be used is %s", _nextPetId.value.toString())
+        var newPetId = petId ?: updateNextPetId()
+
+        Timber.i("creating pet using ID %s", newPetId)
 
         // create the Pet object
         val pet = Pet(
-            _nextPetId,
+            MutableLiveData(newPetId),
             // create the Pet Summary object
             MutableLiveData(
                 createPetSummary(
@@ -256,6 +265,11 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("created the Pet object")
 
         return pet
+    }
+
+    private fun updateNextPetId(): Int {
+        _nextPetId = MutableLiveData(_petList.size + 1)
+        return _nextPetId.value!!
     }
 
     private fun createPetSummary(petId: Int, species: String, status: String): PetSummary {
