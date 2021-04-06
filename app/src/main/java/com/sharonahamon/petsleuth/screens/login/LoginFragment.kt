@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         viewModel.login(getEmailFromUserInput())
 
         // build a list of dummy data to simulate reading from a database
-        viewModel.buildDummyPetList()
+        //viewModel.buildDummyPetList()
 
         view.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
     }
