@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <!-- the "View Pet" fab is initially invisible since the pet list is empty -->
+        <!-- it will be set to visible based on an observer -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -27,7 +29,8 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:contentDescription="@string/list_button_fab_label"
-            android:src="@drawable/fab" />
+            android:src="@drawable/fab"
+            android:visibility="invisible" />
 
         <!-- main layout to make elements on the screen adapt to viewport size and orientation -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,6 +53,8 @@
                 app:layout_constraintTop_toTopOf="@+id/list_body_container" />
 
             <!-- horizontal label and input field -->
+            <!-- the "View Pet ID" widget is initially invisible since the pet list is empty -->
+            <!-- it will be set to visible based on an observer -->
             <LinearLayout
                 android:id="@+id/list_instructions_container"
                 android:layout_width="match_parent"
@@ -57,6 +62,7 @@
                 android:layout_marginTop="@dimen/layout_margin8"
                 android:layout_marginBottom="@dimen/layout_margin8"
                 android:orientation="horizontal"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_title">

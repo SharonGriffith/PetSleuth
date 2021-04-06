@@ -1,5 +1,6 @@
 package com.sharonahamon.petsleuth.screens.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
@@ -8,17 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
-import timber.log.Timber
 
 class ListFragment : Fragment() {
 
-    private lateinit var viewModel: PetSleuthViewModel
+    // Use the 'by activityViewModels()' Kotlin property delegate
+    // from the fragment-ktx artifact
+    private val viewModel: PetSleuthViewModel by activityViewModels()
 
     private lateinit var binding: ListFragmentBinding
 
@@ -26,13 +29,7 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Timber.i("called OnCreateView")
-
-        // get the existing instance of the viewModel instead of creating a new one
-        // tie the viewModel to the parent activity so that it does not get
-        // destroyed when a fragment is popped off the back stack
-        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
+        //Timber.i("called OnCreateView")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
 
@@ -47,32 +44,10 @@ class ListFragment : Fragment() {
         return binding.root
     }
 
-    private fun goToPetDetail(view: View) {
-        // for now, this is going to the first pet in the list by default,
-        // else the user can type in which ID they want to jump to
-        var petId = getPetIdFromUserInput()
-
-        // I assume we will learn how to select a list item and do something with it
-        // I spent a lot of time researching how to do this and it seemed very complex for a first project
-        val action =
-            ListFragmentDirections.actionListFragmentToDetailFragment(petId)
-        view.findNavController().navigate(action)
-    }
-
-    private fun getPetIdFromUserInput(): Int {
-        val petId = binding.listPetIdValue.text?.toString()?.toInt() ?: 1
-        Timber.i("ListFragment petId=%s", petId)
-        return petId
-    }
-
-    private fun doLogout(view: View) {
-        viewModel.logout()
-        view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
-    }
-
     /**
      * The base code for this function was copied from the Android Developer website.
      */
+    @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -89,61 +64,94 @@ class ListFragment : Fragment() {
             }
         }
 
-        Timber.i("called OnViewCreated")
+        // observe the view model's nextPetId to make the widget (which jumps to a specific pet ID) visible
+        // it basically reflects the pet list size
+        // at initial load the pet list is empty, so there are no pets to jump to, thus the widget is invisible
+        viewModel.nextPetId.observe(viewLifecycleOwner, Observer<Int> { nextPetId: Int ->
+            if (nextPetId >= 1) {
+                binding.listInstructionsContainer.visibility = View.VISIBLE
+                binding.fab.visibility = View.VISIBLE
+            }
+        })
+
+        //Timber.i("called OnViewCreated")
+    }
+
+    private fun goToPetDetail(view: View) {
+        // for now, this is going to the first pet in the list by default,
+        // else the user can type in which ID they want to jump to
+        var petId = getPetIdFromUserInput()
+
+        // I assume we will learn how to select a list item and do something with it
+        // I spent a lot of time researching how to do this and it seemed very complex for a first project
+        val action =
+            ListFragmentDirections.actionListFragmentToDetailFragment(petId)
+        view.findNavController().navigate(action)
+    }
+
+    private fun getPetIdFromUserInput(): Int {
+        val petId = binding.listPetIdValue.text?.toString()?.toInt() ?: 1
+        //Timber.i("petId=%s", petId)
+        return petId
+    }
+
+    private fun doLogout(view: View) {
+        viewModel.logout()
+        view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Timber.i("called OnDestroyView")
+        //Timber.i("called OnDestroyView")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.i("called OnCreate")
+        //Timber.i("called OnCreate")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.i("called OnDestroy")
+        //Timber.i("called OnDestroy")
     }
 
     override fun onDetach() {
         super.onDetach()
-        Timber.i("called OnDetach")
+        //Timber.i("called OnDetach")
     }
 
     override fun onInflate(context: Context, attrs: AttributeSet, savedInstanceState: Bundle?) {
         super.onInflate(context, attrs, savedInstanceState)
-        Timber.i("called OnInflate")
+        //Timber.i("called OnInflate")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.i("called OnPause")
+        //Timber.i("called OnPause")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.i("called OnResume")
+        //Timber.i("called OnResume")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Timber.i("called OnSaveInstanceState")
+        //Timber.i("called OnSaveInstanceState")
     }
 
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
-        Timber.i("called OnAttachFragment")
+        //Timber.i("called OnAttachFragment")
     }
 
     override fun onStart() {
         super.onStart()
-        Timber.i("called OnStart")
+        //Timber.i("called OnStart")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.i("called OnStop")
+        //Timber.i("called OnStop")
     }
 }
