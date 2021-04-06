@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
@@ -16,7 +16,9 @@ import timber.log.Timber
 
 class InstructionsFragment : Fragment() {
 
-    private lateinit var viewModel: PetSleuthViewModel
+    // Use the 'by activityViewModels()' Kotlin property delegate
+    // from the fragment-ktx artifact
+    private val viewModel: PetSleuthViewModel by activityViewModels()
 
     private lateinit var binding: InstructionsFragmentBinding
 
@@ -25,12 +27,6 @@ class InstructionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Timber.i("called OnCreateView")
-
-        // get the existing instance of the viewModel instead of creating a new one
-        // tie the viewModel to the parent activity so that it does not get
-        // destroyed when a fragment is popped off the back stack
-        viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.instructions_fragment, container, false)
