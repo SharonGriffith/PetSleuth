@@ -1,9 +1,7 @@
 package com.sharonahamon.petsleuth.screens.list
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,8 +27,6 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //Timber.i("called OnCreateView")
-
         binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
 
         binding.petSleuthViewModel = viewModel
@@ -67,14 +63,13 @@ class ListFragment : Fragment() {
         // observe the view model's nextPetId to make the widget (which jumps to a specific pet ID) visible
         // it basically reflects the pet list size
         // at initial load the pet list is empty, so there are no pets to jump to, thus the widget is invisible
+        // The base code for this function was copied from the Android Developer website.
         viewModel.nextPetId.observe(viewLifecycleOwner, Observer<Int> { nextPetId: Int ->
             if (nextPetId >= 1) {
                 binding.listInstructionsContainer.visibility = View.VISIBLE
                 binding.fab.visibility = View.VISIBLE
             }
         })
-
-        //Timber.i("called OnViewCreated")
     }
 
     private fun goToPetDetail(view: View) {
@@ -90,68 +85,11 @@ class ListFragment : Fragment() {
     }
 
     private fun getPetIdFromUserInput(): Int {
-        val petId = binding.listPetIdValue.text?.toString()?.toInt() ?: 1
-        //Timber.i("petId=%s", petId)
-        return petId
+        return binding.listPetIdValue.text?.toString()?.toInt() ?: 1
     }
 
     private fun doLogout(view: View) {
         viewModel.logout()
         view.findNavController().navigate(R.id.action_listItemFragment_to_loginFragment)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        //Timber.i("called OnDestroyView")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //Timber.i("called OnCreate")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //Timber.i("called OnDestroy")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        //Timber.i("called OnDetach")
-    }
-
-    override fun onInflate(context: Context, attrs: AttributeSet, savedInstanceState: Bundle?) {
-        super.onInflate(context, attrs, savedInstanceState)
-        //Timber.i("called OnInflate")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        //Timber.i("called OnPause")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        //Timber.i("called OnResume")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        //Timber.i("called OnSaveInstanceState")
-    }
-
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        //Timber.i("called OnAttachFragment")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //Timber.i("called OnStart")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        //Timber.i("called OnStop")
     }
 }

@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.LoginFragmentBinding
-import timber.log.Timber
 
 class LoginFragment : Fragment() {
 
@@ -23,13 +22,10 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Timber.i("called OnCreateView")
-
         // get the existing instance of the viewModel instead of creating a new one
         // tie the viewModel to the parent activity so that it does not get
         // destroyed when a fragment is popped off the back stack
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
 
@@ -66,8 +62,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun getEmailFromUserInput(): String {
-        val email = binding.loginUsernameText.text.toString()
-        Timber.i("email=%s", email)
-        return email
+        return binding.loginUsernameText.text.toString()
     }
 }

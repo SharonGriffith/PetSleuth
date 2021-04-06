@@ -32,7 +32,7 @@ class ScrollingListViewAdapter(
         holder.status.text = pet.value?.petSummary?.value?.status?.value.toString()
         holder.species.text = pet.value?.petSummary?.value?.species?.value.toString()
         holder.lastSeenLocation.text =
-            pet.value?.petLastSeenLocation?.value?.city?.value.toString() + ", " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
+            pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
     }
 
     override fun getItemCount(): Int = petList.size

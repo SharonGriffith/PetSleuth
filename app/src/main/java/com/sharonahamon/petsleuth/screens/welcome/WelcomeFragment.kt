@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.WelcomeFragmentBinding
-import timber.log.Timber
 
 class WelcomeFragment : Fragment() {
 
@@ -23,13 +22,10 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Timber.i("called OnCreateView")
-
         // get the existing instance of the viewModel instead of creating a new one
         // tie the viewModel to the parent activity so that it does not get
         // destroyed when a fragment is popped off the back stack
         viewModel = ViewModelProvider(requireActivity()).get(PetSleuthViewModel::class.java)
-        Timber.i("called ViewModelProvider")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false)
 
