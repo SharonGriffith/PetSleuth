@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="petSleuthViewModel"
-            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
+            name="selectedPet"
+            type="com.sharonahamon.petsleuth.data.Pet" />
     </data>
 
     <FrameLayout
@@ -64,7 +64,7 @@
                     android:gravity="start"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.selectedPet.petDetail.sex.toString() + ' ' + petSleuthViewModel.selectedPet.petDetail.breed.toString()}"
+                    android:text="@{selectedPet.petDetail.sex.toString() + ' ' + selectedPet.petDetail.breed.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.selectedPet.petId.toString()}"
+                    android:text="@{selectedPet.petId.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.selectedPet.petLastSeenLocation.lastSeenDate.toString()}"
+                    android:text="@{selectedPet.petLastSeenLocation.lastSeenDate.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.selectedPet.petSummary.status.toString()}"
+                    android:text="@{selectedPet.petSummary.status.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/layout_margin24"
                     android:gravity="end"
-                    android:text="@{petSleuthViewModel.selectedPet.petSummary.species.toString()}"
+                    android:text="@{selectedPet.petSummary.species.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -228,7 +228,7 @@
                     android:gravity="end"
                     android:lines="1"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.selectedPet.petLastSeenLocation.city.toString() + ' ' + petSleuthViewModel.selectedPet.petLastSeenLocation.state.toString() + ' ' + petSleuthViewModel.selectedPet.petLastSeenLocation.zip.toString()}"
+                    android:text="@{selectedPet.petLastSeenLocation.city.toString() + ' ' + selectedPet.petLastSeenLocation.state.toString() + ' ' + selectedPet.petLastSeenLocation.zip.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -262,7 +262,7 @@
                     android:gravity="end"
                     android:lines="4"
                     android:maxLines="4"
-                    android:text="@{petSleuthViewModel.selectedPet.petDetail.contactPerson.email.toString()}"
+                    android:text="@{selectedPet.petDetail.contactPerson.email.toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal"
                     app:layout_constraintEnd_toEndOf="parent" />

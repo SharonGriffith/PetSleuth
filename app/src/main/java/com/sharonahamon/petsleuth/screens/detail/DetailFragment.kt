@@ -33,7 +33,7 @@ class DetailFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
 
-        binding.petSleuthViewModel = viewModel
+        binding.selectedPet = viewModel.selectedPet.value
         binding.lifecycleOwner = this
 
         binding.detailButtonAddNew.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_instructionsFragment))
