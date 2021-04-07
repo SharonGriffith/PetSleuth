@@ -113,7 +113,7 @@ data class PetLastSeenLocation(
     var petId: Long, // foreign key
 
     @ColumnInfo(name = "last_seen_date")
-    var lastSeenDate: Date,
+    var lastSeenDate: String,
 
     @ColumnInfo(name = "last_seen_street")
     var street: String,
