@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="petSleuthViewModel"
-            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
+            name="newPet"
+            type="com.sharonahamon.petsleuth.data.Pet" />
     </data>
 
     <FrameLayout
@@ -189,6 +189,7 @@
                 android:hint="@string/instructions_text_breed_prompt"
                 android:inputType="text"
                 android:selectAllOnFocus="true"
+                android:text="@={newPet.petDetail.breed}"
                 android:textColorHint="@color/colorHintText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -223,6 +224,7 @@
                     android:hint="@string/instructions_location_question_city_label"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
+                    android:text="@={newPet.petLastSeenLocation.city}"
                     android:textColorHint="@color/colorHintText" />
 
                 <!-- linear layouts used to create containers to group elements together -->
@@ -239,6 +241,7 @@
                         android:hint="@string/instructions_location_question_state_label"
                         android:inputType="text"
                         android:selectAllOnFocus="true"
+                        android:text="@={newPet.petLastSeenLocation.state}"
                         android:textColorHint="@color/colorHintText" />
 
                     <EditText
@@ -249,6 +252,7 @@
                         android:hint="@string/instructions_location_question_zip_label"
                         android:inputType="text"
                         android:selectAllOnFocus="true"
+                        android:text="@={newPet.petLastSeenLocation.zip}"
                         android:textColorHint="@color/colorHintText" />
 
                 </LinearLayout>

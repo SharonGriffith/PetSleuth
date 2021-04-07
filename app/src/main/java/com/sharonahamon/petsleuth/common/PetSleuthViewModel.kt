@@ -204,7 +204,7 @@ class PetSleuthViewModel : ViewModel() {
         return newPet.petId.value!!
     }
 
-    private fun addPetToList(newPet: Pet): Int {
+    fun addPetToList(newPet: Pet): Int {
         _petList.add(MutableLiveData(newPet))
 
         Timber.i(
@@ -215,7 +215,7 @@ class PetSleuthViewModel : ViewModel() {
         return _petList.size
     }
 
-    private fun createPet(
+    fun createPet(
         email: String,
         city: String,
         state: String,

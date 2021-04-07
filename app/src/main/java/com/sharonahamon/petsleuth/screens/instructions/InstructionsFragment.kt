@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.sharonahamon.petsleuth.R
@@ -31,8 +32,26 @@ class InstructionsFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.instructions_fragment, container, false)
 
-        binding.petSleuthViewModel = viewModel
         binding.lifecycleOwner = this
+
+        // create a new Pet object with null petId since that will be determined when the new pet is saved
+        viewModel.selectedPet = MutableLiveData(
+            viewModel.createPet(
+                viewModel.currentUserEmail.value.toString(),
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                viewModel.getToday(),
+                null
+            )
+        )
+
+        // send the new Pet object to the fragment to work with
+        binding.newPet = viewModel.selectedPet.value
 
         binding.instructionsButtonCancel.setOnClickListener(
             Navigation.createNavigateOnClickListener(
@@ -49,20 +68,18 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun savePet(view: View) {
-        val petId = viewModel.addPet(
-            viewModel.currentUserEmail.value.toString(), // email that was saved on login
-            getCityDataFromUserInput(),
-            getStateDataFromUserInput(),
-            getZipDataFromUserInput(),
-            getStatusDataFromUserInput(),
-            getSpeciesDataFromUserInput(),
-            getSexDataFromUserInput(),
-            getBreedDataFromUserInput(),
-            viewModel.getToday()
-        )
+        // pick up the values from the radio buttons
+        viewModel.selectedPet.value?.petSummary?.value?.status?.value = getStatusDataFromUserInput()
+        viewModel.selectedPet.value?.petSummary?.value?.status?.value =
+            getSpeciesDataFromUserInput()
+        viewModel.selectedPet.value?.petDetail?.value?.sex?.value = getSexDataFromUserInput()
+        viewModel.selectedPet.value?.petDetail?.value?.breed?.value = getBreedDataFromUserInput()
+
+        // add the current pet to the pet list
+        viewModel.addPetToList(viewModel.selectedPet.value!!)
 
         val action =
-            InstructionsFragmentDirections.actionInstructionsFragmentToDetailFragment(petId)
+            InstructionsFragmentDirections.actionInstructionsFragmentToDetailFragment(viewModel.selectedPet.value?.petId?.value!!)
 
         view.findNavController().navigate(action)
     }
