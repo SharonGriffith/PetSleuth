@@ -11,7 +11,7 @@
 
         <variable
             name="newPet"
-            type="com.sharonahamon.petsleuth.data.Pet" />
+            type="com.sharonahamon.petsleuth.data.PetLD" />
     </data>
 
     <FrameLayout

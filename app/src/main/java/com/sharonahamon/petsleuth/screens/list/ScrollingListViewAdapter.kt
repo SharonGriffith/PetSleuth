@@ -7,14 +7,14 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
-import com.sharonahamon.petsleuth.data.Pet
+import com.sharonahamon.petsleuth.data.PetLD
 
 /**
  * The base code for this class was generated within the Android Studio IDE
  * and modified to fit the needs of this project.
  */
 class ScrollingListViewAdapter(
-    private val petList: MutableList<LiveData<Pet>>
+    private val petList: MutableList<LiveData<PetLD>>
 ) : RecyclerView.Adapter<ScrollingListViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

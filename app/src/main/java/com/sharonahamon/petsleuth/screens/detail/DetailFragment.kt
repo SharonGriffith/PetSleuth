@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
-import com.sharonahamon.petsleuth.data.Pet
+import com.sharonahamon.petsleuth.data.PetLD
 import com.sharonahamon.petsleuth.databinding.DetailFragmentBinding
 import timber.log.Timber
 
@@ -51,7 +51,7 @@ class DetailFragment : Fragment() {
         // save off the petId in the view model, to maintain state
         viewModel.requestedPetId = MutableLiveData<Int>(requestedPetId)
 
-        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<Pet> {
+        viewModel.selectedPet.observe(viewLifecycleOwner, Observer<PetLD> {
             // retrieve the requested pet ID from the list
             viewModel.selectPet(requestedPetId)
         })

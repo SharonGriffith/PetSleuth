@@ -21,7 +21,7 @@ class PetSleuthViewModel : ViewModel() {
     val currentUserEmail: LiveData<String>
         get() = _currentUserEmail
 
-    var loggedOnContactPerson: ContactPerson? = null
+    var loggedOnContactPerson: ContactPersonLD? = null
     var welcomeGreeting = MutableLiveData("")
 
     private var _requestedPetId = MutableLiveData<Int>()
@@ -32,17 +32,17 @@ class PetSleuthViewModel : ViewModel() {
         }
 
     // currently selected pet, for detail fragment
-    private var _selectedPet = MutableLiveData<Pet>()
+    private var _selectedPet = MutableLiveData<PetLD>()
 
-    var selectedPet: LiveData<Pet>
+    var selectedPet: LiveData<PetLD>
         get() = _selectedPet
         set(value) {
-            _selectedPet = value as MutableLiveData<Pet>
+            _selectedPet = value as MutableLiveData<PetLD>
         }
 
     // pet list, for list fragment
-    var _petList: MutableList<LiveData<Pet>> = mutableListOf()
-    var petList: List<LiveData<Pet>>
+    var _petList: MutableList<LiveData<PetLD>> = mutableListOf()
+    var petList: List<LiveData<PetLD>>
         get() = _petList
         set(value) {
             _petList = value.toMutableList()
@@ -151,7 +151,7 @@ class PetSleuthViewModel : ViewModel() {
         Timber.i("end buildDummyPetList()")
     }
 
-    fun selectPet(item: Pet) {
+    fun selectPet(item: PetLD) {
         _selectedPet.value = item
         Timber.i("selected the Pet object for pet ID %s", item.petId.value.toString())
     }
@@ -224,7 +224,7 @@ class PetSleuthViewModel : ViewModel() {
         return newPet.petId.value!!
     }
 
-    fun addPetToList(newPet: Pet): Int {
+    fun addPetToList(newPet: PetLD): Int {
         _petList.add(MutableLiveData(newPet))
 
         Timber.i(
@@ -246,13 +246,13 @@ class PetSleuthViewModel : ViewModel() {
         sex: String,
         date: String,
         petId: Int?
-    ): Pet {
+    ): PetLD {
         var newPetId = petId ?: updateNextPetId()
 
         Timber.i("creating pet using ID %s", newPetId)
 
         // create the Pet object
-        val pet = Pet(
+        val pet = PetLD(
             MutableLiveData(newPetId),
             // create the Pet Summary object
             MutableLiveData(
@@ -292,8 +292,8 @@ class PetSleuthViewModel : ViewModel() {
         return _nextPetId.value!!
     }
 
-    private fun createPetSummary(petId: Int, species: String, status: String): PetSummary {
-        val petSummary = PetSummary(
+    private fun createPetSummary(petId: Int, species: String, status: String): PetSummaryLD {
+        val petSummary = PetSummaryLD(
             MutableLiveData(petId),
             MutableLiveData(species),
             null,
@@ -310,8 +310,8 @@ class PetSleuthViewModel : ViewModel() {
         petId: Int,
         breed: String,
         sex: String
-    ): PetDetail {
-        val petDetail = PetDetail(
+    ): PetDetailLD {
+        val petDetail = PetDetailLD(
             MutableLiveData(petId),
             MutableLiveData(breed),
             null,
@@ -325,17 +325,17 @@ class PetSleuthViewModel : ViewModel() {
         return petDetail
     }
 
-    private fun createContactPerson(email: String): ContactPerson {
+    private fun createContactPerson(email: String): ContactPersonLD {
         // only create a new Contact Person if the email differs from the current one
         // otherwise return the current one
         if (loggedOnContactPerson == null || !loggedOnContactPerson!!.email.equals(email)) {
             Timber.i("created the ContactPerson object for email=%s", email)
-            val newContactPerson = ContactPerson(MutableLiveData(email), null, null, null)
+            val newContactPerson = ContactPersonLD(MutableLiveData(email), null, null, null)
             loggedOnContactPerson = newContactPerson
         }
 
         Timber.i("returned the ContactPerson object")
-        return loggedOnContactPerson as ContactPerson
+        return loggedOnContactPerson as ContactPersonLD
     }
 
     private fun createPetLastSeenLocation(
@@ -344,8 +344,8 @@ class PetSleuthViewModel : ViewModel() {
         state: String,
         zip: String,
         date: String
-    ): PetLastSeenLocation {
-        val petLastSeenLocation = PetLastSeenLocation(
+    ): PetLastSeenLocationLD {
+        val petLastSeenLocation = PetLastSeenLocationLD(
             MutableLiveData(nextPetId),
             MutableLiveData(date),
             null,

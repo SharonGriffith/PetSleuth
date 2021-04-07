@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
-import com.sharonahamon.petsleuth.data.Pet
+import com.sharonahamon.petsleuth.data.PetLD
 
 class ScrollingListFragment : Fragment() {
 
@@ -32,7 +32,7 @@ class ScrollingListFragment : Fragment() {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
 
-                adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<Pet>>)
+                adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<PetLD>>)
             }
         }
 
