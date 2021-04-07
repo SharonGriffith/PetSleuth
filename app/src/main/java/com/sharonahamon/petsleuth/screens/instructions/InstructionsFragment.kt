@@ -34,6 +34,13 @@ class InstructionsFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
+        binding.petSleuthViewModel = viewModel
+
+        // set the default value for the radio buttons on the instructions screen
+        viewModel.instructions_which_status_radio_checked.postValue(R.id.instructions_radio_status_lost) // "Lost"
+        viewModel.instructions_which_species_radio_checked.postValue(R.id.instructions_radio_species_dog) // "Dog"
+        viewModel.instructions_which_sex_radio_checked.postValue(R.id.instructions_radio_sex_male) // "Male"
+
         // create a new Pet object with null petId since that will be determined when the new pet is saved
         viewModel.selectedPet = MutableLiveData(
             viewModel.createPet(
@@ -69,11 +76,12 @@ class InstructionsFragment : Fragment() {
 
     private fun savePet(view: View) {
         // pick up the values from the radio buttons
+        // the fragment picks up the value from the view model initially, but there's no translation from
+        // checked ID to text value (like there is in HTML) so still have to do it in code
         viewModel.selectedPet.value?.petSummary?.value?.status?.value = getStatusDataFromUserInput()
-        viewModel.selectedPet.value?.petSummary?.value?.status?.value =
+        viewModel.selectedPet.value?.petSummary?.value?.species?.value =
             getSpeciesDataFromUserInput()
         viewModel.selectedPet.value?.petDetail?.value?.sex?.value = getSexDataFromUserInput()
-        viewModel.selectedPet.value?.petDetail?.value?.breed?.value = getBreedDataFromUserInput()
 
         // add the current pet to the pet list
         viewModel.addPetToList(viewModel.selectedPet.value!!)
@@ -86,13 +94,14 @@ class InstructionsFragment : Fragment() {
 
     private fun getStatusDataFromUserInput(): String {
         var status = "Lost"
-        val checkedId = binding.instructionsRadioPurposeContainer.checkedRadioButtonId
+        val checkedId = binding.instructionsRadioStatusContainer.checkedRadioButtonId
+        viewModel.instructions_which_status_radio_checked = MutableLiveData(checkedId)
 
         // Do nothing if nothing is checked (id == -1)
         if (-1 != checkedId) {
             when (checkedId) {
-                R.id.instructions_radio_purpose_found -> status = "Found"
-                R.id.instructions_radio_purpose_lost -> status = "Lost"
+                R.id.instructions_radio_status_found -> status = "Found"
+                R.id.instructions_radio_status_lost -> status = "Lost"
             }
         }
 
@@ -103,6 +112,7 @@ class InstructionsFragment : Fragment() {
     private fun getSexDataFromUserInput(): String {
         var sex = "Male"
         val checkedId = binding.instructionsRadioSexContainer.checkedRadioButtonId
+        viewModel.instructions_which_sex_radio_checked = MutableLiveData(checkedId)
 
         // Do nothing if nothing is checked (id == -1)
         if (-1 != checkedId) {
@@ -123,30 +133,10 @@ class InstructionsFragment : Fragment() {
         return breed
     }
 
-    private fun getZipDataFromUserInput(): String {
-        val zip = binding.instructionsAnswerLocationZip.text.toString()
-
-        Timber.i("zip=%s", zip)
-        return zip
-    }
-
-    private fun getStateDataFromUserInput(): String {
-        val state = binding.instructionsAnswerLocationState.text.toString()
-
-        Timber.i("state=%s", state)
-        return state
-    }
-
-    private fun getCityDataFromUserInput(): String {
-        val city = binding.instructionsAnswerLocationCity.text.toString()
-
-        Timber.i("city=%s", city)
-        return city
-    }
-
     private fun getSpeciesDataFromUserInput(): String {
         var species = ""
         val checkedId = binding.instructionsRadioSpeciesContainer.checkedRadioButtonId
+        viewModel.instructions_which_species_radio_checked = MutableLiveData(checkedId)
 
         // Do nothing if nothing is checked (id == -1)
         if (-1 != checkedId) {

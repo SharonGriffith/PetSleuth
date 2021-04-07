@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
+
+        <variable
             name="newPet"
             type="com.sharonahamon.petsleuth.data.Pet" />
     </data>
@@ -48,23 +52,23 @@
 
             <!-- answer 1 -->
             <RadioGroup
-                android:id="@+id/instructions_radio_purpose_container"
+                android:id="@+id/instructions_radio_status_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={petSleuthViewModel.instructions_which_status_radio_checked}"
                 app:layout_constraintTop_toBottomOf="@+id/instructions_question_status">
 
                 <RadioButton
-                    android:id="@+id/instructions_radio_purpose_lost"
+                    android:id="@+id/instructions_radio_status_lost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimaryText"
-                    android:checked="true"
                     android:text="@string/instructions_radio_purpose_lost_label"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal" />
 
                 <RadioButton
-                    android:id="@+id/instructions_radio_purpose_found"
+                    android:id="@+id/instructions_radio_status_found"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimaryText"
@@ -104,13 +108,14 @@
                 android:textSize="@dimen/text_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructions_radio_purpose_container" />
+                app:layout_constraintTop_toBottomOf="@+id/instructions_radio_status_container" />
 
             <!-- answer 2 -->
             <RadioGroup
                 android:id="@+id/instructions_radio_species_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={petSleuthViewModel.instructions_which_species_radio_checked}"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimaryText"
-                    android:checked="true"
                     android:text="@string/instructions_radio_species_dog_label"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal" />
@@ -155,6 +159,7 @@
                 android:id="@+id/instructions_radio_sex_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={petSleuthViewModel.instructions_which_sex_radio_checked}"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -165,7 +170,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimaryText"
-                    android:checked="true"
                     android:text="@string/instructions_radio_sex_male"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/text_size_normal" />

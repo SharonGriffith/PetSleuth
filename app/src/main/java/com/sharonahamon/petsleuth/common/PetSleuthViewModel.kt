@@ -3,6 +3,7 @@ package com.sharonahamon.petsleuth.common
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.data.*
 import timber.log.Timber
 import java.time.LocalDateTime
@@ -32,6 +33,7 @@ class PetSleuthViewModel : ViewModel() {
 
     // currently selected pet, for detail fragment
     private var _selectedPet = MutableLiveData<Pet>()
+
     var selectedPet: LiveData<Pet>
         get() = _selectedPet
         set(value) {
@@ -46,9 +48,27 @@ class PetSleuthViewModel : ViewModel() {
             _petList = value.toMutableList()
         }
 
+    // https://stackoverflow.com/questions/39427178/how-to-bind-method-on-radiogroup-on-checkchanged-event-with-data-binding/54261803#54261803
+
+    // "Lost" or "Found"
+    var instructions_which_status_radio_checked = MutableLiveData<Int>()
+
+    // "Dog" or "Cat"
+    var instructions_which_species_radio_checked = MutableLiveData<Int>()
+
+    // "Male" or "Female"
+    var instructions_which_sex_radio_checked = MutableLiveData<Int>()
+
     init {
         Timber.i("ViewModel created")
         Timber.i("pet list size=%s", _petList.size)
+
+        // https://stackoverflow.com/questions/39427178/how-to-bind-method-on-radiogroup-on-checkchanged-event-with-data-binding/54261803#54261803
+
+        // set the default value for the radio buttons on the instructions screen
+        instructions_which_status_radio_checked.postValue(R.id.instructions_radio_status_lost) // "Lost"
+        instructions_which_species_radio_checked.postValue(R.id.instructions_radio_species_dog) // "Dog"
+        instructions_which_sex_radio_checked.postValue(R.id.instructions_radio_sex_male) // "Male"
     }
 
     fun buildDummyPetList() {
