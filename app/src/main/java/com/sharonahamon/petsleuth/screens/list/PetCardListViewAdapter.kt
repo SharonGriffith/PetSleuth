@@ -13,9 +13,9 @@ import com.sharonahamon.petsleuth.data.PetLD
  * The base code for this class was generated within the Android Studio IDE
  * and modified to fit the needs of this project.
  */
-class ScrollingListViewAdapter(
+class PetCardListViewAdapter(
     private val petList: MutableList<LiveData<PetLD>>
-) : RecyclerView.Adapter<ScrollingListViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PetCardListViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

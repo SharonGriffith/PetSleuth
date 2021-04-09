@@ -15,7 +15,7 @@ import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.databinding.ListFragmentBinding
 
-class ListFragment : Fragment() {
+class PetCardListFragment : Fragment() {
 
     // Use the 'by activityViewModels()' Kotlin property delegate
     // from the fragment-ktx artifact
@@ -80,7 +80,7 @@ class ListFragment : Fragment() {
         // I assume we will learn how to select a list item and do something with it
         // I spent a lot of time researching how to do this and it seemed very complex for a first project
         val action =
-            ListFragmentDirections.actionListFragmentToDetailFragment(petId)
+            PetCardListFragmentDirections.actionListFragmentToDetailFragment(petId)
         view.findNavController().navigate(action)
     }
 

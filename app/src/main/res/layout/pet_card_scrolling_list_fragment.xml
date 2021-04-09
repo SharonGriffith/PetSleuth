@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".screens.list.ScrollingListFragment"
+        tools:context=".screens.list.PetCardScrollingListFragment"
         tools:listitem="@layout/pet_card_fragment" />
 
 </layout>

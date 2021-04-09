@@ -13,7 +13,7 @@ import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
 import com.sharonahamon.petsleuth.data.PetLD
 
-class ScrollingListFragment : Fragment() {
+class PetCardScrollingListFragment : Fragment() {
 
     // Use the 'by activityViewModels()' Kotlin property delegate
     // from the fragment-ktx artifact
@@ -23,7 +23,7 @@ class ScrollingListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.scrolling_list_fragment, container, false)
+        val view = inflater.inflate(R.layout.pet_card_scrolling_list_fragment, container, false)
 
         // set the adapter
         // The base code for this class was generated within the Android Studio IDE
@@ -32,7 +32,8 @@ class ScrollingListFragment : Fragment() {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
 
-                adapter = ScrollingListViewAdapter(viewModel.petList as MutableList<LiveData<PetLD>>)
+                adapter =
+                    PetCardListViewAdapter(viewModel.petList as MutableList<LiveData<PetLD>>)
             }
         }
 

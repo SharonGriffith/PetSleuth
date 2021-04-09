@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/listItemFragment"
-        android:name="com.sharonahamon.petsleuth.screens.list.ListFragment"
+        android:name="com.sharonahamon.petsleuth.screens.list.PetCardListFragment"
         android:label="list_item_fragment"
         tools:layout="@layout/list_fragment">
         <action
