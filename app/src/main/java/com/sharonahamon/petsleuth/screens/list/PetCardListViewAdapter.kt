@@ -24,20 +24,26 @@ class PetCardListViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pet = petList[position]
-
-        holder.petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
-        holder.lastSeenDate.text =
-            pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
-        holder.status.text = pet.value?.petSummary?.value?.status?.value.toString()
-        holder.species.text = pet.value?.petSummary?.value?.species?.value.toString()
-        holder.lastSeenLocation.text =
-            pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int = petList.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(
+            position: Int
+        ) {
+            val pet = petList[position]
+
+            petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
+            lastSeenDate.text =
+                pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
+            status.text = pet.value?.petSummary?.value?.status?.value.toString()
+            species.text = pet.value?.petSummary?.value?.species?.value.toString()
+            lastSeenLocation.text =
+                pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
+        }
+
         val petId: TextView = view.findViewById(R.id.list_item_number)
         val lastSeenDate: TextView = view.findViewById(R.id.list_item_date_value)
         val status: TextView = view.findViewById(R.id.list_item_status_value)
