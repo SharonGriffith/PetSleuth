@@ -28,22 +28,7 @@ class PetCardListViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pet = petList[position]
 
-        // https://gist.github.com/garuma/f0f1662a6587e2c8d916
-        holder.petImage.setImageResource(
-            when (pet.value?.petSummary?.value?.species?.value.toString()) {
-                SpeciesTypeEnum.CAT.species -> R.drawable.cat_face_vector
-                //SpeciesTypeEnum.DOG.species -> R.drawable.ic_dog
-                else -> R.drawable.ic_add
-            }
-        )
-
-        holder.petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
-        holder.lastSeenDate.text =
-            pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
-        holder.status.text = pet.value?.petSummary?.value?.status?.value.toString()
-        holder.species.text = pet.value?.petSummary?.value?.species?.value.toString()
-        holder.lastSeenLocation.text =
-            pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
+        holder.bind(pet)
     }
 
     override fun getItemCount(): Int = petList.size
@@ -55,5 +40,26 @@ class PetCardListViewAdapter(
         val status: TextView = view.findViewById(R.id.list_item_status_value)
         val species: TextView = view.findViewById(R.id.list_item_species_value)
         val lastSeenLocation: TextView = view.findViewById(R.id.list_item_location_value)
+
+        fun bind(
+            pet: LiveData<PetLD>
+        ) {
+            // https://gist.github.com/garuma/f0f1662a6587e2c8d916
+            petImage.setImageResource(
+                when (pet.value?.petSummary?.value?.species?.value.toString()) {
+                    SpeciesTypeEnum.CAT.species -> R.drawable.cat_face_vector
+                    //SpeciesTypeEnum.DOG.species -> R.drawable.ic_dog
+                    else -> R.drawable.ic_add
+                }
+            )
+
+            petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
+            lastSeenDate.text =
+                pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
+            status.text = pet.value?.petSummary?.value?.status?.value.toString()
+            species.text = pet.value?.petSummary?.value?.species?.value.toString()
+            lastSeenLocation.text =
+                pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
+        }
     }
 }
