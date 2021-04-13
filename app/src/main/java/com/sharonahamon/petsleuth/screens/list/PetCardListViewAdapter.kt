@@ -26,35 +26,29 @@ class PetCardListViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position)
+        val pet = petList[position]
+
+        // https://gist.github.com/garuma/f0f1662a6587e2c8d916
+        holder.petImage.setImageResource(
+            when (pet.value?.petSummary?.value?.species?.value.toString()) {
+                SpeciesTypeEnum.CAT.species -> R.drawable.cat_face_vector
+                //SpeciesTypeEnum.DOG.species -> R.drawable.ic_dog
+                else -> R.drawable.ic_add
+            }
+        )
+
+        holder.petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
+        holder.lastSeenDate.text =
+            pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
+        holder.status.text = pet.value?.petSummary?.value?.status?.value.toString()
+        holder.species.text = pet.value?.petSummary?.value?.species?.value.toString()
+        holder.lastSeenLocation.text =
+            pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
     }
 
     override fun getItemCount(): Int = petList.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(
-            position: Int
-        ) {
-            //val res = itemView.context.resources
-
-            val pet = petList[position]
-
-            // https://gist.github.com/garuma/f0f1662a6587e2c8d916
-            petImage.setImageResource(when (pet.value?.petSummary?.value?.species?.value.toString()) {
-                SpeciesTypeEnum.CAT.species -> R.drawable.cat_face_vector
-                //SpeciesTypeEnum.DOG.species -> R.drawable.ic_dog
-                else -> R.drawable.ic_add
-            })
-
-            petId.text = "Pet ID: " + pet.value?.petId?.value.toString()
-            lastSeenDate.text =
-                pet.value?.petLastSeenLocation?.value?.lastSeenDate?.value.toString()
-            status.text = pet.value?.petSummary?.value?.status?.value.toString()
-            species.text = pet.value?.petSummary?.value?.species?.value.toString()
-            lastSeenLocation.text =
-                pet.value?.petLastSeenLocation?.value?.city?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.state?.value.toString() + " " + pet.value?.petLastSeenLocation?.value?.zip?.value.toString()
-        }
-
         val petImage: ImageView = view.findViewById(R.id.list_item_image)
         val petId: TextView = view.findViewById(R.id.list_item_number)
         val lastSeenDate: TextView = view.findViewById(R.id.list_item_date_value)
