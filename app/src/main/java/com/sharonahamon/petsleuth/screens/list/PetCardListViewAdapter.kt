@@ -15,15 +15,9 @@ import com.sharonahamon.petsleuth.data.PetLD
  * The base code for this class was generated within the Android Studio IDE
  * and modified to fit the needs of this project.
  */
-class PetCardListViewAdapter() : RecyclerView.Adapter<PetCardListViewAdapter.ViewHolder>() {
-
-    // pet list, for list fragment
-    var _petList: MutableList<LiveData<PetLD>> = mutableListOf()
-    var petList: List<LiveData<PetLD>>
-        get() = _petList
-        set(value) {
-            _petList = value.toMutableList()
-        }
+class PetCardListViewAdapter(
+    private val petList: MutableList<LiveData<PetLD>>
+) : RecyclerView.Adapter<PetCardListViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
