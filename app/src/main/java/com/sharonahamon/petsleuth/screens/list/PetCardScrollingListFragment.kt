@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sharonahamon.petsleuth.R
 import com.sharonahamon.petsleuth.common.PetSleuthViewModel
+import com.sharonahamon.petsleuth.data.PetLD
 
 class PetCardScrollingListFragment : Fragment() {
 
@@ -31,8 +33,7 @@ class PetCardScrollingListFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
 
                 adapter =
-                    PetCardListViewAdapter()
-                (adapter as PetCardListViewAdapter).petList = viewModel.petList
+                    PetCardListViewAdapter(viewModel.petList as MutableList<LiveData<PetLD>>)
             }
         }
 
