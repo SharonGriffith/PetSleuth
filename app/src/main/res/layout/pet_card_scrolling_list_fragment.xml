@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="petSleuthViewModel"
+            type="com.sharonahamon.petsleuth.common.PetSleuthViewModel" />
+    </data>
+
     <!-- vertical scrolling card list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item_scrolling_container"
